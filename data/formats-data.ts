@@ -6261,5 +6261,17 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 	faestalk: {
 		tier: "OU",
 		natDexTier: "OU",
+	},
+	basilly: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	knaviper: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	verkillion: {
+		tier: "OU",
+		natDexTier: "OU",
 	},	
 };
