@@ -5,8 +5,7 @@
 # Local config (generated during Docker build from config-example.js)
 config/config.js
 
-# Runtime / generated artifacts
-dist
+# Runtime / generated artifacts (dist is built at container start, not image build)
 node_modules
 logs
 databases/*.db*

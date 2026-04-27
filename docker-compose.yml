@@ -7,6 +7,8 @@ services:
     environment:
       - PORT=${PORT:-8000}
     volumes:
+      # Persist compiled JS so subsequent restarts skip 'node build'
+      - ps-dist:/app/dist
       # Persist logs and databases across container restarts
       - ps-logs:/app/logs
       - ps-databases:/app/databases
@@ -16,9 +18,11 @@ services:
       test: ["CMD", "wget", "-q", "--spider", "http://localhost:${PORT:-8000}"]
       interval: 30s
       timeout: 10s
-      start_period: 60s
-      retries: 3
+      # Allow up to 3 minutes on first start for compilation
+      start_period: 180s
+      retries: 5
 
 volumes:
+  ps-dist:
   ps-logs:
   ps-databases:
