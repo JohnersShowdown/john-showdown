@@ -1,31 +1,25 @@
-FROM node:22-alpine
+FROM node:18-alpine
 
 WORKDIR /app
 
-# Install dependencies
-COPY package.json package-lock.json* ./
-RUN npm ci
+RUN apk add --no-cache tini \
+ && apk add --no-cache --virtual .build-deps python3 make g++
 
-# Copy all source files
+COPY package.json ./
+
+RUN npm install --omit=dev --no-audit --no-fund \
+ && npm cache clean --force
+
 COPY . .
 
-# Create config.js from example if one is not bind-mounted at runtime
-RUN cp config/config-example.js config/config.js
+RUN node build \
+ && apk del .build-deps \
+ && chmod +x /app/docker-entrypoint.sh
 
-# Copy entrypoint
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+ENV NODE_ENV=production
+ENV PORT=8000
 
-# Create writable runtime directories (dist is intentionally left empty;
-# the entrypoint builds it on first start and it persists via a volume)
-RUN mkdir -p logs/chat logs/modlog logs/repl logs/tickets databases dist
-
-# Pokemon Showdown listens on 8000 by default.
-# Set PORT env var in Coolify to override (e.g. PORT=3000).
 EXPOSE 8000
 
-# Health check - first-start compilation can take several minutes on low-CPU hosts.
-HEALTHCHECK --interval=30s --timeout=10s --start-period=420s --retries=10 \
-    CMD wget -q --spider "http://localhost:${PORT:-8000}" || exit 1
-
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/sbin/tini", "--", "/app/docker-entrypoint.sh"]
+CMD ["sh", "-c", "exec node pokemon-showdown ${PORT}"]
