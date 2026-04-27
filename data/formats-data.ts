@@ -6251,17 +6251,14 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		tier: "Illegal",
 	},
 	springbun: {
-		isNonstandard: "Custom",
 		tier: "OU",
 		natDexTier: "OU",
 	},
 	snapbun: {
-		isNonstandard: "Custom",
 		tier: "OU",
 		natDexTier: "OU",
 	},
 	faestalk: {
-		isNonstandard: "Custom",
 		tier: "OU",
 		natDexTier: "OU",
 	},	
