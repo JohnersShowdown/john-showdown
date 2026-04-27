@@ -21014,4 +21014,4 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
       eggGroups: ["Field", "Grass"],
       kind: "Beanstalk",
 	},
-},	
+};
