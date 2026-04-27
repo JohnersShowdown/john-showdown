@@ -20986,6 +20986,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
       evos: ["Snapbun"],
       eggGroups: ["Field", "Grass"],
       kind: "Bunny",
+	  tags: ["Fakemon"],
     },
     snapbun: {
       num: 2001,
@@ -21000,6 +21001,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
       evos: ["Faestalk"],
       eggGroups: ["Field", "Grass"],
       kind: "Thorny",
+	  tags: ["Fakemon"],
     },
     faestalk: {
       num: 2002,
@@ -21013,5 +21015,6 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
       color: "Green",
       eggGroups: ["Field", "Grass"],
       kind: "Beanstalk",
+	  tags: ["Fakemon"],
 	},
 };
