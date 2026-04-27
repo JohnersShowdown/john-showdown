@@ -24,8 +24,8 @@ RUN mkdir -p logs/chat logs/modlog logs/repl logs/tickets databases dist
 # Set PORT env var in Coolify to override (e.g. PORT=3000).
 EXPOSE 8000
 
-# Health check - start_period is long to allow first-start compilation (~2 min)
-HEALTHCHECK --interval=30s --timeout=10s --start-period=180s --retries=5 \
+# Health check - first-start compilation can take several minutes on low-CPU hosts.
+HEALTHCHECK --interval=30s --timeout=10s --start-period=420s --retries=10 \
     CMD wget -q --spider "http://localhost:${PORT:-8000}" || exit 1
 
 ENTRYPOINT ["/entrypoint.sh"]

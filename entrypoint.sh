@@ -5,7 +5,7 @@ set -e
 # compile now. This runs inside the container, not during docker build, so
 # it does NOT count against Coolify's image-build timeout.
 if [ ! -f /app/dist/server/index.js ]; then
-    echo "[entrypoint] dist/ not found — running 'node build' (this may take a minute on first start)..."
+    echo "[entrypoint] dist/ not found — running 'node build' (first start can take several minutes)..."
     node build
     echo "[entrypoint] Build complete."
 fi
