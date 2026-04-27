@@ -21,6 +21,9 @@ export interface SpeciesData extends Partial<Species> {
 	baseStats: StatsTable;
 	eggGroups: string[];
 	weightkg: number;
+
+	// Custom Fields
+	kind?: string;
 }
 export interface CosmeticFormeData {
 	isCosmeticForme: boolean;
