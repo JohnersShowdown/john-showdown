@@ -6285,5 +6285,21 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 	enkidros: {
 		tier: "OU",
 		natDexTier: "OU",
-	},		
+	},
+	wimpodsilverfish: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	wimpodswarming: {
+		tier: "OU",
+		natDexTier: "OU",
+	},			
+	golisopede: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	golisopedemega: {
+		tier: "OU",
+		natDexTier: "OU",
+	},			
 };
