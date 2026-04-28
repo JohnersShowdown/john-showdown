@@ -5671,4 +5671,39 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		rating: 1.5,
 		num: 2000,
 	},
+	swarming: {
+		onSwitchInPriority: -1,
+		onStart(pokemon) {
+			if (pokemon.baseSpecies.baseSpecies !== 'Wimpod-Silverfish' || pokemon.level < 20 || pokemon.transformed) return;
+			if (pokemon.hp > pokemon.maxhp / 4) {
+				if (pokemon.species.id === 'wimpodsilverfish') {
+					pokemon.formeChange('Wimpod-Swarming');
+				}
+			} else {
+				if (pokemon.species.id === 'wimpodswarming') {
+					pokemon.formeChange('Wimpod-Silverfish');
+				}
+			}
+		},
+		onResidualOrder: 29,
+		onResidual(pokemon) {
+			if (
+				pokemon.baseSpecies.baseSpecies !== 'Wimpod-Silverfish' || pokemon.level < 20 ||
+				pokemon.transformed || !pokemon.hp
+			) return;
+			if (pokemon.hp > pokemon.maxhp / 4) {
+				if (pokemon.species.id === 'wimpodsilverfish') {
+					pokemon.formeChange('Wimpod-Swarming');
+				}
+			} else {
+				if (pokemon.species.id === 'wimpodswarming') {
+					pokemon.formeChange('Wimpod-Silverfish');
+				}
+			}
+		},
+		flags: { failroleplay: 1, noreceiver: 1, noentrain: 1, notrace: 1, failskillswap: 1, cantsuppress: 1 },
+		name: "Swarming",
+		rating: 3,
+		num: 2001,
+	},	
 };
