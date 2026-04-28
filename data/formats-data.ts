@@ -6273,5 +6273,17 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 	verkillion: {
 		tier: "OU",
 		natDexTier: "OU",
-	},	
+	},
+	purluxe: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	lyonite: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	enkidros: {
+		tier: "OU",
+		natDexTier: "OU",
+	},		
 };
