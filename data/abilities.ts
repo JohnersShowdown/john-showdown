@@ -5659,7 +5659,6 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		num: -3,
 	},
 	remnant: {
-		name: "Remnant",
 		onStart(pokemon) {
 			if (pokemon.side.faintedThisTurn) {
 				this.debug('Boosted for a faint this turn');
