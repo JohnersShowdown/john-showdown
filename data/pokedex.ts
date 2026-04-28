@@ -21143,7 +21143,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		color: "Blue",
 		eggGroups: ["Water 2"],
 		requiredAbility: "Schooling",
-		battleOnly: "Wimpod Silverfish",
+		battleOnly: "Wimpod-Silverfish",
 	},
    Golisopede: {
       num: 2201,
