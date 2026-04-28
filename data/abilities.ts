@@ -5666,5 +5666,9 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 				return this.boost({ atk: 1, spe: 1 }, pokemon);
 			}
 		},
+		flags: {},
+		name: "Remnant",
+		rating: 1.5,
+		num: 2000,
 	},
 };
