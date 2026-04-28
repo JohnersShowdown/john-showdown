@@ -5661,8 +5661,8 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	remnant: {
 		onStart(pokemon) {
 			if (pokemon.side.faintedLastTurn) {
-				this.debug('Boosted for a faint last turn');
-				return this.boost({ atk: 1, spe: 1});
-			}
+			this.debug('Boosted for a faint last turn');
+			return this.boost({ atk: 1, spe: 1}, pokemon);
+		}
 	},
 };
