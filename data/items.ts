@@ -8164,4 +8164,15 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		gen: 8,
 		isNonstandard: "CAP",
 	},
+	golisopedite: {
+		name: "Golisopedite",
+		spritenum: 577,
+		megaStone: { "Golisopede": "Golisopede-Mega" },
+		itemUser: ["Golisopede"],
+		onTakeItem(item, source) {
+			return !item.megaStone?.[source.baseSpecies.baseSpecies];
+		},
+		num: 2200,
+		gen: 9,
+	},	
 };
