@@ -20983,7 +20983,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
       heightm: 0.3,
       weightkg: 5,
       color: "Green",
-		evolevel: 16, 
+	evoLevel: 16, 
       evos: ["Snapbun"],
       eggGroups: ["Field", "Grass"],
       kind: "Bunny",

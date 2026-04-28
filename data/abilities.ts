@@ -5653,12 +5653,13 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	persistent: {
 		isNonstandard: "CAP",
 		// implemented in the corresponding move
-		flags: {},F
+		flags: {},
 		name: "Persistent",
 		rating: 3,
 		num: -3,
 	},
 	remnant: {
+		name: "Remant",
 		onStart(pokemon) {
 			if (pokemon.side.faintedLastTurn) {
 			this.debug('Boosted for a faint last turn');
