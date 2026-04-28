@@ -21145,7 +21145,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		requiredAbility: "Schooling",
 		battleOnly: "Wimpod-Silverfish",
 	},
-   Golisopede: {
+   golisopede: {
       num: 2201,
       name: "Wimpod-Silverfish",
       types: ["Bug", "Ground"],
