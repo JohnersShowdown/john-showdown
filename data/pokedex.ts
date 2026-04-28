@@ -21157,7 +21157,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
       color: "Gray",
       eggGroups: ["Water1", "Field"],
 		evoLevel: 30,
-      prevo: "Wimpod-Silverish"],
+      prevo: "Wimpod-Silverish",
 		otherFormes: ["Golisopede-Mega"],
 		formeOrder: ["Golisopede", "Golisopede-Mega"],
      tags: ["Fakemon"],          
