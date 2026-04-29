@@ -21301,7 +21301,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
       heightm: 0.8,
       weightkg: 55,
       color: "Brown",
-      evos: ["Dunecargo"],
+	  prevo: "Slugrit",
       eggGroups: ["Amorphous"],
 	  tags: ["Fakemon"],      
 	},		
