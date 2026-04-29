@@ -21147,7 +21147,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 	},
    golisopede: {
       num: 2201,
-      name: "Wimpod-Silverfish",
+      name: "Golisopede",
       types: ["Bug", "Ground"],
       genderRatio: {M: 0.875, F: 0.125},
       baseStats: {hp: 75, atk: 125, def: 90, spa: 30, spd: 140, spe: 70},
