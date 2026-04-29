@@ -21141,6 +21141,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		heightm: 0.5,
 		weightkg: 60,
 		color: "Blue",
+		evos: ["Golisopede"],
 		eggGroups: ["Water 2"],
 		requiredAbility: "Swarming",
 		battleOnly: "Wimpede-Silverfish",
