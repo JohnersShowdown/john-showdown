@@ -5673,30 +5673,30 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	swarming: {
 		onSwitchInPriority: -1,
 		onStart(pokemon) {
-			if (pokemon.baseSpecies.baseSpecies !== 'Wimpod-Silverfish' || pokemon.level < 20 || pokemon.transformed) return;
+			if (pokemon.baseSpecies.baseSpecies !== 'Wimpede-Silverfish' || pokemon.level < 20 || pokemon.transformed) return;
 			if (pokemon.hp > pokemon.maxhp / 4) {
-				if (pokemon.species.id === 'wimpodsilverfish') {
-					pokemon.formeChange('Wimpod-Swarming');
+				if (pokemon.species.id === 'wimpedesilverfish') {
+					pokemon.formeChange('Wimpede-Swarming');
 				}
 			} else {
-				if (pokemon.species.id === 'wimpodswarming') {
-					pokemon.formeChange('Wimpod-Silverfish');
+				if (pokemon.species.id === 'wimpedeswarming') {
+					pokemon.formeChange('Wimpede-Silverfish');
 				}
 			}
 		},
 		onResidualOrder: 29,
 		onResidual(pokemon) {
 			if (
-				pokemon.baseSpecies.baseSpecies !== 'Wimpod-Silverfish' || pokemon.level < 20 ||
+				pokemon.baseSpecies.baseSpecies !== 'Wimpede-Silverfish' || pokemon.level < 20 ||
 				pokemon.transformed || !pokemon.hp
 			) return;
 			if (pokemon.hp > pokemon.maxhp / 4) {
-				if (pokemon.species.id === 'wimpodsilverfish') {
-					pokemon.formeChange('Wimpod-Swarming');
+				if (pokemon.species.id === 'wimpedesilverfish') {
+					pokemon.formeChange('Wimpede-Swarming');
 				}
 			} else {
-				if (pokemon.species.id === 'wimpodswarming') {
-					pokemon.formeChange('Wimpod-Silverfish');
+				if (pokemon.species.id === 'wimpedeswarming') {
+					pokemon.formeChange('Wimpede-Silverfish');
 				}
 			}
 		},
