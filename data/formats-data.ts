@@ -6286,11 +6286,11 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		tier: "OU",
 		natDexTier: "OU",
 	},
-	wimpodsilverfish: {
+	wimpedesilverfish: {
 		tier: "OU",
 		natDexTier: "OU",
 	},
-	wimpodswarming: {
+	wimpedeswarming: {
 		tier: "OU",
 		natDexTier: "OU",
 	},			
