@@ -21126,8 +21126,8 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
       color: "Gray",
       eggGroups: ["Water1", "Field"],
       evos: ["Golisopede"],
-		otherFormes: ["Wimpede-Swarming"],
-		formeOrder: ["Wimpede-Silverfish", "Wimpede-Swarming"],
+	  otherFormes: ["Wimpede-Swarming"],
+	  formeOrder: ["Wimpede-Silverfish", "Wimpede-Swarming"],
      tags: ["Fakemon"],          
    },
 	wimpedeswarming: {
@@ -21142,7 +21142,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		weightkg: 60,
 		color: "Blue",
 		eggGroups: ["Water 2"],
-		requiredAbility: "Schooling",
+		requiredAbility: "Swarming",
 		battleOnly: "Wimpede-Silverfish",
 	},
    golisopede: {
