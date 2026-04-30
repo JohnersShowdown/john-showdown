@@ -5704,5 +5704,30 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		name: "Swarming",
 		rating: 3,
 		num: 2001,
-	},	
+	},
+	hivemind: {
+        onAllyBasePowerPriority: 22,
+        onAllyBasePower(basePower, attacker, defender, move) {
+        if (move.type === "Bug" || move.type === "Steel") {
+            this.debug("Hivemind boost");
+            return this.chainModify([5461, 4096]);
+           }
+        },
+    flags: {},
+    name: "Hivemind",
+    rating: 4,
+    num: -3233
+    },
+	acidspit: {
+		onDamagingHit(damage, target, source, move) {
+        if (this.checkMoveMakesContact(move, source, target)) {
+        this.add("-activate", target, "ability: Acid Spit");
+        source.addVolatile("gastroacid", this.effectState.target);
+      }
+    },
+    flags: {},
+    name: "Acid Spit",
+    rating: 3.5,
+    num: -3262
+    },		
 };
