@@ -22389,7 +22389,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 	sephiredge: {
 		num: 2271,
 		name: "Sephiredge",
-		types: ["Flying", "Dark"],
+		types: ["Flying", "Steel"],
 		genderRatio: { M: 0.875, F: 0.125 },
 		baseStats: { hp: 50, atk: 140, def: 50, spa: 140, spd: 50, spe: 140 },
 		abilities: { 0: "Sharpness", 1: "Dark Lord", H: "Supreme Overlord" },
