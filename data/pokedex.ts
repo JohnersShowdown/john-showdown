@@ -21153,7 +21153,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
       types: ["Bug", "Ground"],
       genderRatio: {M: 0.875, F: 0.125},
       baseStats: {hp: 75, atk: 125, def: 90, spa: 30, spd: 140, spe: 70},
-      abilities: {0: "Emergency Exit", 1: "Swarm", H: "Technician"},
+      abilities: {0: "Emergency Exit", 1: "Swarm", H: "Hivemind"},
       heightm: 2,
       weightkg: 108,
       color: "Gray",
@@ -21172,7 +21172,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		types: ["Bug", "Ground"],
 		genderRatio: { M: 0.875, F: 0.125 },
 		baseStats: { hp: 75, atk: 150, def: 185, spa: 30, spd: 130, spe: 60 },
-		abilities: { 0: "Technician" },
+		abilities: { 0: "Hivemind" },
 		heightm: 2.4,
 		weightkg: 128,
 		color: "Gray",
@@ -21326,6 +21326,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
     midnightlucariomega: {
       num: 2211,
       name: "Midnightlucario-Mega",
+		forme: "Mega", 
       types: ["Fighting", "Dark"],
       genderRatio: {M: 0.875, F: 0.125},
       baseStats: {hp: 70, atk: 90, def: 98, spa: 155, spd: 85, spe: 127},
@@ -21387,6 +21388,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
     midnightgardevoirmega: {
       num: 2214,
       name: "Midnightgardevoir-Mega",
+		forme: "Mega", 
       types: ["Dark", "Fairy"],
       genderRatio: {M: 0.875, F: 0.125},
       baseStats: {hp: 68, atk: 65, def: 85, spa: 165, spd: 135, spe: 100},
@@ -21418,6 +21420,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
     midnightgallademega: {
       num: 2215,
       name: "Midnightgallade-Mega",
+		forme: "Mega", 
       types: ["Dark", "Fighting"],
       gender: "M",
       baseStats: {hp: 68, atk: 165, def: 95, spa: 85, spd: 115, spe: 110},
@@ -21487,6 +21490,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
     starstellarmega: {
       num: 2219,
       name: "Starstellar-Mega",
+		forme: "Mega", 
       types: ["Steel", "Psychic"],
       baseStats: {hp: 70, atk: 130, def: 100, spa:150, spd: 120, spe: 50},
       abilities: {0: "Levitate"},
@@ -21588,6 +21592,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
     falinkslaststandmega: {
       num: 2225,
       name: "FalinksLastStand-Mega",
+		forme: "Mega", 
       types: ["Fighting", "Ghost"],
       baseStats: {hp: 75, atk: 140, def: 100, spa: 20, spd: 120, spe: 115},
       abilities: {0: "Supreme Overlord"},
@@ -21601,6 +21606,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
     gunslingerfalinks: {
       num: 2225,
       name: "GunslingerFalinks",
+		forme: "Mega", 
       types: ["Fighting", "Steel"],
       baseStats: {hp: 70, atk: 90, def: 100, spa: 90, spd: 60, spe: 60},
       abilities: {0: "Skill Link", 1: "Bulletproof", H: "Bombard"},
@@ -21615,6 +21621,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
     gunslingerfalinksmega: {
       num: 2225,
       name: "GunslingerFalinks-Mega",
+		forme: "Mega", 
       types: ["Fighting", "Steel"],
       baseStats: {hp: 70, atk: 130, def: 140, spa: 90, spd: 100, spe: 40},
       abilities: {0: "Technician"},
@@ -21841,6 +21848,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
     alloettemega: {
       num: 2240,
       name: "Alloette-Mega",
+		forme: "Mega", 
       types: ["Flying", "Fairy"],
       gender: "F",
       baseStats: {hp: 78, atk: 50, def: 98, spa: 162, spd: 129, spe: 135},
@@ -21872,6 +21880,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
     vexalloettemega: {
       num: 2241,
       name: "Vexalloette-Mega",
+		forme: "Mega", 
       types: ["Flying", "Ghost"],
       gender: "F",
       baseStats: {hp: 68, atk: 172, def: 58, spa: 80, spd: 119, spe: 155},
@@ -21917,6 +21926,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
     tanglaremega: {
       num: 2243,
       name: "Tanglare-Mega",
+		forme: "Mega", 
       types: ["Grass", "Dark"],
       genderRatio: {M: 0.875, F: 0.125},
       baseStats: {hp: 75, atk: 110, def: 85, spa: 150, spd: 140, spe: 75},
@@ -22116,6 +22126,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
     sandjournermega: {
       num: 2256,
       name: "Sandjourner-Mega",
+		forme: "Mega", 
       types: ["Rock", "Ground"],
       genderRatio: {M: 0.875, F: 0.125},
       baseStats: {hp: 100, atk: 60, def: 105, spa: 145, spd: 140, spe: 20},
@@ -22614,7 +22625,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 	},
     coppergolett: {
       num: 2286,
-      name: "Coppergollet",
+      name: "Coppergolett",
       types: ["Steel", "Electric"],
 	  genderRatio: {M: 0.875, F: 0.125},
       baseStats: {hp: 49, atk: 25, def: 50, spa: 79, spd: 50, spe: 55},
@@ -22645,6 +22656,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
     coppergolurkmega: {
       num: 2287,
       name: "Coppergolurk-Mega",
+		forme: "Mega", 
 	  types: ["Steel", "Electric"],
       baseStats: {hp: 69, atk: 25, def: 105, spa: 159, spd: 105, spe: 120},
       abilities: {0: "Battery"},
@@ -22814,6 +22826,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 	clockworkleavannymega: {
       num: 2319,
       name: "Clockworkleavanny-Mega",
+		forme: "Mega",
       types: ["Steel", "Bug"],
       baseStats: {hp: 80, atk: 168, def: 120, spa: 50, spd: 95, spe: 87},
       abilities: {0: "Queenly Majesty"},
