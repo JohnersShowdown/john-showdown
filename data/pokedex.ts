@@ -22438,7 +22438,6 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		color: "Black",
 		prevo: "Porytron2",
 		evoLevel: 40,
-		evos: ["Porytron-Z"],
 		eggGroups: ["Mineral"],
 		tags: ["Fakemon"],
 	},
