@@ -5729,5 +5729,77 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     name: "Acid Spit",
     rating: 3.5,
     num: -3262
-    },		
+    },	
+	aeroforce: {
+	  onBasePowerPriority: 19,
+      onBasePower(basePower, attacker, defender, move) {
+      if (move.flags["wind"]) {
+        this.debug("Aeroforce boost");
+        return this.chainModify([move.hasAuraBreak ? 3072 : 5461, 4096]);
+      }
+    },
+    flags: {},
+    name: "Aeroforce",
+    rating: 3.5,
+    num: -3247	
+    },
+	blindfold: {
+	    onTryHit(target, source, move) {
+        if (target !== source && move.flags["wind"]) {
+        this.add("-immune", target, "[from] ability: Blindfold");
+        return null;
+      }
+    },
+    flags: { breakable: 1 },
+    name: "Blindfold",
+    rating: 3.5,
+    num: -3237	
+    },
+	bombard: {
+		  onBasePowerPriority: 19,
+          onBasePower(basePower, attacker, defender, move) {
+          if (move.flags["bullet"]) {
+          this.debug("Bombard boost");
+          return this.chainModify(1.5);
+        }
+    },
+    flags: {},
+    name: "Bombard",
+    rating: 3.5,
+    num: -3200	
+    },
+	darklord: {
+		    onModifyAtkPriority: 5,
+    onModifyAtk(atk, attacker, defender, move) {
+      if (move.type === "Dark") {
+        this.debug("Dark Lord boost");
+        return this.chainModify(1.5);
+      }
+    },
+    onModifySpAPriority: 5,
+    onModifySpA(atk, attacker, defender, move) {
+      if (move.type === "Dark") {
+        this.debug("Dark Lord boost");
+        return this.chainModify(1.5);
+      }
+    },
+    onSourceModifyAtkPriority: 5,
+    onSourceModifyAtk(atk, attacker, defender, move) {
+      if (move.type === "Dark") {
+        this.debug("Dark Lord weaken");
+        return this.chainModify(0.5);
+      }
+    },
+    onSourceModifySpAPriority: 5,
+    onSourceModifySpA(atk, attacker, defender, move) {
+      if (move.type === "Dark") {
+        this.debug("Dark Lord weaken");
+        return this.chainModify(0.5);
+      }
+    },
+    flags: {},
+    name: "Dark Lord",
+    rating: 3.5,
+    num: -3225
+    },											
 };
