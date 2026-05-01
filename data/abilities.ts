@@ -6208,5 +6208,36 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     name: "Zen Domain",
     rating: 4,
     num: -3230
-    },																																		
+    },	
+	brawl: {
+		onSwitchInPriority: -1,
+		onStart(pokemon) {
+			if (pokemon.baseSpecies.baseSpecies !== 'Dragonoid-Sphere' || pokemon.level < 20 || pokemon.transformed) return;
+			if (pokemon.hp > pokemon.maxhp / 3) {
+				if (pokemon.species.id === 'dragonoidsphere') {
+					pokemon.formeChange('Dragonoid-Brawl');
+				}
+			} else {
+				if (pokemon.species.id === 'dragonoidbrawl') {
+					pokemon.formeChange('Dragonoid-Sphere');
+				}
+			}
+		},
+		onResidualOrder: 29,
+		onResidual(pokemon) {
+			if (
+				pokemon.baseSpecies.baseSpecies !== 'Dragonoid-Sphere' || pokemon.level < 20 ||
+				pokemon.transformed || !pokemon.hp
+			) return;
+			if (pokemon.hp < pokemon.maxhp / 3) {
+				if (pokemon.species.id === 'dragonoidbrawl') {
+					pokemon.formeChange('Dragonoid=Sphere');
+				}
+			} 
+		},
+		flags: { failroleplay: 1, noreceiver: 1, noentrain: 1, notrace: 1, failskillswap: 1, cantsuppress: 1 },
+		name: "Brawl",
+		rating: 3,
+		num: 2010,
+	},																																		
 };
