@@ -5801,5 +5801,412 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     name: "Dark Lord",
     rating: 3.5,
     num: -3225
-    },											
+    },
+	echoburst: {
+	    onDamagingHit(damage, target, source, move) {
+      const side = source.isAlly(target) ? source.side.foe : source.side;
+      const echoShards = side.sideConditions["echoshards"];
+      if (move.category === "Physical" && (!echoShards || echoShards.layers < 1)) {
+        this.add("-activate", target, "ability: Echo Burst");
+        side.addSideCondition("echoshards", target);
+      }
+    },
+    flags: {},
+    name: "Echo Burst",
+    rating: 3.5,
+    num: -3256	
+    },
+	forestspirit: {
+		 onAllyBasePowerPriority: 22,
+         onAllyBasePower(basePower, attacker, defender, move) {
+         if (move.type === "Grass") {
+         this.debug("Forest Spirit boost");
+         return this.chainModify(1.5);
+        }
+    },
+    flags: {},
+    name: "Forest Spirit",
+    rating: 3.5,
+    num: -3209
+    },
+	hotsand: {
+	        onUpdate(pokemon) {
+            if (pokemon.status === "brn") {
+            this.add("-activate", pokemon, "ability: Hot Sand");
+            pokemon.cureStatus();
+          }
+        },
+           onImmunity(type, pokemon) {
+           if (type === "brn") {
+           return false;
+         }
+        },
+         onDamagingHit(damage, target, source, move) {
+         if (this.checkMoveMakesContact(move, source, target)) {
+         if (this.randomChance(3, 10)) {
+         source.trySetStatus("brn", target);
+        }
+      }
+    },
+    flags: {},
+    name: "Hot Sand",
+    rating: 3.5,
+    num: -3213	
+    },
+	lifesteal: {
+		  onBasePowerPriority: 19,
+          onBasePower(basePower, attacker, defender, move) {
+          if (move.flags["heal"]) {
+          this.debug("Lifesteal boost");
+          return this.chainModify(1.5);
+        }
+    },
+    flags: {},
+    name: "Lifesteal",
+    rating: 3.5,
+    num: -3215
+    },
+	mastermind: {
+		    onModifyTypePriority: -1,
+    onModifyType(move, pokemon) {
+      const noModifyType = [
+        "judgment",
+        "multiattack",
+        "naturalgift",
+        "revelationdance",
+        "technoblast",
+        "terrainpulse",
+        "weatherball"
+      ];
+      if (move.type === "Normal" && !noModifyType.includes(move.id) && !(move.isZ && move.category !== "Status") && !(move.name === "Tera Blast" && pokemon.terastallized)) {
+        move.type = "Psychic";
+        move.typeChangerBoosted = this.effect;
+      }
+    },
+    onBasePowerPriority: 23,
+    onBasePower(basePower, pokemon, target, move) {
+      if (move.typeChangerBoosted === this.effect)
+        return this.chainModify([4915, 4096]);
+    },
+    flags: {},
+    name: "Mastermind",
+    rating: 4,
+    num: -3231
+    },
+	misdirection: {
+		   onFoeRedirectTarget(target, source, source2, move) {
+           const redirectTarget = ["randomNormal", "adjacentFoe"].includes(move.target) ? "normal" : move.target;
+           if (this.validTarget(this.effectState.target, source, redirectTarget)) {
+           if (move.smartTarget)
+           move.smartTarget = false;
+           if (this.effectState.target !== target) {
+           this.add("-activate", this.effectState.target, "ability: Misdirection");
+          }
+           return this.effectState.target;
+         }
+       },
+            onDisableMove(pokemon) {
+        	for (const moveSlot of pokemon.moveSlots) {
+  	    	const move = this.dex.moves.get(moveSlot.id);
+  	    	if (move.stallingMove) {
+  		   	pokemon.disableMove(moveSlot.id);
+  	    	}
+     	}
+    },
+    flags: { breakable: 1 },
+    name: "Misdirection",
+    rating: 3.5,
+    num: -3227
+    },
+	paperthin: {
+		    onEffectiveness(typeMod, target, type, move) {
+            if (move.type === "Water" && type === "Grass")
+            return 1;
+            },
+            onDamagingHit(damage, target, source, move) {
+            if (["Water"].includes(move.type) && !target.volatiles["burning"]) {
+            target.addVolatile("soggy");
+            } else if (["Water"].includes(move.type) && target.volatiles["burning"]) {
+            target.removeVolatile("burning");
+            }
+            if (["Fire"].includes(move.type) && !target.volatiles["soggy"]) {
+            target.addVolatile("burning");
+            } else if (["Fire"].includes(move.type) && target.volatiles["soggy"]) {
+            target.removeVolatile("soggy");
+            }
+            },
+            onWeather(target, source, effect) {
+            if (target.hasItem("utilityumbrella"))
+            return;
+            if (effect.id === "raindance" || effect.id === "primordialsea") {
+            if (target.volatiles["burning"]) {
+            target.removeVolatile("burning");
+            } else {
+             target.addVolatile("soggy");
+           }
+          }
+        },
+         onSetStatus(status, target, source, effect) {
+        if (status.id !== "brn")
+        return;
+       if (effect?.status) {
+         if (target.volatiles["soggy"]) {
+          this.add("-immune", target, "[from] move: Soggy");
+          return false;
+         } else {
+           target.addVolatile("burning");
+        }
+      }
+    },
+    flags: { breakable: 1 },
+    name: "Paper Thin",
+    rating: 3.5,
+    num: -3226
+    },
+	recluse: {
+  	  onTryAddVolatile(status, target, source, effect) {
+      if (["encore", "taunt", "torment"].includes(status.id)) {
+        if (effect.effectType === "Move") {
+          const effectHolder = this.effectState.target;
+          this.add("-block", target, "ability: Recluse", "[of] " + effectHolder);
+        }
+        return null;
+      }
+    },
+    onTryBoost(boost, target, source, effect) {
+      if (effect.name === "Intimidate" && boost.atk) {
+        this.boost({ spe: -1 }, target, target, null, false, true);
+      }
+    },
+    flags: { breakable: 1 },
+    name: "Recluse",
+    rating: 2,
+    num: -3229
+    },
+	restoration: {
+		onResidualOrder: 5,
+        onResidualSubOrder: 4,
+        onResidual(pokemon) {
+      if (["sunnyday", "desolateland"].includes(pokemon.effectiveWeather()) && !pokemon.hasItem("utilityumbrella")) {
+        this.heal(pokemon.baseMaxhp / 8);
+      } else if (["sunnyday", "desolateland"].includes(pokemon.effectiveWeather()) && pokemon.hasItem("leftovers")) {
+    	  this.heal(pokemon.baseMaxhp / 16);
+      } else if (!pokemon.hasItem("leftovers")) {
+    	  this.heal(pokemon.baseMaxhp / 16);
+      } else {
+        return;
+      }
+    },
+    flags: {},
+    name: "Restoration",
+    rating: 3.5,
+    num: -3248
+    },
+	sandguard: {
+		    onModifyDefPriority: 6,
+    onModifyDef(def, pokemon) {
+      if (["sandstorm"].includes(pokemon.effectiveWeather())) {
+        return this.chainModify(1.25);
+      }
+    },
+    onSetStatus(status, target, source, effect) {
+      if (["sandstorm"].includes(target.effectiveWeather())) {
+        if (effect?.status) {
+          this.add("-immune", target, "[from] ability: Sand Guard");
+        }
+        return false;
+      }
+    },
+    onTryAddVolatile(status, target) {
+      if (status.id === "yawn" && ["snow", "hail"].includes(target.effectiveWeather())) {
+        this.add("-immune", target, "[from] ability: Sand Guard");
+        return null;
+      }
+    },
+    flags: { breakable: 1 },
+    name: "Sand Guard",
+    rating: 3.5,
+    num: -3255
+    },
+	shrieker: {
+		  onBasePowerPriority: 7,
+      onBasePower(basePower, attacker, defender, move) {
+      if (move.flags["sound"]) {
+        this.debug("Shrieker boost");
+        return this.chainModify([5325, 4096]);
+      }
+    },
+    onTryHit(target, source, move) {
+      if (target !== source && move.flags["sound"]) {
+        this.add("-immune", target, "[from] ability: Shrieker");
+        return null;
+      }
+    },
+    onAllyTryHitSide(target, source, move) {
+      if (move.flags["sound"]) {
+        this.add("-immune", this.effectState.target, "[from] ability: Shrieker");
+      }
+    },
+    flags: { breakable: 1 },
+    name: "Shrieker",
+    rating: 3.5,
+    num: -3220
+    },
+	snowguard: {
+		    onSourceModifyAtkPriority: 6,
+    onSourceModifyAtk(atk, attacker, defender, move) {
+      if (this.field.isWeather(["snow", "hail"])) {
+        if (move.type === "Fire") {
+          this.debug("Snow Guard weaken");
+          return this.chainModify(0.5);
+        }
+      }
+    },
+    onSourceModifySpAPriority: 5,
+    onSourceModifySpA(atk, attacker, defender, move) {
+      if (this.field.isWeather(["snow", "hail"])) {
+        if (move.type === "Fire") {
+          this.debug("Snow Guard weaken");
+          return this.chainModify(0.5);
+        }
+      }
+    },
+    onModifySpDPriority: 6,
+    onModifySpD(spd, pokemon) {
+      if (["snow", "hail"].includes(pokemon.effectiveWeather())) {
+        return this.chainModify(1.25);
+      }
+    },
+    onSetStatus(status, target, source, effect) {
+      if (["snow", "hail"].includes(target.effectiveWeather())) {
+        if (effect?.status) {
+          this.add("-immune", target, "[from] ability: Snow Guard");
+        }
+        return false;
+      }
+    },
+    onTryAddVolatile(status, target) {
+      if (status.id === "yawn" && ["snow", "hail"].includes(target.effectiveWeather())) {
+        this.add("-immune", target, "[from] ability: Snow Guard");
+        return null;
+      }
+    },
+    flags: { breakable: 1 },
+    name: "Snow Guard",
+    rating: 3.5,
+    num: -3228
+    },
+	sweetdreams: {
+	   onResidualOrder: 28,
+       onResidualSubOrder: 2,
+       onResidual(pokemon) {
+      if (!pokemon.hp) {
+        return;
+      }
+      if (pokemon.status === "slp") {
+          this.heal(pokemon.baseMaxhp / 8);
+      }
+        for (const target of pokemon.allies()) {
+        if (target.status === "slp" || target.hasAbility("comatose")) {
+          this.heal(target.baseMaxhp / 8, target, pokemon);
+        }
+      }
+    },
+    flags: {},
+    name: "Sweet Dreams",
+    rating: 3.5,
+    num: -3222
+    },
+	tinkerer: {
+  	  onFoeModifyDef(def, target) {
+      if (target.hasType("Steel")) {
+        this.debug("Tinkerer Def drop");
+        return this.chainModify(0.75);
+      }
+    },
+    flags: {},
+    name: "Tinkerer",
+    rating: 3.5,
+    num: -3246
+    },
+	windcharge: {
+		    onStart(pokemon) {
+      if (pokemon.side.sideConditions["tailwind"]) {
+        this.boost({ spa: 1 }, pokemon, pokemon);
+      }
+    },
+    onTryHit(target, source, move) {
+      if (target !== source && move.flags["wind"]) {
+        if (!this.boost({ spa: 1 }, target, target)) {
+          this.add("-immune", target, "[from] ability: Wind Charge");
+        }
+        return null;
+      }
+    },
+    onSideConditionStart(target, source, sideCondition) {
+      const pokemon = this.effectState.target;
+      if (sideCondition.id === "tailwind") {
+        this.boost({ spa: 1 }, pokemon, pokemon);
+      }
+    },
+    flags: { breakable: 1 },
+    name: "Wind Charge",
+    rating: 3.5,
+    num: -3224
+    },
+	turbocharge: {
+		    onModifyAtkPriority: 5,
+    onModifyAtk(atk, attacker, defender, move) {
+      if (move.type === "Electric") {
+        this.debug("Turbocharge boost");
+        return this.chainModify(1.5);
+      }
+    },
+    onModifySpAPriority: 5,
+    onModifySpA(atk, attacker, defender, move) {
+      if (move.type === "Electric") {
+        this.debug("Turbocharge boost");
+        return this.chainModify(1.5);
+      }
+    },
+    onSourceModifyAtkPriority: 6,
+    onSourceModifyAtk(atk, attacker, defender, move) {
+      if (move.type === "Electric") {
+        this.debug("Turbocharge weaken");
+        return this.chainModify(0.5);
+      }
+    },
+    onSourceModifySpAPriority: 5,
+    onSourceModifySpA(atk, attacker, defender, move) {
+      if (move.type === "Electric") {
+        this.debug("Turbocharge weaken");
+        return this.chainModify(0.5);
+      }
+    },
+    onDamagingHit(damage, target, source, move) {
+      if (["Electric"].includes(move.type)) {
+        this.boost({ spe: 1 });
+      }
+    },
+    flags: { breakable: 1 },
+    name: "Turbocharge",
+    rating: 3.5,
+    num: -3229
+    },
+	zendomain: {
+	  	  onStart(source) {
+      this.field.setTerrain("psychicterrain");
+    },
+    onResidualOrder: 5,
+    onResidualSubOrder: 4,
+    onResidual(pokemon) {
+      if (this.field.isTerrain("psychicterrain")) {
+     this.heal(pokemon.baseMaxhp / 16);
+      }
+    },
+    flags: {},
+    name: "Zen Domain",
+    rating: 4,
+    num: -3230
+    },																																		
 };
