@@ -1067,5 +1067,26 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
     },
     name: "Burning",
     num: -1012,
-    },    
+    }, 
+	ultima: {
+	name: "Ultima",	
+    onModifyMove(move, source) {
+      if (move.id === 'flamethrower') {
+        this.add('-message', `${source.name}'s Flamethrower became U-turn!`);
+
+        const uturn = this.dex.moves.get('uturn');
+
+        // Replace ALL relevant properties
+        move.id === 'uturn';
+        move.name === 'U-turn';
+        move.basePower = uturn.basePower;
+        move.type = uturn.type;
+        move.category = uturn.category;
+        move.flags = {...uturn.flags};
+        move.selfSwitch = uturn.selfSwitch;
+        move.secondary = uturn.secondary;
+        move.secondaries = uturn.secondaries;
+			}
+		},
+	},	   
 };
