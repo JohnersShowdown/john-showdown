@@ -6236,7 +6236,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			} else {
 				if (pokemon.species.id === 'dragonoidbrawl') {
 					pokemon.formeChange('Dragonoid-Sphere'),
-					this.heal(pokemon.baseMaxhp / 16);
+					this.heal(pokemon.baseMaxhp / 4);
 				}
 			}
 		},
