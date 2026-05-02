@@ -953,6 +953,7 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 		},
 	},
 	soggy: {
+	  noCopy: true,
 	  onStart(target) {
 		this.add('-start', target, "soggy");
       if (target.hasType("Water"))
@@ -1001,4 +1002,70 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
     name: "Soggy",
     num: -1011,
     },
+	burning: {
+		noCopy: true,
+    	onStart(target) {
+ 		this.add('-start', target, "burning");
+      target.cureStatus();
+      target.trySetStatus("brn", target);
+      if (target.hasType("Fire"))
+        return false;
+      if (!target.addType("Fire"))
+        return false;
+       this.add("-start", target, "typeadd", "Fire", "[from] move: Burning");
+     	},
+    onDamage(damage, target, source, effect) {
+      if (effect && effect.id === "brn") {
+        return damage * 2;
+      }
+    },
+    onModifySpe(spe, pokemon) {
+      return this.chainModify(1.5);
+    },
+    onDamagingHit(damage, target, source, move) {
+      if (this.checkMoveMakesContact(move, source, target)) {
+        if (this.randomChance(10, 10)) {
+          source.trySetStatus("brn", target);
+        }
+      }
+    },
+    onSourceDamagingHit(damage, target, source, move) {
+      if (target.hasAbility("shielddust") || target.hasItem("covertcloak"))
+        return;
+      if (this.checkMoveMakesContact(move, target, source)) {
+        if (this.randomChance(10, 10)) {
+          target.trySetStatus("brn", source);
+        }
+      }
+    },
+    onModifyTypePriority: -1,
+    onModifyType(move, pokemon) {
+      const noModifyType = [
+        "judgment",
+        "multiattack",
+        "naturalgift",
+        "revelationdance",
+        "technoblast",
+        "terrainpulse",
+        "weatherball"
+      ];
+      if (move.type === "Normal" && !noModifyType.includes(move.id) && !(move.isZ && move.category !== "Status") && !(move.name === "Tera Blast" && pokemon.terastallized)) {
+        move.type = "Fire";
+        move.typeChangerBoosted = this.effect;
+      }
+    },
+    onBasePowerPriority: 23,
+    onBasePower(basePower, pokemon, target, move) {
+      if (move.typeChangerBoosted === this.effect)
+        return this.chainModify([4915, 4096]);
+    },
+    onEnd(pokemon) {
+      pokemon.cureStatus();
+      pokemon.setType(pokemon.getTypes(true).map((type) => type === "Fire" ? "???" : type));
+      this.add("-end", pokemon, "typeadd", pokemon.getTypes().join("/"), "[from] move: Burning");
+      this.add('-end', pokemon, "burning");
+    },
+    name: "Burning",
+    num: -1012,
+    },    
 };
