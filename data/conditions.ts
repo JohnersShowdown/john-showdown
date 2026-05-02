@@ -939,7 +939,6 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 			}
 		},
 	},
-
 	rolloutstorage: {
 		name: 'rolloutstorage',
 		duration: 2,
@@ -953,4 +952,53 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 			return bp;
 		},
 	},
+	soggy: {
+	  onStart(target) {
+		this.add('-start', target, "soggy");
+      if (target.hasType("Water"))
+        return false;
+      if (!target.addType("Water"))
+        return false;
+      this.add("-start", target, "typeadd", "Water", "[from] move: Soggy");
+    },
+    onModifySpe(spe, pokemon) {
+      return this.chainModify(0.5);
+    },
+    onModifySpD(spd, pokemon) {
+      return this.chainModify(1.5);
+    },
+    onDamagingHit(damage, target, source, move) {
+      if (this.checkMoveMakesContact(move, source, target)) {
+        this.field.addPseudoWeather("watersport");
+      }
+    },
+    onModifyTypePriority: -1,
+    onModifyType(move, pokemon) {
+      const noModifyType = [
+        "judgment",
+        "multiattack",
+        "naturalgift",
+        "revelationdance",
+        "technoblast",
+        "terrainpulse",
+        "weatherball"
+      ];
+      if (move.type === "Normal" && !noModifyType.includes(move.id) && !(move.isZ && move.category !== "Status") && !(move.name === "Tera Blast" && pokemon.terastallized)) {
+        move.type = "Water";
+        move.typeChangerBoosted = this.effect;
+      }
+    },
+    onBasePowerPriority: 23,
+    onBasePower(basePower, pokemon, target, move) {
+      if (move.typeChangerBoosted === this.effect)
+        return this.chainModify([4915, 4096]);
+    },
+    onEnd(pokemon) {
+      pokemon.setType(pokemon.getTypes(true).map((type) => type === "Water" ? "???" : type));
+      this.add("-end", pokemon, "typeadd", pokemon.getTypes().join("/"), "[from] move: Soggy");
+      this.add('-end', pokemon, "soggy");
+    },
+    name: "Soggy",
+    num: -1011,
+    },
 };
