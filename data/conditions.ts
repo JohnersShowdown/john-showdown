@@ -1073,14 +1073,14 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
     onModifyMove(move, source,) {
       if (source.species.name === 'Dragonoid-Sphere' && move.id === 'flamethrower') {
         this.add('-message', `That's enough Dragonoid!`);
-
+        const incinerate = this.dex.moves.get('uturn');
         const uturn = this.dex.moves.get('uturn');
         // Replace ALL relevant properties
         move.id === 'uturn';
         move.name === 'U-turn';
-        move.basePower = uturn.basePower;
-        move.type = uturn.type;
-        move.category = uturn.category;
+        move.basePower = incinerate.basePower;
+        move.type = incinerate.type;
+        move.category = incinerate.category;
         move.flags = {...uturn.flags};
         move.selfSwitch = uturn.selfSwitch;
         move.secondary = uturn.secondary;
