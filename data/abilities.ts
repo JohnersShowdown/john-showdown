@@ -6229,11 +6229,15 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 				pokemon.baseSpecies.baseSpecies !== 'Dragonoid-Sphere' || pokemon.level < 20 ||
 				pokemon.transformed || !pokemon.hp
 			) return;
-			if (pokemon.hp < pokemon.maxhp / 3) {
+			if (pokemon.hp > pokemon.maxhp / 3) {
 				if (pokemon.species.id === 'dragonoidbrawl') {
-					pokemon.formeChange('Dragonoid=Sphere');
+					this.heal(pokemon.baseMaxhp / 16);
 				}
-			} 
+			} else {
+				if (pokemon.species.id === 'dragonoidbrawl') {
+					pokemon.formeChange('Dragonoid-Sphere');
+				}
+			}
 		},
 		flags: { failroleplay: 1, noreceiver: 1, noentrain: 1, notrace: 1, failskillswap: 1, cantsuppress: 1 },
 		name: "Brawl",
