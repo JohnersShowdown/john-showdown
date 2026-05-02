@@ -1068,11 +1068,11 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
     name: "Burning",
     num: -1012,
     }, 
-	ultima: {
-	name: "Ultima",	
+	lasthope: {
+	name: "Last Hope",	
     onModifyMove(move, source,) {
       if (source.species.name === 'Dragonoid-Sphere' && move.id === 'flamethrower') {
-        this.add('-message', `${source.name}'s Flamethrower became U-turn!`);
+        this.add('-message', `That's enough Dragonoid!`);
 
         const uturn = this.dex.moves.get('uturn');
         // Replace ALL relevant properties
