@@ -6301,5 +6301,29 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 	golisopedemega: {
 		tier: "OU",
 		natDexTier: "OU",
+		tauros: {
+		tier: "ZU",
+		doublesTier: "(DUU)",
+		natDexTier: "RU",
+	},
+	yakoyzatiger: {
+		tier: "OU",
+		doublesTier: "(DUU)",
+		natDexTier: "RU",
+	},		
+	yakoyzaink: {
+		tier: "OU",
+		doublesTier: "(DUU)",
+		natDexTier: "RU",
+	},
+	yakoyzaryujin: {
+		tier: "OU",
+		doublesTier: "(DUU)",
+		natDexTier: "RU",
+	},
+	yakoyzaoni: {
+		tier: "OU",
+		doublesTier: "(DUU)",
+		natDexTier: "RU",
 	},			
 };
