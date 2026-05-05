@@ -6301,11 +6301,15 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 	golisopedemega: {
 		tier: "OU",
 		natDexTier: "OU",
-		tauros: {
-		tier: "ZU",
-		doublesTier: "(DUU)",
-		natDexTier: "RU",
 	},
+	possolo: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	oposse: {
+		tier: "OU",
+		natDexTier: "OU",
+	},		
 	yakoyzatiger: {
 		tier: "OU",
 		doublesTier: "(DUU)",
