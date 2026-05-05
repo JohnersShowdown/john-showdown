@@ -6309,7 +6309,47 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 	oposse: {
 		tier: "OU",
 		natDexTier: "OU",
-	},		
+	},
+	tirakitsu: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	asterbat: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	wittern: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	aerin: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	zephyrin: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	decaffin: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	espressurge: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	grubblo: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	tentrilo: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	rocadocio: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
 	yakoyzatiger: {
 		tier: "OU",
 		doublesTier: "(DUU)",
@@ -6329,5 +6369,328 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		tier: "OU",
 		doublesTier: "(DUU)",
 		natDexTier: "RU",
-	},			
+		tirakitsu: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	nokoi: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	ribbeat: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	ventribbit: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	mochu: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	snochu: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	murkitty: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	tammalkin: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	velyger: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	lileef: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	citradily: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	krabuto: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	krabutops: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	filch: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	dodon: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	dodonodon: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	tuatot: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	tuatargon: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	balite: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	baleet: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	balaast: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	dodonodon: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	cryocone: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	cryoconda: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	cobblin: {
+		tier: "OU",
+		natDexTier: "OU",	
+	},
+	grumblock: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	ragnarock: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	battrey: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	vladibolt: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	phalankton: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	shardling: {
+		tier: "OU",
+		natDexTier: "OU",	
+	},
+	crucigem: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	scrithymn: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	blazephemy: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	ceraphinx: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	roignon: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	scallahad: {
+		tier: "OU",
+		natDexTier: "OU",	
+	},
+	moosenge: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	bitbyte: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	cathogen: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	ramnant: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	logomorph: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	ornidrone: {
+		tier: "OU",
+		natDexTier: "OU",	
+	},
+	velostrike: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	gunraptor: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	jellien: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	encephid: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	monolithid: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	marazcal: {
+		tier: "OU",
+		natDexTier: "OU",	
+	},
+	iguavadon: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	tortarmasolar: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	tortarmapolar: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	tortality: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	kheprini: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	servankh: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	pharomancy: {
+		tier: "OU",
+		natDexTier: "OU",	
+	},
+	furnawurm: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	selky: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	lumajesty: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	shuckler: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	smeltmor: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	pyrant: {
+		tier: "OU",
+		natDexTier: "OU",		
+	},
+	patopod: {
+		tier: "OU",
+		natDexTier: "OU",	
+	},
+	nymphlora: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	idagon: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	libradon: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	suprion: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	larvos: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	syrinsect: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	stratoclysm: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	paracabra: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	saskrypt: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	devile: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	azamoth: {
+		tier: "OU",
+		natDexTier: "OU",	
+	},
+	albythos: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	xerasige: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	jeneosis: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	xophis: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	ravenger: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	sacrabell: {
+		tier: "OU",
+		natDexTier: "OU",		
+	},
+	sacrabelldirge: {
+		tier: "Illegal",
+		natDexTier: "Illegal",		
+	},					
 };
