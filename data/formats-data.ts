@@ -6687,4 +6687,8 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		tier: "Illegal",
 		natDexTier: "Illegal",
 	},
+	tortamasolar: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
 };
