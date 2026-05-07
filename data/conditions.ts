@@ -1071,9 +1071,9 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 	lasthope: {
 	name: "Last Hope",	
     onModifyMove(move, source,) {
-      if (source.species.name === 'Dragonoid-Sphere' && move.id === 'flamethrower') {
+      if (source.species.name === 'Dragonoid-Sphere' && move.type === 'Fire') {
         this.add('-message', `That's enough Dragonoid!`);
-        const incinerate = this.dex.moves.get('uturn');
+        const incinerate = this.dex.moves.get('incinerate');
         const uturn = this.dex.moves.get('uturn');
         // Replace ALL relevant properties
         move.id === 'uturn';
@@ -1087,5 +1087,25 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
         move.secondaries = uturn.secondaries;
 			}
 		},
-	},	   
+	},
+	lasthope2: {
+	name: "Last Hope 2",	
+    onModifyMove(move, source,) {
+      if (source.species.name === 'Dragonoid-Sphere' && move.type === 'Dragon') {
+        this.add('-message', `That's enough Dragonoid!`);
+        const incinerate = this.dex.moves.get('dragonbreath');
+        const uturn = this.dex.moves.get('uturn');
+        // Replace ALL relevant properties
+        move.id === 'uturn';
+        move.name === 'U-turn';
+        move.basePower = incinerate.basePower;
+        move.type = incinerate.type;
+        move.category = incinerate.category;
+        move.flags = {...uturn.flags};
+        move.selfSwitch = uturn.selfSwitch;
+        move.secondary = uturn.secondary;
+        move.secondaries = uturn.secondaries;
+			}
+		},
+	},	   		   
 };

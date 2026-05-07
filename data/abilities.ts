@@ -6213,6 +6213,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		onSwitchInPriority: -1,
 		onStart(pokemon) {
 			pokemon.addVolatile('lasthope');
+			pokemon.addVolatile('lasthope2');
 			if (pokemon.baseSpecies.baseSpecies !== 'Dragonoid-Sphere' || pokemon.level < 20 || pokemon.transformed) return;
 			if (pokemon.hp > pokemon.maxhp / 3) {
 				if (pokemon.species.id === 'dragonoidsphere') {
