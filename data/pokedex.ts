@@ -22051,7 +22051,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 	},
 	iguavadon: {
 		num: 2071,
-		name: "Iguavudon",
+		name: "Iguavadon",
 		types: ["Grass", "Fire"],
 		baseStats: { hp: 66, atk: 57, def: 49, spa: 116, spd: 99, spe: 106 },
 		abilities: { 0: "Quick Feet", 1: "Solar Power", H: "Leaf Guard" },
