@@ -100484,6 +100484,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 			fireblast: ["9M"],
 			uturn: ["9M", "9L24"],
 			worryseed: ["9L29"],
+			lacadia:["9M"],					
 		},
 	},	
 	snapbun: {
@@ -100557,6 +100558,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 			fireblast: ["9M"],
 			uturn: ["9M", "9L24"],
 			worryseed: ["9L29"],
+			lacadia:["9M"],					
 		},
 	},
 	faestalk: {
@@ -100631,6 +100633,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 			fireblast: ["9M"],
 			uturn: ["9M", "9L24"],
 			worryseed: ["9L29"],
+			lacadia:["9M"],					
 		},
 	},
 	basilly: {
@@ -100659,6 +100662,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
             rest:["9M"],
             sleeptalk:["9M"],
             solarbeam:["9M"],
+			lacadia:["9M"],					
 		},
 	},
 	knaviper: {
@@ -100704,6 +100708,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 		    thief:["9M"],
 		    uturn:["9M"],
 		    willowisp:["9M"],
+			lacadia:["9M"],					
 		},
 	},
 	verkillion: {
@@ -100758,6 +100763,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 		    uturn:["9M"],
 		    dragondance:["9M"],
 		    willowisp:["9M"],
+			lacadia:["9M"],					
 		},
 	},
 	purluxe: {
@@ -100802,6 +100808,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 		    weatherball:["9M"],
 		    whirlpool:["9M"],
 			toxic:["9M"],
+			lacadia:["9M"],					
 		},
 	},
 	lyonite: {
@@ -100857,6 +100864,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 		    weatherball:["9M"],
 		    whirlpool:["9M"],
 		    toxic:["9M"],
+			lacadia:["9M"],					
 		},
 	},
 	enkidros: {
@@ -100918,6 +100926,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 		    weatherball:["9M"],
 	    	whirlpool:["9M"],
 		    toxic:["9M"],
+			lacadia:["9M"],					
 		},
 	}, 
     possolo: {
@@ -100960,6 +100969,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 	    	torment:["9M"],
 	    	trick:["9M"],
 			toxic:["9M"],
+			lacadia:["9M"],					
 		},
 	},
     oposse: {
@@ -101015,6 +101025,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 	    	trick:["9M"],
 	    	rapidspin:["9M"],			
 	    	willowisp:["9M"],
+			lacadia:["9M"],					
 		},
 	},
     wittern: {
@@ -101069,6 +101080,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
             mist:["9M"],
             mistyterrain:["9M"],
             dualwingbeat:["9M"],
+			lacadia:["9M"],					
 		},
 	},
     aerin: {
@@ -101123,6 +101135,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
             mist:["9M"],
             mistyterrain:["9M"],
             dualwingbeat:["9M"],
+			lacadia:["9M"],					
 		},
 	},
     zephyrin: {
@@ -101182,7 +101195,8 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
             dualwingbeat:["9M"],
             flipturn:["9M"],
             phantomforce:["9M"],
-            toxic:["9M"],			
+            toxic:["9M"],	
+			lacadia:["9M"],							
 		},
 	},
     decaffin: {
@@ -101230,7 +101244,8 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 			gigadrain:["9M"], 
 			leechseed:["9M"],	
 			leafstorm:["9M"],						
-            toxic:["9M"],			
+            toxic:["9M"],
+			lacadia:["9M"],								
 		},
 	},
     espressurge: {
@@ -101292,7 +101307,8 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 			risingvoltage:["9M"], 
 			storedpower:["9M"], 
 			voltswitch:["9M"],		
-            toxic:["9M"],			
+            toxic:["9M"],
+			lacadia:["9M"],								
 		},
 	},
     grubblo: {
@@ -101361,6 +101377,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 			partingshot:["9M"],
 			reflect:["9M"], 
 			toxic:["9M"],
+			lacadia:["9M"],					
 		},
 	},
     tentrilo: {
@@ -101429,6 +101446,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 			partingshot:["9M"],
 			reflect:["9M"], 
 			toxic:["9M"],
+			lacadia:["9M"],					
 		},
 	},
     rocadocio: {
@@ -101497,6 +101515,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 			partingshot:["9M"],
 			reflect:["9M"], 
 			toxic:["9M"],
+			lacadia:["9M"],					
 		},
 	},	
 	ribbeat: {
@@ -101560,6 +101579,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 			aquajet:["9M"], 
 			bounce:["9M"], 
 			waterpulse:["9M"],
+			lacadia:["9M"],					
 		},			
     },
 	ventribbit: {
@@ -101623,7 +101643,8 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 			aquajet:["9M"], 
 			bounce:["9M"], 
 			waterpulse:["9M"],
-			toxic:["9M"],			
+			toxic:["9M"],
+			lacadia:["9M"],								
 		},			
     },
 	mochu: {
@@ -101683,6 +101704,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 			surf:["9M"], 
 			weatherball:["9M"],
 			toxic:["9M"],
+			lacadia:["9M"],					
 		},			
     },
 	snochu: {
@@ -101742,6 +101764,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 			surf:["9M"], 
 			weatherball:["9M"],
 			toxic:["9M"],
+			lacadia:["9M"],					
 		},			
     },
 	murkitty: {
@@ -101819,6 +101842,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 			honeclaws:["9M"], 
 			poisonfang:["9M"],
 			toxic:["9M"],
+			lacadia:["9M"],					
 		},			
     },
 	tammalkin: {
@@ -101896,6 +101920,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 			honeclaws:["9M"], 
 			poisonfang:["9M"],
 			toxic:["9M"],
+			lacadia:["9M"],					
 		},			
     },
 	velyger: {
@@ -101973,6 +101998,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 			honeclaws:["9M"], 
 			poisonfang:["9M"],
 			toxic:["9M"],
+			lacadia:["9M"],					
 		},			
     },
 	nokoi: {
@@ -102028,6 +102054,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 			knockoff:["9M"], 
 			ragingfury:["9M"], 
 			flamethrower:["9M"],
+			lacadia:["9M"],					
 		},			
     },
 	yakoyzatiger: {
@@ -102083,6 +102110,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 			knockoff:["9M"], 
 			ragingfury:["9M"], 
 			flamethrower:["9M"],
+			lacadia:["9M"],			
 		},			
     },																																							  	
 	dragonoidsphere: {
