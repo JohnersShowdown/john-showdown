@@ -104447,6 +104447,8 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
             stoneedge: ["9M", "8M", "7M", "6M", "5M"],
             taunt: ["9M", "8M", "7M", "6M", "5M"],
             uproar: ["8M", "7T", "7E", "6T", "6E", "5T", "5E"],
+            lacadia: ["9M"],	
+            rapidspin: ["9M"],							
         },
     },
     censerpent: {
@@ -104537,6 +104539,10 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
             trailblaze: ["9M"],
             venomdrench: ["8M", "8L48", "7L37"],
             venoshock: ["9M", "9L21", "8M", "8L21", "7M", "6M", "5M"],
+            lacadia: ["9M"],	
+            moonlight: ["9M"],
+            nightdaze: ["9M"],	
+            mortalspin: ["9M"],														
         },
     },
     roignon: {
@@ -104632,6 +104638,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
             stunspore: ["9L1", "8L1"],
             swift: ["9M", "8M"],
             uturn: ["9M", "8M", "7M", "6M", "5M"],
+            lacadia: ["9M"],				
         },
     },
     scallahad: {
@@ -104734,6 +104741,8 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
             swift: ["9M", "8M"],
             uturn: ["9M", "8M", "7M", "6M", "5M"],
             cryingedge: ["9M"],
+            lacadia: ["9M"],
+            defog: ["9M"],							
         },
     },
     moosenge: {
@@ -104769,6 +104778,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
             protect: ["9M", "8M"],
             psychup: ["9M"],
             rest: ["9M", "8M"],
+            rapidspin: ["9M", "8M"],			
             rockblast: ["9M", "8M"],
             rockpolish: ["9L6", "8L6"],
             rockslide: ["9M", "9L36", "8M", "8L36"],
@@ -104793,6 +104803,8 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
             terablast: ["9M"],
             wideguard: ["9L48", "8L48"],
             wonderroom: ["8M"],
+            lacadia: ["9M"],
+            toxic: ["9M"],									
         },
     },
     bitbyte: {
