@@ -21421,9 +21421,9 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		eggGroups: ["Field"],
 		tags: ["Fakemon"],
 	},
-	merkitty: {
+	murkitty: {
 		num: 2027,
-		name: "Merkitty",
+		name: "Murkitty",
 		types: ["Dark"],
 		genderRatio: { M: 0.875, F: 0.125 },
 		baseStats: { hp: 69, atk: 77, def: 36, spa: 20, spd: 36, spe: 62 },
@@ -21445,7 +21445,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		heightm: 1.1,
 		weightkg: 50,
 		color: "Black",
-		prevo: "Grubblo",
+		prevo: "Murkitty",
 		evoLevel: 20,
 		evos: ["Velyger"],
 		eggGroups: ["Monster"],
@@ -22134,9 +22134,9 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		eggGroups: ["Amorphous"],
 		tags: ["Fakemon"],
 	},
-	pheromancy: {
+	pharomancy: {
 		num: 2076,
-		name: "Pheromancy",
+		name: "Pharomancy",
 		types: ["Ground", "Dark"],
 		baseStats: { hp: 65, atk: 65, def: 115, spa: 134, spd: 80, spe: 40 },
 		abilities: { 0: "Sheer Force", 1: "Trace", H: "Queenly Majesty" },
