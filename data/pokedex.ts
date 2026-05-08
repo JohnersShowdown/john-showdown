@@ -2080,6 +2080,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		color: "White",
 		prevo: "Seel",
 		evoLevel: 34,
+		evos: ["Selky"],		
 		eggGroups: ["Water 1", "Field"],
 	},
 	grimer: {
@@ -22163,12 +22164,14 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 	selky: {
 		num: 2078,
 		name: "Selky",
-		types: ["Ice"],
+		types: ["Water", "Ice"],
 		baseStats: { hp: 101, atk: 65, def: 75, spa: 103, spd: 128, spe: 68 },
 		abilities: { 0: "Thick Fat", 1: "Hydration", H: "Life Aurora" },
 		heightm: 1.8,
 		weightkg: 150.0,
 		color: "Black",
+		prevo: "Dewgong",
+		evoLevel: 35,		
 		eggGroups: ["Water 1", "Field"],
 		tags: ["Fakemon"],
 	},

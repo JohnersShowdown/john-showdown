@@ -6503,6 +6503,10 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		tier: "OU",
 		natDexTier: "OU",
 	},
+	censerpent: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
 	roignon: {
 		tier: "OU",
 		natDexTier: "OU",
