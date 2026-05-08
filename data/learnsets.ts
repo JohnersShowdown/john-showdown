@@ -104852,6 +104852,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
             heavyslam: ["9M"],
             ironhead: ["9M"],
             flashcannon: ["9M"],
+            lacadia: ["9M"],					
         },
     },
     cathogen: {
@@ -104924,6 +104925,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
             ironhead: ["9M"],
             flashcannon: ["9M"],
             gigadrain: ["9M"],
+            lacadia: ["9M"],								
         },
     },
     ramnant: {
@@ -104999,6 +105001,8 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
             ironhead: ["9M"],
             flashcannon: ["9M"],
             gigadrain: ["9M"],
+            lacadia: ["9M"],
+            icywind: ["9M"],										
         },
     },
     logomorph: {
@@ -105082,6 +105086,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
             wonderroom: ["8M", "7T", "5T"],
             zapcannon: ["9L60", "8L60", "7L1", "6L1", "5L62", "4L62"],
             zenheadbutt: ["9M", "8M", "7T", "6T", "5T", "4T"],
+            lacadia: ["9M"],					
         },
     },
     ornidrone: {
@@ -105177,7 +105182,8 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
             drillpeck: ["9M"],
             airslash: ["9M"],
             aircutter: ["9M"],
-            aerialace: ["9M"]
+            aerialace: ["9M"],
+            lacadia: ["9M"],					
         },
     },
     velostrike: {
@@ -105273,7 +105279,8 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
             drillpeck: ["9M"],
             airslash: ["9M"],
             aircutter: ["9M"],
-            aerialace: ["9M"]
+            aerialace: ["9M"],
+            lacadia: ["9M"],					
         },
     },
     gunraptor: {
@@ -105369,7 +105376,8 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
             drillpeck: ["9M"],
             airslash: ["9M"],
             aircutter: ["9M"],
-            aerialace: ["9M"]
+            aerialace: ["9M"],
+            lacadia: ["9M"],					
         },
     },
     jellien: {
@@ -105468,6 +105476,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
             whirlpool: ["8M", "7V", "4M"],
             wonderroom: ["8M", "7T", "6T", "5T"],
             zapcannon: ["7V"],
+            lacadia: ["9M"],					
         },
     },
     encephid: {
