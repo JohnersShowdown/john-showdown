@@ -22403,9 +22403,9 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		eggGroups: ["Undiscovered"],
 		tags: ["Fakemon"],
 	},
-	jenosis: {
+	jeneosis: {
 		num: 2097,
-		name: "Jenosis",
+		name: "Jeneosis",
 		types: ["Fairy", "Ghost"],
 		baseStats: { hp: 70, atk: 150, def: 90, spa: 150, spd: 90, spe: 130 },
 		abilities: { 0: "Dominion" },
