@@ -109194,6 +109194,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
             thunderpunch:["9M"],		
             waterpulse:["9M"],		
             weatherball:["9M"],		
+			lasercobblemon:["9M"],			
 		},
 	},
 	hattertainer: {
@@ -109268,7 +109269,8 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
             thunderwave:["9M"],		
             trickroom:["9M"],		
             tripleaxel:["9M"],		
-            wonderroom:["9M"],		
+            wonderroom:["9M"],
+			lasercobblemon:["9M"],					
 		},
 	},																																																	
 };
