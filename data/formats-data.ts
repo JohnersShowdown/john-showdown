@@ -6667,7 +6667,7 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		tier: "OU",
 		natDexTier: "OU",
 	},
-	jenosis: {
+	jeneosis: {
 		tier: "OU",
 		natDexTier: "OU",
 	},
