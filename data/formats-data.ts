@@ -6695,4 +6695,28 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		tier: "OU",
 		natDexTier: "OU",
 	},
+	wizledger: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	midnightlucario: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	midnightgallade: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	midnightgardevoir: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	sopranomeloetta: {
+		tier: "Illegal",
+		natDexTier: "Illegal",
+	},
+	sandjourner: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
 };
