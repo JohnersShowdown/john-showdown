@@ -21935,23 +21935,59 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 	foretellcalamity: {
 		num: 2022,
 		accuracy: 100,
-		basePower: 90,
-		category: "Status",
+		basePower: 1,
+		category: "Special",
 		name: "Foretell Calamity",
 		target: "normal",
 		type: "Ghost",
 		contestType: "Clever",
-		selfSwitch: true,
 		shortDesc: "Hits two turns after being used, switches out user on turn used.",
 		pp: 5,
 		priority: 0,
-		flags: {allyanim: 1, metronome: 1, futuremove: 1},
+	    flags: {contact: 1, protect: 1, mirror: 1},
+	    selfSwitch: true,
+	    secondary: {
+		chance: 100,
+    	onHit(target, source) {
+		if (source.side.sideConditions['futuremove']) return;
+		source.side.addSideCondition('futuremove', source);
+		this.add('-message', `${source.name} foresaw an attack!`);
+	  },
+    },
+    condition: {
+	duration: 3,
+	onStart(side, source) {
+		this.effectState.source = source;
+		this.add('-start', side, 'move: Future Sight');
+	},
+	onResidualOrder: 3,
+
+	onEnd(side) {
+		const source = this.effectState.source;
+
+		if (!source || source.fainted) return;
+
+		this.add('-end', 'Future Sight');
+
+		source.useMove('Future Sight');
+	  },
+   },
+},
+	foretellcalamity2: {
+		num: 2024,
+		accuracy: 100,
+		basePower: 120,
+		category: "Special",
+		name: "Future Sight",
+		pp: 10,
+		priority: 0,
+		flags: { allyanim: 1, metronome: 1, futuremove: 1 },
 		ignoreImmunity: true,
 		onTry(source, target) {
-			if (!target.side.addSlotCondition(target, 'futuremove')) return false;
+			if (!target.side.addSlotCondition(target, 'foretellcalamity')) return false;
 			Object.assign(target.side.slotConditions[target.position]['futuremove'], {
-				move: 'foretellcalamity',
-				source: source,
+				move: 'futuresight',
+				source,
 				moveData: {
 					id: 'foretellcalamity',
 					name: "Foretell Calamity",
@@ -21959,7 +21995,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 					basePower: 90,
 					category: "Special",
 					priority: 0,
-					flags: {allyanim: 1, metronome: 1, futuremove: 1},
+					flags: { allyanim: 1, metronome: 1, futuremove: 1 },
 					ignoreImmunity: false,
 					effectType: 'Move',
 					type: 'Ghost',
@@ -21968,7 +22004,10 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			this.add('-start', source, 'move: Foretell Calamity');
 			return this.NOT_FAIL;
 		},
-	},	
+		target: "normal",
+		type: "Ghost",
+		contestType: "Clever",
+	},		
 	lacadia: {
 		num: 2300,
 		accuracy: 100,
