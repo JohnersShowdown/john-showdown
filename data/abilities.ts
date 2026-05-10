@@ -6209,6 +6209,40 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     rating: 4,
     num: -3230
     },	
+	intellectual: {
+    onModifyAtkPriority: 5,
+    onModifyAtk(atk, attacker, defender, move) {
+      if (move.type === "Psychic") {
+        this.debug("Intellectual boost");
+        return this.chainModify(1.5);
+      }
+    },
+    onModifySpAPriority: 5,
+    onModifySpA(atk, attacker, defender, move) {
+      if (move.type === "Psychic") {
+        this.debug("Intellectual boost");
+        return this.chainModify(1.5);
+      }
+    },
+    onSourceModifyAtkPriority: 6,
+    onSourceModifyAtk(atk, attacker, defender, move) {
+      if (move.type === "Psychic") {
+        this.debug("Intellectual weaken");
+        return this.chainModify(0.5);
+      }
+    },
+    onSourceModifySpAPriority: 5,
+    onSourceModifySpA(atk, attacker, defender, move) {
+      if (move.type === "Psychic") {
+        this.debug("Intellectual weaken");
+        return this.chainModify(0.5);
+      }
+    },
+    flags: { breakable: 1 },
+    name: "Intellectual",
+    rating: 3.5,
+    num: -3228
+	},		
 	brawl: {
 		onSwitchInPriority: -1,
 		onStart(pokemon) {
@@ -6246,5 +6280,67 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		name: "Brawl",
 		rating: 3,
 		num: 2010,
-	},																																		
+	},
+	darkmastery: {
+    onModifyMovePriority: -5,
+    onModifyMove(move) {
+      if (!move.ignoreImmunity)
+        move.ignoreImmunity = {};
+      if (move.ignoreImmunity !== true) {
+        move.ignoreImmunity["Dark"] = true;
+        move.ignoreAbility = true;
+      }
+    },
+    onTryHitPriority: 1,
+    onTryHit(target, source, move) {
+      if (target !== source && move.type === "Dark") {
+        if (!this.boost({ atk: 1 })) {
+          this.add("-immune", target, "[from] ability: Dark Mastery");
+        }
+        return null;
+      }
+    },
+    onAllyTryHitSide(target, source, move) {
+      if (source === this.effectState.target || !target.isAlly(source))
+        return;
+      if (move.type === "Dark") {
+        this.boost({ atk: 1 }, this.effectState.target);
+      }
+    },
+    flags: { breakable: 1 },
+    name: "Dark Mastery",
+    rating: 3.5,
+    num: -3202
+	},	
+	psychicmastery: {
+    onModifyMovePriority: -5,
+    onModifyMove(move) {
+      if (!move.ignoreImmunity)
+        move.ignoreImmunity = {};
+      if (move.ignoreImmunity !== true) {
+        move.ignoreImmunity["Psychic"] = true;
+        move.ignoreAbility = true;
+      }
+    },
+    onTryHitPriority: 1,
+    onTryHit(target, source, move) {
+      if (target !== source && move.type === "Psychic") {
+        if (!this.boost({ spa: 1 })) {
+          this.add("-immune", target, "[from] ability: Psychic Mastery");
+        }
+        return null;
+      }
+    },
+    onAllyTryHitSide(target, source, move) {
+      if (source === this.effectState.target || !target.isAlly(source))
+        return;
+      if (move.type === "Psychic") {
+        this.boost({ spa: 1 }, this.effectState.target);
+      }
+    },
+    flags: { breakable: 1 },
+    name: "Psychic Mastery",
+    rating: 3.5,
+    num: -3218
+	},																																					
 };
