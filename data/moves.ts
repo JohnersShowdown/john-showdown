@@ -21308,6 +21308,672 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		type: "Fire",
 		contestType: "Beautiful",
 	},
+	beanbarrage: {
+		num: 2000,
+		accuracy: 100,
+		basePower: 70,
+		category: "Special",
+		name: "Bean Barrage",
+		shortDesc: "Attacks and sets leech seed",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1},
+		onHit(target, source) {
+			if (target.hasType('Grass')) return null;
+			target.addVolatile('leechseed', source);
+		},
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Seed Bomb", target);
+		},
+		target: "normal",
+		type: "Grass",
+		contestType: "Clever",
+	},
+	crushingcleave: {
+		num: 2001,
+		accuracy: 100,
+		basePower: 40,
+		category: "Physical",
+		name: "Crushing Cleave",
+		shortDesc: "Hits twice, first hit lowers defense and second hit lowers special defense",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, metronome: 1, slicing: 1},
+		multihit: 2,
+		secondaries: [
+			{
+				chance: 100,
+				boosts: {
+					def: -1,
+				},
+			},
+		],
+		basePowerCallback(pokemon, target, move) {
+			if (move.hit == 1) {
+				move.secondaries = [];
+				move.secondaries.push({
+					chance: 100,
+					boosts: {
+						def: -1,
+					}
+				})
+			}
+			else if (move.hit == 2) {
+				move.secondaries = [];
+				move.secondaries.push({
+					chance: 100,
+					boosts: {
+						spd: -1,
+					}
+				})
+			}
+			return 40;
+		},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Stone Axe", target);
+		},
+		// onSourceModifySecondaries(secondaries, target, source, move) {
+		// 	if (move.hit < 2) {
+		// 		return secondaries.filter(effect =>  === 'flinch');
+		// 	}
+		// },
+		target: "normal",
+		type: "Ground",
+		contestType: "Clever",
+	},
+	venomspear: {
+		num: 2002,
+		accuracy: 100,
+		basePower: 60,
+		category: "Physical",
+		name: "Venom Spear",
+		shortDesc: "Applies Toxic effect to Opponent",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1},
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Poison Tail", target);
+		},
+		secondary: {
+			chance: 100,
+			status: 'tox',
+		},
+		target: "normal",
+		type: "Poison",
+		contestType: "Clever",
+	},
+	egocrush: {
+		num: 2003,
+		accuracy: 100,
+		basePower: 80,
+		category: "Special",
+		name: "Ego Crush",
+		shortDesc: "Super effective against Psychic Types",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, metronome: 1},
+		onEffectiveness(typeMod, target, type) {
+			if (type === 'Psychic') return 1;
+		},
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Shattered Psyche", target);
+		},
+		target: "normal",
+		type: "Psychic",
+		contestType: "Beautiful",
+	},
+	tundratango: {
+		num: 2004,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Tundra Tango",
+		shortDesc: "Increases Sp. Atk and Speed by 1 stage. Next move is guaranteed to hit.",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1, dance: 1, metronome: 1},
+		self: {
+			boosts: {
+				spa: 1,
+				spe: 1,
+			},
+		},
+		onHit(target, source) {
+			source.addVolatile('lockon', target);
+			this.add('-activate', source, 'move: Lock-On', '[of] ' + target);
+		},
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Dragon Dance", target);
+		},
+		target: "normal",
+		type: "Ice",
+		zMove: {effect: 'clearnegativeboost'},
+		contestType: "Cool",
+	},
+	icyharpoon: {
+		num: 2005,
+		accuracy: 100,
+		basePower: 90,
+		category: "Physical",
+		name: "Icy Harpoon",
+		shortDesc: "Has a 30% chance of badly poisoning the target",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1},
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Glacial Lance", target);
+		},
+		secondary: {
+			chance: 30,
+			status: 'tox',
+		},
+		target: "normal",
+		type: "Ice",
+		contestType: "Clever",
+	},
+	agaveshot: {
+		num: 2006,
+		accuracy: 100,
+		basePower: 75,
+		category: "Special",
+		name: "Agave Shot",
+		shortDesc: "Increases Sp. Atk by 3 Stages but decreases Acc by 1 stage",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1},
+		secondary: {
+			chance: 100,
+			self: {
+				boosts: {
+					spa: 3,
+					accuracy: -1
+				},
+			},
+		},
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Matcha Gotcha", target);
+		},
+		target: "normal",
+		type: "Grass",
+		zMove: {effect: 'clearnegativeboost'},
+		contestType: "Cool",
+	},
+	finalact: {
+		num: 2007,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		name: "Final Act",
+		shortDesc: "Switches the user out, attempts to set Encore",
+		pp: 20,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1, sound: 1, bypasssub: 1, metronome: 1},
+		volatileStatus: 'encore',
+		condition: {
+        duration: 3,
+        noCopy: true, // doesn't get copied by Z-Baton Pass
+        onStart(target) {
+     	const move = target.lastMove;
+    	if (!move) return false;
+    	const moveIndex = target.moves.indexOf(move.id);
+        if (
+		move.isZ ||
+		move.flags['failencore'] ||
+		moveIndex < 0 ||
+		!target.moveSlots[moveIndex] ||
+		target.moveSlots[moveIndex].pp <= 0
+	    ) {
+	      	return false;
+	    }
+
+	        this.effectState.move = move.id;
+	        this.add('-start', target, 'Encore');
+
+        	if (!this.queue.willMove(target)) {
+	    	this.effectState.duration!++;
+    	}
+    },
+			onOverrideAction(pokemon, target, move) {
+				if (move.id !== this.effectState.move) return this.effectState.move;
+			},
+			onResidualOrder: 16,
+			onResidual(target) {
+				if (!target.moves.includes(this.effectState.move) ||
+					target.moveSlots[target.moves.indexOf(this.effectState.move)].pp <= 0) {
+					// early termination if you run out of PP
+					target.removeVolatile('encore');
+				}
+			},
+			onEnd(target) {
+				this.add('-end', target, 'Encore');
+			},
+			onDisableMove(pokemon) {
+				if (!this.effectState.move || !pokemon.hasMove(this.effectState.move)) {
+					return;
+				}
+				for (const moveSlot of pokemon.moveSlots) {
+					if (moveSlot.id !== this.effectState.move) {
+						pokemon.disableMove(moveSlot.id);
+					}
+				}
+			},
+			onPrepareHit(target, source, move) {
+				this.attrLastMove('[still]');
+				this.add('-anim', source, "Encore", target);
+			},
+		},
+		selfSwitch: true,
+		target: "normal",
+		type: "Normal",
+		contestType: "Cool",
+	},
+	zestspray: {
+		num: 2008,
+		accuracy: 100,
+		basePower: 85,
+		onModifyMove(move, source, pokemon){
+
+			const item = source.getItem();
+			if (item.isBerry) {
+				// move.secondaries = [];
+				// this.hint(`${move.name}'s BP and Sp. Def drop doubled for berry.`)
+				// move.secondaries.push({
+				// 	chance: 100,
+				// 	boosts: {
+				// 		spd: -2,
+				// 	},
+				// });
+				move.basePower = move.basePower * 2;
+				source.eatItem();
+				if (item.onEat) source.ateBerry = true;
+			}
+		},
+		category: "Special",
+		name: "Zest Spray",
+		shortDesc: "If user is holding a berry, berry is consumed and power is doubled.",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1, mirror: 1},
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Spicy Extract", target);
+		},
+		target: "normal",
+		type: "Grass",
+		contestType: "Cool",
+	},
+	bushidoflurry: {
+		num: 2009,
+		accuracy: 100,
+		basePower: 10,
+		multihit: 5,
+		category: "Physical",
+		name: "Bushido Flurry",
+		shortDesc: "Always results in a critical hit. Hits 5 times.",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, punch: 1, slicing: 1},
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Sacred Sword", target);
+		},
+		willCrit: true,
+		target: "normal",
+		type: "Steel",
+	},
+	icesplinters: {
+		num: 2010,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Ice Splinters",
+		shortDesc: "Hurts foe on switch-in. Factors Ice weakness",
+		pp: 20,
+		priority: 0,
+		flags: {reflectable: 1, metronome: 1, mustpressure: 1},
+		sideCondition: 'icesplinters',
+		condition: {
+			onSideStart(side) {
+				this.add('-sidestart', side, 'move: Ice Splinters');
+			},
+			onEntryHazard(pokemon) {
+				if (pokemon.hasItem('heavydutyboots')) return;
+				// Ice Face and Disguise correctly get typed damage from Stealth Rock
+				// because Stealth Rock bypasses Substitute.
+				// They don't get typed damage from Steelsurge because Steelsurge doesn't,
+				// so we're going to test the damage of a Steel-type Stealth Rock instead.
+				const iceHazard = this.dex.getActiveMove('Stealth Rock');
+				iceHazard.type = 'Ice';
+				const typeMod = this.clampIntRange(pokemon.runEffectiveness(iceHazard), -6, 6);
+				this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+			},
+		},
+		target: "foeSide",
+		type: "Ice",
+		contestType: "Cool",
+	},
+	powerscale: {
+		num: 2011,
+		accuracy: 90,
+		basePower: 140,
+		category: "Physical",
+		name: "Power Scale",
+		shortDesc: "User takes 1/2 of damage dealt as recoil. Move is the type of this Pokemon's secondary type.",
+		pp: 5,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, metronome: 1},
+		onModifyType(move, pokemon) {
+			const types = pokemon.getTypes();
+			let type = types[1];
+			if (type === 'Bird') type = '???';
+			if (type === '???' && types[0]) type = types[1];
+			move.type = type;
+		},
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Head Smash", target);
+		},
+		recoil: [1, 2],
+		target: "normal",
+		type: "Water",
+		contestType: "Beautiful",
+	},
+	snackbreak: {
+		num: 2012,
+        accuracy: true,
+        basePower: 0,
+        category: "Status",
+        name: "Snack Break",
+        pp: 15,
+        priority: 0,
+        flags: {},
+        selfSwitch: true,
+        target: "self",
+        type: "Fairy",
+        condition: {
+              duration: 1,
+              onSwitchIn(target) {
+                      const healAmount = Math.floor(target.maxhp / 4);
+
+                      target.heal(healAmount);
+                      this.add('-heal', target, target.getHealth);
+              },
+        },
+        onHit(target, source) {
+              source.side.addSlotCondition(source, 'snackbreak');
+        },
+	},
+	psychofluiddistortion: {
+		num: 2013,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Psycho-Fluid Distortion",
+		shortDesc: "Sets up Trick Room + Rain",
+		pp: 5,
+		priority: -7,
+		flags: {mirror: 1, metronome: 1},
+		weather: 'RainDance',
+		pseudoWeather: 'trickroom',
+		condition: {
+			duration: 5,
+			durationCallback(source, effect) {
+				if (source?.hasAbility('persistent')) {
+					this.add('-activate', source, 'ability: Persistent', '[move] Trick Room');
+					return 7;
+				}
+				return 5;
+			},
+			onFieldStart(target, source) {
+				if (source?.hasAbility('persistent')) {
+					this.add('-fieldstart', 'move: Trick Room', '[of] ' + source, '[persistent]');
+				} else {
+					this.add('-fieldstart', 'move: Trick Room', '[of] ' + source);
+				}
+			},
+			onFieldRestart(target, source) {
+				this.field.removePseudoWeather('trickroom');
+			},
+			// Speed modification is changed in Pokemon.getActionSpeed() in sim/pokemon.js
+			onFieldResidualOrder: 27,
+			onFieldResidualSubOrder: 1,
+			onFieldEnd() {
+				this.add('-fieldend', 'move: Trick Room');
+			},
+		},
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Trick Room", target);
+			this.add('-anim', source, "Rain Dance", target);
+		},
+		target: "all",
+		type: "Psychic",
+		contestType: "Cool",
+	},
+	ionstorm: {
+		num: 2014,
+		accuracy: 100,
+		basePower: 50,
+		category: "Special",
+		name: "Ion Storm",
+		shortDesc: "+1 Priority, changes normal-type moves to electric-type for the rest of the turn",
+		pp: 10,
+		priority: 1,
+		pseudoWeather: 'iondeluge',
+		flags: {protect: 1, reflectable: 1, mirror: 1},
+		onPrepareHit(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Electro Ball", target);
+		},
+		target: "normal",
+		type: "Electric",
+		contestType: "Clever",
+	},
+	divinesmite: {
+		num: 2015,
+		accuracy: 95,
+		basePower: 90,
+		category: "Physical",
+		name: "Divine Smite",
+		shortDesc: "Supereffective against Ghost types",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, metronome: 1},
+		onEffectiveness(typeMod, target, type) {
+			if (type === 'Ghost') return 1;
+		},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Spirit Break", target);
+		},
+		target: "normal",
+		type: "Fairy",
+		contestType: "Beautiful",
+	},
+	cryingedge: {
+		num: 2016,
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		name: "Crying Edge",
+		shortDesc: "High critical hit ratio",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, metronome: 1, slicing: 1},
+		critRatio: 2,
+		target: "normal",
+		type: "Fairy",
+		contestType: "Cool",
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Night Slash", target);
+		},
+	},
+	anathema: {
+		num: 2017,
+		accuracy: 100,
+		basePower: 50,
+		category: "Special",
+		name: "Anathema",
+		shortDesc: "All active pokemon faint after 3 turns unless switched out",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, metronome: 1, sound: 1, distance: 1, bypasssub: 1},
+		critRatio: 2,
+		target: "normal",
+		type: "Fairy",
+		contestType: "Cool",
+		onHitField(target, source, move) {
+			let result = false;
+			let message = false;
+			for (const pokemon of this.getAllActive()) {
+				if (this.runEvent('Invulnerability', pokemon, source, move) === false) {
+					this.add('-miss', source, pokemon);
+					result = true;
+				} else if (this.runEvent('TryHit', pokemon, source, move) === null) {
+					result = true;
+				} else if (!pokemon.volatiles['perishsong']) {
+					pokemon.addVolatile('perishsong');
+					this.add('-start', pokemon, 'perish3', '[silent]');
+					result = true;
+					message = true;
+				}
+			}
+			if (!result) return false;
+			if (message) this.add('-fieldactivate', 'move: Perish Song');
+		},
+		condition: {
+			duration: 4,
+			onEnd(target) {
+				this.add('-start', target, 'perish0');
+				target.faint();
+			},
+			onResidualOrder: 24,
+			onResidual(pokemon) {
+				const duration = pokemon.volatiles['perishsong'].duration;
+				this.add('-start', pokemon, 'perish' + duration);
+			},
+		},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Heal Bell", target);
+		},
+	},
+	devouringjaws: {
+		num: 2019,
+		accuracy: 100,
+		basePower: 90,
+		category: "Physical",
+		name: "Devouring Jaws",
+		shortDesc: "Nulifies the foe's Ability",
+		pp: 10,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, metronome: 1},
+		target: "normal",
+		type: "Dark",
+		contestType: "Cool",
+		onHit(target) {
+			if (target.getAbility().flags['cantsuppress']) return;
+			target.addVolatile('gastroacid');
+		},
+		onAfterSubDamage(damage, target) {
+			if (target.getAbility().flags['cantsuppress']) return;
+			target.addVolatile('gastroacid');
+		},
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Crunch", target);
+		},
+	},
+	supernova: {
+		num: 2020,
+		accuracy: 100,
+		basePower: 250,
+		category: "Special",
+		name: "Supernova",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, metronome: 1, noparentalbond: 1},
+		selfdestruct: "always",
+		target: "allAdjacent",
+		type: "Dragon",
+		contestType: "Beautiful",
+		shortDesc: "Hits adjacent Pokemon. The user faints.",
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Explosion", target);
+		},
+	},
+	galesofdarkness: {
+		num: 2021,
+		accuracy: 100,
+		basePower: 80,
+		category: "Special",
+		name: "Gales of Darkness",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, metronome: 1},
+		secondaries: [
+			{
+				chance: 100,
+				boosts: {
+					def: -1, spd: -1
+				},
+			},
+		],
+		target: "normal",
+		type: "Flying",
+		contestType: "Beautiful",
+		shortDesc: "Lowers target's Defense and Sp. Def by one stage",
+		onPrepareHit: function (target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Hurricane", target);
+		},
+	},
+	foretellcalamity: {
+		num: 2022,
+		accuracy: 100,
+		basePower: 90,
+		category: "Special",
+		name: "Foretell Calamity",
+		pp: 5,
+		priority: 0,
+		flags: {allyanim: 1, metronome: 1, futuremove: 1},
+		ignoreImmunity: true,
+		onTry(source, target) {
+			if (!target.side.addSlotCondition(target, 'futuremove')) return false;
+			Object.assign(target.side.slotConditions[target.position]['futuremove'], {
+				move: 'foretellcalamity',
+				source: source,
+				moveData: {
+					id: 'foretellcalamity',
+					name: "Foretell Calamity",
+					accuracy: 100,
+					basePower: 90,
+					category: "Special",
+					priority: 0,
+					flags: {allyanim: 1, metronome: 1, futuremove: 1},
+					ignoreImmunity: false,
+					effectType: 'Move',
+					type: 'Ghost',
+				},
+			});
+			this.add('-start', source, 'move: Foretell Calamity');
+			return this.NOT_FAIL;
+		},
+		target: "normal",
+		type: "Ghost",
+		contestType: "Clever",
+		selfSwitch: true,
+		shortDesc: "Hits two turns after being used, switches out user on turn used.",
+	},	
 	lacadia: {
 		num: 2300,
 		accuracy: 100,

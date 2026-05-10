@@ -100565,6 +100565,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 	},
 	faestalk: {
 		learnset: {
+			beanbarrage: ["9M"],
 			acrobatics: ["9M"],
 			aerialace: ["9M"],
 			agility: ["9M"],
@@ -100719,6 +100720,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 	},
 	verkillion: {
 		learnset: {
+			venomspear: ["9M"],
 		    acrobatics:["9M"],
 	     	aerialace:["9M"],
 	    	agility:["9M"],
@@ -100877,6 +100879,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 	},
 	enkidros: {
 		learnset: {
+			crushingcleave:["9M"],
 		    amnesia:["9M"],
 	     	bodypress:["9M"],
 		    brickbreak:["9M"],
