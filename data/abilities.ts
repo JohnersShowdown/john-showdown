@@ -6440,42 +6440,45 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		shortDesc: "On switch-in or on enemy switch, reveals the opposing Pokemon's Speed stat",
 		num: 2014,
 	    onStart(pokemon) {
-		for (const target of pokemon.foes()) {
-			if (!target?.isActive) continue;
-			this.add(
-				'-message',
-				`${target.name}'s Speed stat is ${target.storedStats.spe}.`
-			);
-		}
-	},
-	onAnySwitchIn(target) {
-		const user = this.effectState.target;
-		if (!user || user.fainted) return;
+		for (const target of pokemon.side.foe.active) {
+			if (!target || target.fainted) continue;
 
-		// Only trigger on opposing Pokemon
-		if (target.side === user.side) return;
-		if (!target.isActive) return;
+			    const speed = target.getStat('spe', false, false);
 
-		this.add(
+			     this.add(
+				 '-message',
+				 `${target.name}'s Speed stat is ${speed}!`
+			   );
+		    }
+	     },
+	     onAnySwitchIn(pokemon) {
+		 const source = this.effectState.target;
+
+	     	 // Ignore allies and self
+		     if (pokemon.side === source.side) return;
+
+		     const speed = pokemon.getStat('spe', false, false);
+
+		     this.add(
 			'-message',
-			`${target.name}'s Speed stat is ${target.storedStats.spe}.`
-		);
-	},
-	},
-	meltdown: {
-		name: "Meltdown",
+			`${pokemon.name}'s Speed stat is ${speed}!`
+		  );
+	   },
+    },
+	boilingpoint: {
+		name: "Boiling Point",
 		shortDesc: "Getting hit by a Fire-type move allows the user to use Eruption immediately after",
 		num: 2015,
 		onDamagingHit(damage, target, source, move) {
 			if (move.type === 'Fire') {
-				this.add('-activate', target, 'ability: Meltdown');
+				this.add('-activate', target, 'ability: Boiling Point');
 				if (move.id === 'eruption') return;
 				this.actions.useMove('eruption', target);
 			}
 		},
 	},
-	metallicappetite: {
-		name: "Metallic Appetite",
+	metaleater: {
+		name: "Metal Eater",
 		shortDesc: "Boosts damage of moves by 30% when a Steel-type Pokemon is on the field",
 		num: 2016,
 		onBasePower(basePower, attacker, defender, move) {
@@ -6582,20 +6585,22 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			shortDesc: "Heals the user for the same amount of HP that the opponent heals for",
 			num: 2024,
 	        onAnyTryHeal(damage, target, source, effect) {
-		    if (!target || target === source) return;
-		    if (!source || source.fainted) return;
-		    if (source.hasAbility('lifeaurora')) return;
-	      	for (const pokemon of this.getAllActive()) {
-	    	if (
-			pokemon.hasAbility('lifeaurora') &&
-			pokemon !== target &&
-			!pokemon.fainted
-	    	) {
-			pokemon.heal(damage);
-			this.add('-heal', pokemon, pokemon.getHealth, '[from] ability: Life Aurora');
-         		}
-           }
-       },
+		    // Ignore if this Pokémon is the one healing
+		    if (target.side === this.effectState.target.side) return;
+ 
+		    const pokemon = this.effectState.target;
+
+		    // Must be active and able to heal
+		    if (!pokemon.hp || pokemon.fainted) return;
+		    if (pokemon.hp >= pokemon.maxhp) return;
+
+		    this.heal(damage, pokemon);
+
+		    this.add(
+			'-message',
+			`${pokemon.name} restored HP from Life Aurora!`
+		 );
+	   },
 	},
 	inrushcurrent: {
 			name: "Inrush Current",

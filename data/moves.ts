@@ -21637,26 +21637,22 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		shortDesc: "Hurts foe on switch-in. Factors Ice weakness",
 		pp: 20,
 		priority: 0,
-		flags: {reflectable: 1, metronome: 1, mustpressure: 1},
-		sideCondition: 'icesplinters',
+		flags: { reflectable: 1, metronome: 1, mustpressure: 1 },
+		sideCondition: 'Ice Splinters',
 		condition: {
+			// this is a side condition
 			onSideStart(side) {
 				this.add('-sidestart', side, 'move: Ice Splinters');
 			},
-			onEntryHazard(pokemon) {
+			onSwitchIn(pokemon) {
 				if (pokemon.hasItem('heavydutyboots')) return;
-				// Ice Face and Disguise correctly get typed damage from Stealth Rock
-				// because Stealth Rock bypasses Substitute.
-				// They don't get typed damage from Steelsurge because Steelsurge doesn't,
-				// so we're going to test the damage of a Steel-type Stealth Rock instead.
-				const iceHazard = this.dex.getActiveMove('Stealth Rock');
-				iceHazard.type = 'Ice';
-				const typeMod = this.clampIntRange(pokemon.runEffectiveness(iceHazard), -6, 6);
-				this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+				const typeMod = this.clampIntRange(pokemon.runEffectiveness(this.dex.getActiveMove('icesplinters')), -6, 6);
+				this.damage(pokemon.maxhp * (2 ** typeMod) / 8);
 			},
 		},
 		target: "foeSide",
 		type: "Ice",
+		zMove: { boost: { def: 1 } },
 		contestType: "Cool",
 	},
 	powerscale: {
@@ -21940,8 +21936,13 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		num: 2022,
 		accuracy: 100,
 		basePower: 90,
-		category: "Special",
+		category: "Status",
 		name: "Foretell Calamity",
+		target: "normal",
+		type: "Ghost",
+		contestType: "Clever",
+		selfSwitch: true,
+		shortDesc: "Hits two turns after being used, switches out user on turn used.",
 		pp: 5,
 		priority: 0,
 		flags: {allyanim: 1, metronome: 1, futuremove: 1},
@@ -21967,11 +21968,6 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			this.add('-start', source, 'move: Foretell Calamity');
 			return this.NOT_FAIL;
 		},
-		target: "normal",
-		type: "Ghost",
-		contestType: "Clever",
-		selfSwitch: true,
-		shortDesc: "Hits two turns after being used, switches out user on turn used.",
 	},	
 	lacadia: {
 		num: 2300,
