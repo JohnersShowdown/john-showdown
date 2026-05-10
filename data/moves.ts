@@ -21701,7 +21701,6 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
               duration: 1,
               onSwitchIn(target) {
                       const healAmount = Math.floor(target.maxhp / 4);
-
                       target.heal(healAmount);
                       this.add('-heal', target, target.getHealth);
               },
