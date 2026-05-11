@@ -6439,32 +6439,38 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		name: "Surveillance",
 		shortDesc: "On switch-in or on enemy switch, reveals the opposing Pokemon's Speed stat",
 		num: 2014,
-	    onStart(pokemon) {
-		for (const target of pokemon.side.foe.active) {
-			if (!target || target.fainted) continue;
+        onStart(pokemon) {
+               for (const target of pokemon.side.foe.active) {
+                     if (!target || target.fainted) continue;
 
-			    const speed = target.getStat('spe', false, false);
+                     const speed = target.getStat('spe', false, false);
 
-			     this.add(
-				 '-message',
-				 `${target.name}'s Speed stat is ${speed}!`
-			   );
-		    }
-	     },
-	     onAnySwitchIn(pokemon) {
-		 const source = this.effectState.target;
+                     this.add(
+                          '-hint',
+                          `${target.name}'s Speed stat is ${speed}!`
+                     );
+               }
+        },
+        onAnySwitchIn(pokemon) {
+               // Find all active Pokémon with Surveillance
+               for (const side of this.sides) {
+                     for (const active of side.active) {
+                          if (!active?.ability || active.fainted) continue;
+                          if (active.getAbility().id !== 'surveillance') continue;
 
-	     	 // Ignore allies and self
-		     if (pokemon.side === source.side) return;
+                          // Ignore allies/self
+                          if (pokemon.side === active.side) continue;
 
-		     const speed = pokemon.getStat('spe', false, false);
+                          const speed = pokemon.getStat('spe', false, false);
 
-		     this.add(
-			'-message',
-			`${pokemon.name}'s Speed stat is ${speed}!`
-		  );
-	   },
-    },
+                          this.add(
+                                  '-hint',
+                                  `${pokemon.name}'s Speed stat is ${speed}!`
+                          );
+                     }
+               }
+        },
+    },		
 	boilingpoint: {
 		name: "Boiling Point",
 		shortDesc: "Getting hit by a Fire-type move allows the user to use Eruption immediately after",
