@@ -21827,7 +21827,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		name: "Blazephemy",
 		types: ["Fairy", "Fire"],
 		baseStats: { hp: 77, atk: 67, def: 57, spa: 157, spd: 97, spe: 97 },
-		abilities: { 0: "Cursed Body", 1: "Foreworn" },
+		abilities: { 0: "Cursed Body", 1: "Forewarn" },
 		heightm: 1.5,
 		weightkg: 20.0,
 		color: "Red",

@@ -6735,6 +6735,10 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		shortDesc: "All non-Ghost and Dark type Pokemon lose 1/16th of their max HP at the end of their turn",
 		num: 2030,
 		flags: {breakable: 1},
+		onSwitchInPriority: -1,
+		onStart(pokemon) {
+		pokemon.addVolatile('foretell');	
+		},		
 		onResidualOrder: 28,
 		onResidualSubOrder: 2,
 	    onResidual(pokemon) {
@@ -6748,18 +6752,6 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 				this.damage(target.baseMaxhp / 16, target, pokemon, null, true);
 				}
 			}
-		},
-		onTryMove(pokemon, target, move) {
-		if (move.id !== 'foretellcalamity') return;
-		if (pokemon.fainted || !pokemon.hp) return;
-			if (!this.canSwitch(target.side) || target.forceSwitchFlag || target.switchFlag) return;
-			for (const side of this.sides) {
-				for (const active of side.active) {
-					active.switchFlag = false;
-				}
-			}
-			pokemon.switchFlag = true;
-			this.add('-activate', pokemon, 'ability: Decay');
-	    },
+		}
 	},																																					
 };

@@ -1107,5 +1107,20 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
         move.secondaries = uturn.secondaries;
 			}
 		},
-	},	   		   
+	},	  
+	foretell: {
+	name: "Foretell",	
+		onTryMove(pokemon, target, move) {
+		if (move.id !== 'foretellcalamity') return;
+		if (pokemon.fainted || !pokemon.hp) return;
+			if (!this.canSwitch(target.side) || target.forceSwitchFlag || target.switchFlag) return;
+			for (const side of this.sides) {
+				for (const active of side.active) {
+					active.switchFlag = false;
+				}
+			}
+			pokemon.switchFlag = true;
+			this.add('-activate', pokemon, 'ability: Decay');
+	    },
+	},				 	 		   
 };

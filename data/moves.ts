@@ -22002,7 +22002,102 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		target: "normal",
 		type: "Ghost",
 		contestType: "Clever",
-	},		
+	},	
+	risingscreamer: {
+		num: 2400,
+		accuracy: 100,
+		basePower: 90,
+		category: "Physical",
+		name: "Rising Screamer",
+		pp: 10,
+		priority: 0,
+		flags: { protect: 1, mirror: 1, metronome: 1 },
+		onPrepareHit(target, source, move) {
+			if (!source.isAlly(target)) {
+				this.attrLastMove('[anim] Shell Side Arm ' + move.category);
+			}
+		},
+		onModifyMove(move, pokemon, target) {
+			if (!target) return;
+			const atk = pokemon.getStat('atk', false, true);
+			const spa = pokemon.getStat('spa', false, true);
+			const def = target.getStat('def', false, true);
+			const spd = target.getStat('spd', false, true);
+			const physical = Math.floor(Math.floor(Math.floor(Math.floor(2 * pokemon.level / 5 + 2) * 90 * atk) / def) / 50);
+			const special = Math.floor(Math.floor(Math.floor(Math.floor(2 * pokemon.level / 5 + 2) * 90 * spa) / spd) / 50);
+			if (physical > special || (physical === special && this.randomChance(1, 2))) {
+				move.category = 'Physical';
+				move.flags.contact = 1;
+			}
+		},
+		onHit(target, source, move) {
+			// Shell Side Arm normally reveals its category via animation on cart, but doesn't play either custom animation against allies
+			if (!source.isAlly(target)) this.hint(move.category + " Shell Side Arm");
+		},
+		onAfterSubDamage(damage, target, source, move) {
+			if (!source.isAlly(target)) this.hint(move.category + " Shell Side Arm");
+		},
+		target: "normal",
+		type: "Electric",
+	},	
+	zombieprocess: {
+		num: 2401,
+		accuracy: 90,
+		basePower: 80,
+		category: "Special",
+		name: "Zombie Process",
+		pp: 10,
+		priority: 0,
+		flags: { protect: 1, mirror: 1 },
+		volatileStatus: 'partiallytrapped',
+		target: "normal",
+		type: "Ghost",
+	},	
+	shuck: {	
+        num: -3067,
+        accuracy: 100,
+        basePower: 100,
+        category: "Physical",
+        name: "Shuck",
+        pp: 10,
+        priority: 0,
+        flags: {contact: 1, protect: 1, mirror: 1},
+        secondary: {
+        chance: 100,
+        boosts: {
+        def: -1,
+        },
+        },
+        self: {
+        boosts: {
+        atk: 1,
+        },
+        },
+        target: "normal",
+        type: "Bug",
+        contestType: "Cool",
+        shortDesc: "Raises user's Atk by 1 and lowers target's Def by 1.",
+	},
+	adrenalizer: {	
+        num: -3020,
+        accuracy: true,
+        basePower: 0,
+        category: "Status",
+        name: "Adrenalizer",
+        pp: 5,
+        priority: 0,
+        flags: {snatch: 1, heal: 1},
+        heal: [1, 3],
+        self: {
+               boosts: {
+                     atk: 1,
+               },
+        },
+        target: "self",
+        type: "Fighting",
+        contestType: "Cute",
+        shortDesc: "Heals 1/3 max HP and raises Attack by 1.",
+	},				  
 	lacadia: {
 		num: 2300,
 		accuracy: 100,
@@ -22028,5 +22123,5 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		target: "normal",
 		type: "Normal",
 		contestType: "Tough",
-	},		
+	},			
 };
