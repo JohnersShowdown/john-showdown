@@ -6452,20 +6452,15 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
                }
         },
         onAnySwitchIn(pokemon) {
-               // Find all active Pokémon with Surveillance
-               for (const side of this.sides) {
-                     for (const active of side.active) {
-                          if (!active?.ability || active.fainted) continue;
-                          // Ignore allies/self
-                          if (pokemon.side === active.side) continue;
+               for (const target of pokemon.adjacentFoes()) {
+                     if (!target || target.fainted) continue;
 
-                          const speed = pokemon.getStat('spe', false, false);
+                     const speed = target.getStat('spe', false, false);
 
-                          this.add(
-                                  '-hint',
-                                  `${pokemon.name}'s Speed stat is ${speed}!`
-                          );
-                     }
+                     this.add(
+                          '-hint',
+                          `${target.name}'s Speed stat is ${speed}!`
+                     );
                }
         },
     },		
