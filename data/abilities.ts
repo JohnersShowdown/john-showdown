@@ -6749,5 +6749,17 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 				}
 			}
 		},
-	}																																					
+		onSourceAfterMove(pokemon, target, move) {
+		if (move.id !== 'foretellcalamity') return;
+		if (pokemon.fainted || !pokemon.hp) return;
+			if (!this.canSwitch(target.side) || target.forceSwitchFlag || target.switchFlag) return;
+			for (const side of this.sides) {
+				for (const active of side.active) {
+					active.switchFlag = false;
+				}
+			}
+			target.switchFlag = true;
+			this.add('-activate', target, 'ability: Decay');
+	    },
+	},																																					
 };
