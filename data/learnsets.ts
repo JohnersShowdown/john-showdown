@@ -101662,6 +101662,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 			bounce:["9M"], 
 			waterpulse:["9M"],
 			toxic:["9M"],
+			adrenalizer:["9M"],	
 			lacadia:["9M"],								
 		},			
     },
@@ -106217,6 +106218,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
     pharomancy: {
         learnset: {
             bulldoze: ["9M", "9L20"],
+			pharoahcurse:["9M"],	
             darkpulse: ["9M", "9L40"],
             dig: ["9M"],
             hex: ["9M"],

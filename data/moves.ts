@@ -22002,7 +22002,44 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		target: "normal",
 		type: "Ghost",
 		contestType: "Clever",
-	},	
+	},
+	pharoahcurse: {
+		num: 2426,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		name: "Pharoah Curse",
+		pp: 10,
+		priority: 0,
+		flags: { bypasssub: 1, metronome: 1 },
+		ignoreImmunity: true,
+		onHitField(pokemon) {
+			let activated = false;
+			for (const target of pokemon.adjacentFoes()) {
+				let totalBoosts = 0;
+				const boosts = target.boosts;
+				for (const stat in boosts) {
+					if (boosts[stat as BoostID] > 0) {
+						totalBoosts += boosts[stat as BoostID]!;
+					}
+				}
+				
+				if (totalBoosts > 0) {
+					if (!activated) {
+						this.add('-move', pokemon, 'Pharoah Curse');
+						activated = true;
+					}
+					const healAmount = pokemon.baseMaxhp * totalBoosts / 8;
+					this.heal(healAmount, pokemon, pokemon);
+					target.clearBoosts();
+					this.add('-clearboost', target, '[from] move: Pharoah Curse');
+				}
+			}
+		},
+		target: "normal",
+		type: "Dark",
+		contestType: "Clever",
+	},		
 	risingscreamer: {
 		num: 2400,
 		accuracy: 100,
