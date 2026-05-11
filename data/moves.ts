@@ -22135,7 +22135,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
         contestType: "Cute",
         shortDesc: "Heals 1/3 max HP and raises Attack by 1.",
 	},	
-	placeholder: {	
+	placeholderone: {	
         num: -3021,
         accuracy: true,
         basePower: 0,
