@@ -6758,8 +6758,8 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 					active.switchFlag = false;
 				}
 			}
-			target.switchFlag = true;
-			this.add('-activate', target, 'ability: Decay');
+			pokemon.switchFlag = true;
+			this.add('-activate', pokemon, 'ability: Decay');
 	    },
 	},																																					
 };
