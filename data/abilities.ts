@@ -6752,5 +6752,149 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 				}
 			}
 		}
-	},																																					
+	},
+	placeholder: {
+		name: "Placeholder",
+		shortDesc: "All non-Ghost and Dark type Pokemon lose 1/16th of their max HP at the end of their turn",
+		num: 2031,
+		flags: {breakable: 1},
+		onSwitchInPriority: -1,
+		onStart(pokemon) {
+		pokemon.addVolatile('foretell');	
+		},		
+		onResidualOrder: 28,
+		onResidualSubOrder: 2,
+	    onResidual(pokemon) {
+		for (const target of this.getAllActive()) {
+			if (
+				target &&
+				!target.fainted &&
+				!target.hasType('Ghost') &&
+				!target.hasType('Dark')
+			) {
+				this.damage(target.baseMaxhp / 16, target, pokemon, null, true);
+				}
+			}
+		}
+	},
+	secondplaceholder: {
+		name: "Secondplaceholder",
+		shortDesc: "All non-Ghost and Dark type Pokemon lose 1/16th of their max HP at the end of their turn",
+		num: 2032,
+		flags: {breakable: 1},
+		onSwitchInPriority: -1,
+		onStart(pokemon) {
+		pokemon.addVolatile('foretell');	
+		},		
+		onResidualOrder: 28,
+		onResidualSubOrder: 2,
+	    onResidual(pokemon) {
+		for (const target of this.getAllActive()) {
+			if (
+				target &&
+				!target.fainted &&
+				!target.hasType('Ghost') &&
+				!target.hasType('Dark')
+			) {
+				this.damage(target.baseMaxhp / 16, target, pokemon, null, true);
+				}
+			}
+		}
+	},
+	thirdplaceholder: {
+		name: "Thirdplaceholder",
+		shortDesc: "All non-Ghost and Dark type Pokemon lose 1/16th of their max HP at the end of their turn",
+		num: 2033,
+		flags: {breakable: 1},
+		onSwitchInPriority: -1,
+		onStart(pokemon) {
+		pokemon.addVolatile('foretell');	
+		},		
+		onResidualOrder: 28,
+		onResidualSubOrder: 2,
+	    onResidual(pokemon) {
+		for (const target of this.getAllActive()) {
+			if (
+				target &&
+				!target.fainted &&
+				!target.hasType('Ghost') &&
+				!target.hasType('Dark')
+			) {
+				this.damage(target.baseMaxhp / 16, target, pokemon, null, true);
+				}
+			}
+		}
+	},
+	fourthplaceholder: {
+		name: "Fourthplaceholder",
+		shortDesc: "All non-Ghost and Dark type Pokemon lose 1/16th of their max HP at the end of their turn",
+		num: 2034,
+		flags: {breakable: 1},
+		onSwitchInPriority: -1,
+		onStart(pokemon) {
+		pokemon.addVolatile('foretell');	
+		},		
+		onResidualOrder: 28,
+		onResidualSubOrder: 2,
+	    onResidual(pokemon) {
+		for (const target of this.getAllActive()) {
+			if (
+				target &&
+				!target.fainted &&
+				!target.hasType('Ghost') &&
+				!target.hasType('Dark')
+			) {
+				this.damage(target.baseMaxhp / 16, target, pokemon, null, true);
+				}
+			}
+		}
+	},
+	fifthplaceholder: {
+		name: "Fifthplaceholder",
+		shortDesc: "All non-Ghost and Dark type Pokemon lose 1/16th of their max HP at the end of their turn",
+		num: 2035,
+		flags: {breakable: 1},
+		onSwitchInPriority: -1,
+		onStart(pokemon) {
+		pokemon.addVolatile('foretell');	
+		},		
+		onResidualOrder: 28,
+		onResidualSubOrder: 2,
+	    onResidual(pokemon) {
+		for (const target of this.getAllActive()) {
+			if (
+				target &&
+				!target.fainted &&
+				!target.hasType('Ghost') &&
+				!target.hasType('Dark')
+			) {
+				this.damage(target.baseMaxhp / 16, target, pokemon, null, true);
+				}
+			}
+		}
+	},
+	sixthplaceholder: {
+		name: "Sixthplaceholder",
+		shortDesc: "All non-Ghost and Dark type Pokemon lose 1/16th of their max HP at the end of their turn",
+		num: 2036,
+		flags: {breakable: 1},
+		onSwitchInPriority: -1,
+		onStart(pokemon) {
+		pokemon.addVolatile('foretell');	
+		},		
+		onResidualOrder: 28,
+		onResidualSubOrder: 2,
+	    onResidual(pokemon) {
+		for (const target of this.getAllActive()) {
+			if (
+				target &&
+				!target.fainted &&
+				!target.hasType('Ghost') &&
+				!target.hasType('Dark')
+			) {
+				this.damage(target.baseMaxhp / 16, target, pokemon, null, true);
+				}
+			}
+		}
+	},																																													
 };

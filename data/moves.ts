@@ -22134,7 +22134,52 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
         type: "Fighting",
         contestType: "Cute",
         shortDesc: "Heals 1/3 max HP and raises Attack by 1.",
-	},				  
+	},	
+	placeholder: {	
+        num: -3021,
+        accuracy: true,
+        basePower: 0,
+        category: "Status",
+        name: "Adrenalizer",
+        pp: 5,
+        priority: 0,
+        flags: {snatch: 1, heal: 1},
+        heal: [1, 3],
+        self: {
+               boosts: {
+                     atk: 1,
+               },
+        },
+        target: "self",
+        type: "Fighting",
+        contestType: "Cute",
+        shortDesc: "Heals 1/3 max HP and raises Attack by 1.",
+	},	
+	placeholdertwo: {	
+        num: -3022,
+        accuracy: 100,
+        basePower: 100,
+        category: "Physical",
+        name: "Placeholdertwo",
+        pp: 10,
+        priority: 0,
+        flags: {contact: 1, protect: 1, mirror: 1},
+        secondary: {
+        chance: 100,
+        boosts: {
+        def: -1,
+        },
+        },
+        self: {
+        boosts: {
+        atk: 1,
+        },
+        },
+        target: "normal",
+        type: "Bug",
+        contestType: "Cool",
+        shortDesc: "Raises user's Atk by 1 and lowers target's Def by 1.",
+	},					  
 	lacadia: {
 		num: 2300,
 		accuracy: 100,
