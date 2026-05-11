@@ -1120,7 +1120,7 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 				}
 			}
 			pokemon.switchFlag = true;
-			this.add('-activate', pokemon, 'ability: Decay');
+			this.add('-activate', pokemon, 'move: Foretell Calamity');
 	    },
 	},				 	 		   
 };
