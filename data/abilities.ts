@@ -6342,7 +6342,641 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     name: "Psychic Mastery",
     rating: 3.5,
     num: -3218
+	},
+	dragonmastery: {
+    onModifyMovePriority: -5,
+    onModifyMove(move) {
+      if (!move.ignoreImmunity)
+        move.ignoreImmunity = {};
+      if (move.ignoreImmunity !== true) {
+        move.ignoreImmunity["Dragon"] = true;
+        move.ignoreAbility = true;
+      }
+    },
+    onTryHitPriority: 1,
+    onTryHit(target, source, move) {
+      if (target !== source && move.type === "Dragon") {
+        if (!this.boost({ spa: 1 })) {
+          this.add("-immune", target, "[from] ability: Dragon Mastery");
+        }
+        return null;
+      }
+    },
+    onAllyTryHitSide(target, source, move) {
+      if (source === this.effectState.target || !target.isAlly(source))
+        return;
+      if (move.type === "Dragon") {
+        this.boost({ spa: 1 }, this.effectState.target);
+      }
+    },
+    flags: { breakable: 1 },
+    name: "Dragon Mastery",
+    rating: 3.5,
+    num: -3203
+	},
+	electricmastery: {
+    onModifyMovePriority: -5,
+    onModifyMove(move) {
+      if (!move.ignoreImmunity)
+        move.ignoreImmunity = {};
+      if (move.ignoreImmunity !== true) {
+        move.ignoreImmunity["Electric"] = true;
+        move.ignoreAbility = true;
+      }
+    },
+    onTryHitPriority: 1,
+    onTryHit(target, source, move) {
+      if (target !== source && move.type === "Electric") {
+        if (!this.boost({ spe: 1 })) {
+          this.add("-immune", target, "[from] ability: Electric Mastery");
+        }
+        return null;
+      }
+    },
+    onAllyTryHitSide(target, source, move) {
+      if (source === this.effectState.target || !target.isAlly(source))
+        return;
+      if (move.type === "Electric") {
+        this.boost({ spe: 1 }, this.effectState.target);
+      }
+    },
+    flags: { breakable: 1 },
+    name: "Electric Mastery",
+    rating: 3.5,
+    num: -3204
+	},				
+	fairymastery: {
+    onModifyMovePriority: -5,
+    onModifyMove(move) {
+      if (!move.ignoreImmunity)
+        move.ignoreImmunity = {};
+      if (move.ignoreImmunity !== true) {
+        move.ignoreImmunity["Fairy"] = true;
+        move.ignoreAbility = true;
+      }
+    },
+    onTryHitPriority: 1,
+    onTryHit(target, source, move) {
+      if (target !== source && move.type === "Fairy") {
+        if (!this.boost({ spd: 1 })) {
+          this.add("-immune", target, "[from] ability: Fairy Mastery");
+        }
+        return null;
+      }
+    },
+    onAllyTryHitSide(target, source, move) {
+      if (source === this.effectState.target || !target.isAlly(source))
+        return;
+      if (move.type === "Fairy") {
+        this.boost({ spd: 1 }, this.effectState.target);
+      }
+    },
+    flags: { breakable: 1 },
+    name: "Fairy Mastery",
+    rating: 3.5,
+    num: -3205
+	},
+	fightingmastery: {
+    onModifyMovePriority: -5,
+    onModifyMove(move) {
+      if (!move.ignoreImmunity)
+        move.ignoreImmunity = {};
+      if (move.ignoreImmunity !== true) {
+        move.ignoreImmunity["Fighting"] = true;
+        move.ignoreAbility = true;
+      }
+    },
+    onTryHitPriority: 1,
+    onTryHit(target, source, move) {
+      if (target !== source && move.type === "Fighting") {
+        if (!this.boost({ atk: 1 })) {
+          this.add("-immune", target, "[from] ability: Fighting Mastery");
+        }
+        return null;
+      }
+    },
+    onAllyTryHitSide(target, source, move) {
+      if (source === this.effectState.target || !target.isAlly(source))
+        return;
+      if (move.type === "Fighting") {
+        this.boost({ atk: 1 }, this.effectState.target);
+      }
+    },
+    flags: { breakable: 1 },
+    name: "Fighting Mastery",
+    rating: 3.5,
+    num: -3206
+	},
+	firemastery: {
+    onModifyMovePriority: -5,
+    onModifyMove(move) {
+      if (!move.ignoreImmunity)
+        move.ignoreImmunity = {};
+      if (move.ignoreImmunity !== true) {
+        move.ignoreImmunity["Fire"] = true;
+        move.ignoreAbility = true;
+      }
+    },
+    onTryHitPriority: 1,
+    onTryHit(target, source, move) {
+      if (target !== source && move.type === "Fire") {
+        if (!this.boost({ atk: 1 })) {
+          this.add("-immune", target, "[from] ability: Fire Mastery");
+        }
+        return null;
+      }
+    },
+    onAllyTryHitSide(target, source, move) {
+      if (source === this.effectState.target || !target.isAlly(source))
+        return;
+      if (move.type === "Fire") {
+        this.boost({ atk: 1 }, this.effectState.target);
+      }
+    },
+    flags: { breakable: 1 },
+    name: "Fire Mastery",
+    rating: 3.5,
+    num: -3207
+	},
+	flyingmastery: {
+    onModifyMovePriority: -5,
+    onModifyMove(move) {
+      if (!move.ignoreImmunity)
+        move.ignoreImmunity = {};
+      if (move.ignoreImmunity !== true) {
+        move.ignoreImmunity["Flying"] = true;
+        move.ignoreAbility = true;
+      }
+    },
+    onTryHitPriority: 1,
+    onTryHit(target, source, move) {
+      if (target !== source && move.type === "Flying") {
+        if (!this.boost({ spe: 1 })) {
+          this.add("-immune", target, "[from] ability: Flying Mastery");
+        }
+        return null;
+      }
+    },
+    onAllyTryHitSide(target, source, move) {
+      if (source === this.effectState.target || !target.isAlly(source))
+        return;
+      if (move.type === "Flying") {
+        this.boost({ spe: 1 }, this.effectState.target);
+      }
+    },
+    flags: { breakable: 1 },
+    name: "Flying Mastery",
+    rating: 3.5,
+    num: -3208
+	},
+	ghostmastery: {
+    onModifyMovePriority: -5,
+    onModifyMove(move) {
+      if (!move.ignoreImmunity)
+        move.ignoreImmunity = {};
+      if (move.ignoreImmunity !== true) {
+        move.ignoreImmunity["Ghost"] = true;
+        move.ignoreAbility = true;
+      }
+    },
+    onTryHitPriority: 1,
+    onTryHit(target, source, move) {
+      if (target !== source && move.type === "Ghost") {
+        if (!this.boost({ spa: 1 })) {
+          this.add("-immune", target, "[from] ability: Ghost Mastery");
+        }
+        return null;
+      }
+    },
+    onAllyTryHitSide(target, source, move) {
+      if (source === this.effectState.target || !target.isAlly(source))
+        return;
+      if (move.type === "Ghost") {
+        this.boost({ spa: 1 }, this.effectState.target);
+      }
+    },
+    flags: { breakable: 1 },
+    name: "Ghost Mastery",
+    rating: 3.5,
+    num: -3210
+	},
+	grassmastery: {
+    onModifyMovePriority: -5,
+    onModifyMove(move) {
+      if (!move.ignoreImmunity)
+        move.ignoreImmunity = {};
+      if (move.ignoreImmunity !== true) {
+        move.ignoreImmunity["Grass"] = true;
+        move.ignoreAbility = true;
+      }
+    },
+    onTryHitPriority: 1,
+    onTryHit(target, source, move) {
+      if (target !== source && move.type === "Grass") {
+        if (!this.boost({ spa: 1 })) {
+          this.add("-immune", target, "[from] ability: Grass Mastery");
+        }
+        return null;
+      }
+    },
+    onAllyTryHitSide(target, source, move) {
+      if (source === this.effectState.target || !target.isAlly(source))
+        return;
+      if (move.type === "Grass") {
+        this.boost({ spa: 1 }, this.effectState.target);
+      }
+    },
+    flags: { breakable: 1 },
+    name: "Grass Mastery",
+    rating: 3.5,
+    num: -3211
+	},
+	groundmastery: {
+    onModifyMovePriority: -5,
+    onModifyMove(move) {
+      if (!move.ignoreImmunity)
+        move.ignoreImmunity = {};
+      if (move.ignoreImmunity !== true) {
+        move.ignoreImmunity["Ground"] = true;
+        move.ignoreAbility = true;
+      }
+    },
+    onTryHitPriority: 1,
+    onTryHit(target, source, move) {
+      if (target !== source && move.type === "Ground") {
+        if (!this.boost({ atk: 1 })) {
+          this.add("-immune", target, "[from] ability: Ground Mastery");
+        }
+        return null;
+      }
+    },
+    onAllyTryHitSide(target, source, move) {
+      if (source === this.effectState.target || !target.isAlly(source))
+        return;
+      if (move.type === "Ground") {
+        this.boost({ atk: 1 }, this.effectState.target);
+      }
+    },
+    flags: { breakable: 1 },
+    name: "Ground Mastery",
+    rating: 3.5,
+    num: -3212
 	},	
+	icemastery: {
+    onModifyMovePriority: -5,
+    onModifyMove(move) {
+      if (!move.ignoreImmunity)
+        move.ignoreImmunity = {};
+      if (move.ignoreImmunity !== true) {
+        move.ignoreImmunity["Ice"] = true;
+        move.ignoreAbility = true;
+      }
+    },
+    onTryHitPriority: 1,
+    onTryHit(target, source, move) {
+      if (target !== source && move.type === "Ice") {
+        if (!this.boost({ spa: 1 })) {
+          this.add("-immune", target, "[from] ability: Ice Mastery");
+        }
+        return null;
+      }
+    },
+    onAllyTryHitSide(target, source, move) {
+      if (source === this.effectState.target || !target.isAlly(source))
+        return;
+      if (move.type === "Ice") {
+        this.boost({ spa: 1 }, this.effectState.target);
+      }
+    },
+    flags: { breakable: 1 },
+    name: "Ice Mastery",
+    rating: 3.5,
+    num: -3214
+	},	
+	normalmastery: {
+    onModifyMovePriority: -5,
+    onModifyMove(move) {
+      if (!move.ignoreImmunity)
+        move.ignoreImmunity = {};
+      if (move.ignoreImmunity !== true) {
+        move.ignoreImmunity["Normal"] = true;
+        move.ignoreAbility = true;
+      }
+    },
+    onTryHitPriority: 1,
+    onTryHit(target, source, move) {
+      if (target !== source && move.type === "Normal") {
+        if (!this.boost({ atk: 1 })) {
+          this.add("-immune", target, "[from] ability: Normal Mastery");
+        }
+        return null;
+      }
+    },
+    onAllyTryHitSide(target, source, move) {
+      if (source === this.effectState.target || !target.isAlly(source))
+        return;
+      if (move.type === "Normal") {
+        this.boost({ atk: 1 }, this.effectState.target);
+      }
+    },
+    flags: { breakable: 1 },
+    name: "Normal Mastery",
+    rating: 3.5,
+    num: -3216
+	},
+	poisonmastery: {
+    onModifyMovePriority: -5,
+    onModifyMove(move) {
+      if (!move.ignoreImmunity)
+        move.ignoreImmunity = {};
+      if (move.ignoreImmunity !== true) {
+        move.ignoreImmunity["Poison"] = true;
+        move.ignoreAbility = true;
+      }
+    },
+    onTryHitPriority: 1,
+    onTryHit(target, source, move) {
+      if (target !== source && move.type === "Poison") {
+        if (!this.boost({ spd: 1 })) {
+          this.add("-immune", target, "[from] ability: Poison Mastery");
+        }
+        return null;
+      }
+    },
+    onAllyTryHitSide(target, source, move) {
+      if (source === this.effectState.target || !target.isAlly(source))
+        return;
+      if (move.type === "Poison") {
+        this.boost({ spd: 1 }, this.effectState.target);
+      }
+    },
+    flags: { breakable: 1 },
+    name: "Poison Mastery",
+    rating: 3.5,
+    num: -3217
+	},		
+	steelmastery: {
+    onModifyMovePriority: -5,
+    onModifyMove(move) {
+      if (!move.ignoreImmunity)
+        move.ignoreImmunity = {};
+      if (move.ignoreImmunity !== true) {
+        move.ignoreImmunity["Steel"] = true;
+        move.ignoreAbility = true;
+      }
+    },
+    onTryHitPriority: 1,
+    onTryHit(target, source, move) {
+      if (target !== source && move.type === "Steel") {
+        if (!this.boost({ def: 1 })) {
+          this.add("-immune", target, "[from] ability: Steel Mastery");
+        }
+        return null;
+      }
+    },
+    onAllyTryHitSide(target, source, move) {
+      if (source === this.effectState.target || !target.isAlly(source))
+        return;
+      if (move.type === "Steel") {
+        this.boost({ def: 1 }, this.effectState.target);
+      }
+    },
+    flags: { breakable: 1 },
+    name: "Steel Mastery",
+    rating: 3.5,
+    num: -3221
+	},		
+	rockmastery: {
+    onModifyMovePriority: -5,
+    onModifyMove(move) {
+      if (!move.ignoreImmunity)
+        move.ignoreImmunity = {};
+      if (move.ignoreImmunity !== true) {
+        move.ignoreImmunity["Rock"] = true;
+        move.ignoreAbility = true;
+      }
+    },
+    onTryHitPriority: 1,
+    onTryHit(target, source, move) {
+      if (target !== source && move.type === "Rock") {
+        if (!this.boost({ def: 1 })) {
+          this.add("-immune", target, "[from] ability: Rock Mastery");
+        }
+        return null;
+      }
+    },
+    onAllyTryHitSide(target, source, move) {
+      if (source === this.effectState.target || !target.isAlly(source))
+        return;
+      if (move.type === "Rock") {
+        this.boost({ def: 1 }, this.effectState.target);
+      }
+    },
+    flags: { breakable: 1 },
+    name: "Rock Mastery",
+    rating: 3.5,
+    num: -3219
+	},		
+	watermastery: {
+    onModifyMovePriority: -5,
+    onModifyMove(move) {
+      if (!move.ignoreImmunity)
+        move.ignoreImmunity = {};
+      if (move.ignoreImmunity !== true) {
+        move.ignoreImmunity["Water"] = true;
+        move.ignoreAbility = true;
+      }
+    },
+    onTryHitPriority: 1,
+    onTryHit(target, source, move) {
+      if (target !== source && move.type === "Water") {
+        if (!this.boost({ spa: 1 })) {
+          this.add("-immune", target, "[from] ability: Water Mastery");
+        }
+        return null;
+      }
+    },
+    onAllyTryHitSide(target, source, move) {
+      if (source === this.effectState.target || !target.isAlly(source))
+        return;
+      if (move.type === "Water") {
+        this.boost({ spa: 1 }, this.effectState.target);
+      }
+    },
+    flags: { breakable: 1 },
+    name: "Water Mastery",
+    rating: 3.5,
+    num: -3223
+	},		
+	requip: {
+        name: "Requip",
+        shortDesc: "If this Pokémon has no item: Agility gives Choice Band, Swords Dance gives Choice Scarf, Iron Defense gives Assault Vest.",
+        rating: 3,
+        num: -5011,
+        onSourceAfterMove(pokemon, target, move) {
+               // only works if user has no item
+               if (pokemon.item) return;
+               if (!pokemon.hp || pokemon.fainted) return;
+
+               let item = '';
+
+               if (move.id === 'agility') {
+                     item = 'choiceband';
+               } else if (move.id === 'swordsdance') {
+                     item = 'choicescarf';
+               } else if (move.id === 'irondefense') {
+                     item = 'assaultvest';
+               }
+
+               if (!item) return;
+
+               pokemon.setItem(item);
+
+               this.add(
+                     '-item',
+                     pokemon,
+                     this.dex.items.get(item),
+                     '[from] ability: Requip'
+            );
+        },
+	},										
+	greathunger: {
+    onAfterMoveSecondarySelfPriority: -1,
+    onAfterMoveSecondarySelf(pokemon, target, move) {
+    	if (move.flags["bite"] && move.totalDamage && !pokemon.forceSwitchFlag) {
+    		this.heal(move.totalDamage / 2, pokemon);
+    	}
+    },
+    flags: {},
+    name: "Great Hunger",
+    rating: 3.5,
+    num: -4012
+	},	
+	hammertime: {
+    onBasePowerPriority: 19,
+    onBasePower(basePower, attacker, defender, move) {
+    if (move.flags["hammer"]) {
+    this.debug("Hammer Time boost");
+    return this.chainModify(1.5);
+    }
+    },
+    flags: {},
+    name: "Hammer Time",
+    rating: 3.5,
+    num: -3245
+	},	
+	ignition: {
+    onModifyTypePriority: -1,
+    onModifyType(move, pokemon) {
+      const noModifyType = [
+        "judgment",
+        "multiattack",
+        "naturalgift",
+        "revelationdance",
+        "technoblast",
+        "terrainpulse",
+        "weatherball"
+      ];
+      if (move.type === "Normal" && !noModifyType.includes(move.id) && !(move.isZ && move.category !== "Status") && !(move.name === "Tera Blast" && pokemon.terastallized)) {
+        move.type = "Fire";
+        move.typeChangerBoosted = this.effect;
+      }
+    },
+    onBasePowerPriority: 23,
+    onBasePower(basePower, pokemon, target, move) {
+      if (move.typeChangerBoosted === this.effect)
+        return this.chainModify([4915, 4096]);
+    },
+    flags: {},
+    name: "Ignition",
+    rating: 4,
+    num: -3243
+	},	
+	lifelight: {
+    onTryHit(target, source, move) {
+      if (target !== source && move.flags["light"]) {
+        if (!this.heal(target.baseMaxhp / 4)) {
+          this.add("-immune", target, "[from] ability: Lifelight");
+        }
+        return null;
+      }
+    },
+    flags: {},
+    name: "Lifelight",
+    rating: 3.5,
+    num: -3238
+	},				
+	lightforce: {
+    onBasePowerPriority: 19,
+    onBasePower(basePower, attacker, defender, move) {
+      if (move.flags["light"]) {
+        this.debug("Lightforce boost");
+        return this.chainModify([move.hasAuraBreak ? 3072 : 5461, 4096]);
+      }
+    },
+    flags: {},
+    name: "Lightforce",
+    rating: 3.5,
+    num: -3239
+	},
+	liquify: {
+    onModifyTypePriority: -1,
+    onModifyType(move, pokemon) {
+      const noModifyType = [
+        "judgment",
+        "multiattack",
+        "naturalgift",
+        "revelationdance",
+        "technoblast",
+        "terrainpulse",
+        "weatherball"
+      ];
+      if (move.type === "Normal" && !noModifyType.includes(move.id) && !(move.isZ && move.category !== "Status") && !(move.name === "Tera Blast" && pokemon.terastallized)) {
+        move.type = "Water";
+        move.typeChangerBoosted = this.effect;
+      }
+    },
+    onBasePowerPriority: 23,
+    onBasePower(basePower, pokemon, target, move) {
+      if (move.typeChangerBoosted === this.effect)
+        return this.chainModify([4915, 4096]);
+    },
+    flags: {},
+    name: "Liquify",
+    rating: 4,
+    num: -3242
+	},
+	megablaster: {
+    onBasePowerPriority: 19,
+    onBasePower(basePower, attacker, defender, move) {
+    if (move.flags["beam"]) {
+    this.debug("Mega Blaster boost");
+    return this.chainModify(1.5);
+    }
+    },
+    flags: {},
+    name: "Mega Blaster",
+    rating: 3.5,
+    num: -3236
+	},
+	mightymycelium: {
+    onModifySpAPriority: 1,
+    onModifySpA(spa) {
+    return this.chainModify(1.5);
+    },
+    onDisableMove(pokemon) {
+    for (const moveSlot of pokemon.moveSlots) {
+    const move = this.dex.moves.get(moveSlot.id);
+    if (move.category === 'Status' && move.id !== 'mefirst') {
+    pokemon.disableMove(moveSlot.id);
+    }
+    }
+    },
+    flags: {},
+    name: "Mighty Mycelium",
+    rating: 3.5,
+    num: -3257
+	},
 	parasitoid: {
 		name: "Parasitoid",
 		shortDesc: "The user heals 25% of the damage it deals with direct attacks",
@@ -6353,7 +6987,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 				move.drain = [1, 4];
 			}
 		}
-	},
+	},				
 	ancientguard: {
 		name: "Ancient Guard",
 		shortDesc: "Rock type moves are not very effective against the user. Immune to Stealth Rock.",
