@@ -21944,11 +21944,9 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		shortDesc: "Hits two turns after being used, switches out user on turn used.",
 		pp: 5,
 		priority: 0,
+		selfSwitch: true,
 	    flags: {contact: 1, protect: 1, mirror: 1},
-	    selfSwitch: true,
-	    secondary: {
-		chance: 100,
-    	onHit(target, source) {
+    	onTry(target, source) {
 			if (!target.side.addSlotCondition(target, 'foretellcalamity')) return false;
 			Object.assign(target.side.slotConditions[target.position]['futuremove'], {
 				move: 'futuresight',
@@ -21968,9 +21966,8 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			});
 			this.add('-start', source, 'move: Foretell Calamity');
 			return this.NOT_FAIL;
-		  },
-       },
-	},
+	    }, 
+    },
 	foretellcalamity2: {
 		num: 2024,
 		accuracy: 100,
