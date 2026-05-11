@@ -6749,7 +6749,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 				}
 			}
 		},
-		onSourceAfterMove(pokemon, target, move) {
+		onTryMove(pokemon, target, move) {
 		if (move.id !== 'foretellcalamity') return;
 		if (pokemon.fainted || !pokemon.hp) return;
 			if (!this.canSwitch(target.side) || target.forceSwitchFlag || target.switchFlag) return;
