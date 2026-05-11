@@ -21938,14 +21938,14 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		basePower: 90,
 		category: "Special",
 		name: "Foretell Calamity",
-		pp: 10,
+		pp: 5,
 		priority: 0,
-		flags: { allyanim: 1, metronome: 1, futuremove: 1 },
+		flags: {allyanim: 1, metronome: 1, futuremove: 1},
 		ignoreImmunity: true,
 		onTry(source, target) {
-			if (!target.side.addSlotCondition(target, 'foretellcalamity')) return false;
+			if (!target.side.addSlotCondition(target, 'futuremove')) return false;
 			Object.assign(target.side.slotConditions[target.position]['futuremove'], {
-				move: 'futuresight',
+				move: 'foretellcalamity',
 				source,
 				moveData: {
 					id: 'foretellcalamity',
@@ -21966,6 +21966,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		target: "normal",
 		type: "Ghost",
 		contestType: "Clever",
+		shortDesc: "Hits two turns after being used, switches out user on turn used.",
 	},		
 	foretellcalamity2: {
 		num: 2024,
