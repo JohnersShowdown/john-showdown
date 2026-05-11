@@ -6440,7 +6440,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		shortDesc: "On switch-in or on enemy switch, reveals the opposing Pokemon's Speed stat",
 		num: 2014,
         onStart(pokemon) {
-               for (const target of pokemon.side.foe.active) {
+               for (const target of pokemon.adjacentFoes()) {
                      if (!target || target.fainted) continue;
 
                      const speed = target.getStat('spe', false, false);
