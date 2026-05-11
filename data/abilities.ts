@@ -6447,7 +6447,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 
                      this.add(
                           '-hint',
-                          `${target.name}'s Speed stat is ${speed}!`
+                          `Surveillance revealed that ${target.name}'s Speed stat is ${speed}!`
                      );
                }
         },
@@ -6459,7 +6459,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 
                      this.add(
                           '-hint',
-                          `${target.name}'s Speed stat is ${speed}!`
+                          `Surveillance revealed that ${target.name}'s Speed stat is ${speed}!`
                      );
                }
         },
