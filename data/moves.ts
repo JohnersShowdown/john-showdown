@@ -22134,7 +22134,550 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
         type: "Fighting",
         contestType: "Cute",
         shortDesc: "Heals 1/3 max HP and raises Attack by 1.",
+	},
+	echoshards: {
+		num: 2025,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Echo Shards",
+		pp: 20,
+		priority: 0,
+		flags: { reflectable: 1, metronome: 1, mustpressure: 1 },
+		sideCondition: 'echoshards',
+		condition: {
+			// this is a side condition
+			onSideStart(side) {
+				this.add('-sidestart', side, 'move: Stealth Rock');
+			},
+			onSwitchIn(pokemon) {
+				if (pokemon.hasItem('heavydutyboots')) return;
+				const typeMod = this.clampIntRange(pokemon.runEffectiveness(this.dex.getActiveMove('echoshards')), -6, 6);
+				this.damage(pokemon.maxhp * (2 ** typeMod) / 8);
+			},
+		},
+		target: "foeSide",
+		type: "Dark",
+		zMove: { boost: { def: 1 } },
+		contestType: "Cool",
 	},	
+	armorpress: {
+    num: -3230,
+    accuracy: 100,
+    basePower: 80,
+    category: "Physical",
+    name: "Armor Press",
+    pp: 10,
+    priority: 0,
+    flags: { contact: 1, protect: 1, mirror: 1 },
+    overrideOffensiveStat: "def",
+    target: "normal",
+    type: "Steel"			
+	},
+	backpetal: {	
+    num: -3294,
+    accuracy: 100,
+    basePower: 60,
+    category: "Special",
+    name: "Backpetal",
+    pp: 20,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, metronome: 1 },
+    selfSwitch: true,
+    target: "normal",
+    type: "Grass",
+    contestType: "Cute"		
+	},		
+	boltbeam: {
+    num: -3283,
+    accuracy: 100,
+    basePower: 70,
+    category: "Special",
+    name: "Bolt Beam",
+    pp: 15,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, metronome: 1, beam: 1 },
+    secondary: {
+    chance: 30,
+    status: "par"
+    },
+    target: "normal",
+    type: "Electric",
+    contestType: "Beautiful"			
+	},		
+	breezeball: {	
+	num: -3200,
+    accuracy: 100,
+    basePower: 0,
+    basePowerCallback(pokemon, target) {
+      let ratio = Math.floor(pokemon.getStat("spe") / target.getStat("spe"));
+      if (!isFinite(ratio))
+        ratio = 0;
+      const bp = [40, 60, 80, 120, 150][Math.min(ratio, 4)];
+      this.debug("BP: " + bp);
+      return bp;
+    },
+    category: "Special",
+    name: "Breeze Ball",
+    pp: 10,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, metronome: 1, bullet: 1, wind: 1 },
+    onModifyMove(move, pokemon) {
+      if (pokemon.getStat("atk", false, true) > pokemon.getStat("spa", false, true))
+        move.category = "Physical";
+    },
+    target: "normal",
+    type: "Flying",
+    zMove: { basePower: 160 },
+    maxMove: { basePower: 130 },
+    contestType: "Cool"	
+	},
+	bulletbarrage: {
+    num: -3201,
+    accuracy: 90,
+    basePower: 25,
+    category: "Physical",
+    name: "Bullet Barrage",
+    pp: 15,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, metronome: 1, bullet: 1 },
+    multihit: [2, 5],
+    target: "normal",
+    type: "Steel",
+    zMove: { basePower: 140 },
+    maxMove: { basePower: 130 }			
+	},
+	butterflylanding: {	
+    num: -3295,
+    accuracy: true,
+    basePower: 0,
+    category: "Status",
+    name: "Butterfly Landing",
+    pp: 10,
+    priority: 1,
+    flags: { snatch: 1, metronome: 1 },
+    volatileStatus: "butterflylanding",
+    target: "self",
+    type: "Bug",
+    zMove: { effect: "clearnegativeboost" },
+    contestType: "Cute"		
+	},
+	bygonebash: {	
+    num: -3202,
+    accuracy: 100,
+    basePower: 120,
+    category: "Physical",
+    name: "Bygone Bash",
+    pp: 5,
+    priority: 0,
+    flags: { contact: 1, protect: 1, mirror: 1, punch: 1 },
+    recoil: [33, 100],
+    target: "normal",
+    type: "Ghost",
+    contestType: "Cool"		
+	},
+	cargothrow: {	
+	num: -3310,
+    accuracy: 95,
+    basePower: 70,
+    category: "Physical",
+    name: "Cargo Throw",
+    pp: 10,
+    priority: 0,
+    flags: { contact: 1, protect: 1, mirror: 1, metronome: 1, noassist: 1, failcopycat: 1, throwing: 1 },
+    onHit(target, source, move) {
+      if (source.isActive) {
+        target.addVolatile("cargothrow", source, move, "cargograb");
+      }
+    },
+    onModifyMove(move, pokemon) {
+	if (
+		pokemon.volatiles['cargothrow'] &&
+		pokemon.volatiles['cargograb']
+	) {
+		move.forceSwitch = true;
+	}
+	},
+    target: "normal",
+    type: "Grass",
+    contestType: "Tough"
+	},	
+	chillout: {	
+    num: -3302,
+    accuracy: 25,
+    basePower: 0,
+    category: "Status",
+    name: "Chill Out",
+    pp: 15,
+    priority: 0,
+    flags: { protect: 1, reflectable: 1, mirror: 1, metronome: 1, wind: 1 },
+    status: "frz",
+    target: "normal",
+    type: "Ice",
+    zMove: { boost: { spa: 1 } },
+    contestType: "Cool"		
+	},
+	conjuringfire: {
+    num: -3326,
+    accuracy: 100,
+    basePower: 55,
+    category: "Special",
+    name: "Conjuring Fire",
+    pp: 10,
+    priority: 0,
+    flags: { protect: 1, mirror: 1 },
+    basePowerCallback(pokemon, target, move) {
+      if (pokemon.hasItem(["ironball","bignugget","lifeorb","thickclub"])) {
+        return move.basePower * 2;
+      } else if (pokemon.hasItem(["loadeddice"])) {
+        return move.basePower = 20;
+      }
+      return move.basePower;
+    },
+    onModifyMove(move, pokemon, source) {
+      if (pokemon.hasItem(["absorbbulb","bigroot","shellbell","cloversweet"])) {
+        move.drain = [1, 2];
+      } else if (pokemon.hasItem(["dragonfang","razorclaw","scopelens","leek","luckypunch","blackaugurite"])) {
+        move.willCrit = true;
+      } else if (pokemon.hasItem(["ejectbutton","ejectpack","shedshell","smokeball"])) {
+        move.selfSwitch = true;
+      } else if (pokemon.hasItem(["leftovers","luckyegg","soothebell","sweetapple","flowersweet"])) {
+        move.heal = [1, 4];
+      } else if (pokemon.hasItem(["lifeorb"])) {
+        move.recoil = [33, 100];
+      } else if (pokemon.hasItem(["loadeddice"])) {
+        move.multihit = [2, 5];
+      } else if (pokemon.hasItem(["mirrorherb","expshare"])) {
+        move.stealsBoosts = true;
+      } else if (pokemon.hasItem(["redcard"])) {
+        move.forceSwitch = true;
+      } else if (pokemon.hasItem(["protectivepads","punchingglove","galaricacuff"])) {
+        move.overrideDefensiveStat = "def";
+      } else if (pokemon.hasItem(["normalgem"])) {
+        move.type = "Normal";
+      } else if (pokemon.hasItem(["firegem"])) {
+        move.type = "Fire";
+      } else if (pokemon.hasItem(["grassgem"])) {
+        move.type = "Grass";
+      } else if (pokemon.hasItem(["watergem"])) {
+        move.type = "Water";
+      } else if (pokemon.hasItem(["icegem"])) {
+        move.type = "Ice";
+      } else if (pokemon.hasItem(["electricgem"])) {
+        move.type = "Electric";
+      } else if (pokemon.hasItem(["psychicgem"])) {
+        move.type = "Psychic";
+      } else if (pokemon.hasItem(["darkgem"])) {
+        move.type = "Dark";
+      } else if (pokemon.hasItem(["fairygem"])) {
+        move.type = "Fairy";
+      } else if (pokemon.hasItem(["ghostgem"])) {
+        move.type = "Ghost";
+      } else if (pokemon.hasItem(["fightinggem"])) {
+        move.type = "Fighting";
+      } else if (pokemon.hasItem(["buggem"])) {
+        move.type = "Bug";
+      } else if (pokemon.hasItem(["flyinggem"])) {
+        move.type = "Flying";
+      } else if (pokemon.hasItem(["dragongem"])) {
+        move.type = "Dragon";
+      } else if (pokemon.hasItem(["rockgem"])) {
+        move.type = "Rock";
+      } else if (pokemon.hasItem(["groundgem"])) {
+        move.type = "Ground";
+      } else if (pokemon.hasItem(["steelgem"])) {
+        move.type = "Steel";
+      } else if (pokemon.hasItem(["poisongem"])) {
+        move.type = "Poison";
+      }
+    },
+    onModifyPriority(priority, pokemon, target, move) {
+      if (pokemon.hasItem(["quickclaw","sharpbeak"]))
+        return priority + 1;
+    },
+    onHit(target, source, move) {
+      if (source.hasItem(["airballoon"])) {
+        source.addVolatile("magnetrise");
+      } else if (source.hasItem(["assaultvest","eviolite","deepseascale"])) {
+        this.boost({ spd: 1 }, source);
+      } else if (source.hasItem(["blackbelt","choiceband","expertbelt","muscleband"])) {
+        this.boost({ atk: 1 }, source);
+      } else if (source.hasItem(["quickpowder","choicescarf","silkscarf"])) {
+        this.boost({ spe: 1 }, source);
+      } else if (source.hasItem(["roomservice"])) {
+        this.boost({ spe: -1 }, source);
+      } else if (source.hasItem(["choicespecs","deepseatooth","throatspray"])) {
+        this.boost({ spa: 1 }, source);
+      } else if (source.hasItem(["metalcoat","metalpowder","hardstone","protector","metalalloy","shellhelmet"])) {
+        this.boost({ def: 1 }, source);
+      } else if (source.hasItem(["widelens","zoomlens","syrupyapple"])) {
+        this.boost({ accuracy: 1 }, source);
+      } else if (source.hasItem(["weaknesspolicy","boosterenergy"])) {
+        this.boost({ atk: 1, spa: 1 }, source);
+      } else if (source.getItem().isBerry) {
+        source.eatItem(true);
+      } else if (source.hasItem(["cellbattery","magnet","upgrade","dubiousdisc"])) {
+        source.addVolatile("charge");
+      } else if (source.hasItem(["clearamulet","whiteherb","everstone","cleansetag"])) {
+        target.clearBoosts();
+        this.add("-clearboost", target);
+      } else if (source.hasItem(["charcoal","flameorb","firestone","magmarizer"])) {
+        target.trySetStatus("brn", source);
+      } else if (source.hasItem(["lightball","thunderorb","thunderstone","electirizer"])) {
+        target.trySetStatus("par", source);
+      } else if (source.hasItem(["frostorb","icestone"])) {
+        target.trySetStatus("frz", source);
+      } else if (source.hasItem(["bindingband","gripclaw"])) {
+        target.addVolatile("partiallytrapped", source, this.dex.getActiveMove("Fire Spin"));
+      } else if (source.hasItem(["blackglasses","ringtarget"])) {
+        target.addVolatile("taunt");
+      } else if (source.hasItem(["blacksludge","poisonbarb"])) {
+        target.trySetStatus("psn", source);
+      } else if (source.hasItem(["toxicorb"])) {
+        target.trySetStatus("tox", source);
+      } else if (source.hasItem(["blunderpolicy","brightpowder","shinystone"])) {
+        this.boost({ accuracy: -1 });
+      } else if (source.hasItem(["abilityshield","duskstone"])) {
+        target.addVolatile("gastroacid");
+      } else if (source.hasItem(["covertcloak","spelltag","reapercloth"])) {
+        target.addVolatile("foresight");
+      } else if (source.hasItem(["destinyknot","fairyfeather","whippeddream","lovesweet"])) {
+        target.addVolatile("attract");
+      } else if (source.hasItem(["damprock"])) {
+        this.field.setWeather("raindance");
+      } else if (source.hasItem(["heatrock","sunstone"])) {
+        this.field.setWeather("sunnyday");
+      } else if (source.hasItem(["icyrock","snowball"])) {
+        this.field.setWeather("snow");
+      } else if (source.hasItem(["nevermeltice"])) {
+        this.field.setWeather("hail");
+      } else if (source.hasItem(["smoothrock","softsand"])) {
+        this.field.setWeather("sandstorm");
+      } else if (source.hasItem(["utilityumbrella","safetygoggles"])) {
+        this.field.clearWeather();
+      } else if (source.hasItem(["terrainextender"])) {
+        this.field.clearTerrain();
+      } else if (source.hasItem(["electricseed"])) {
+        this.field.setTerrain("electricterrain");
+      } else if (source.hasItem(["grassyseed"])) {
+        this.field.setTerrain("grassyterrain");
+      } else if (source.hasItem(["psychicseed"])) {
+        this.field.setTerrain("psychicterrain");
+      } else if (source.hasItem(["mistyseed","sachet"])) {
+        this.field.setTerrain("mistyterrain");
+      } else if (source.hasItem(["twistedspoon","silverpowder","dawnstone","flowersweet"])) {
+        target.addVolatile("confusion");
+      } else if (source.hasItem(["focussash","focusband","powerherb"])) {
+        source.addVolatile("focusenergy");
+      } else if (source.hasItem(["floatstone","moonstone"])) {
+        target.addVolatile("telekinesis");
+      } else if (source.hasItem(["mentalherb","metronome","galaricawreath","ribbonsweet"])) {
+        target.addVolatile("encore");
+      } else if (source.hasItem(["rockyhelmet","heavydutyboots","stickybarb"])) {
+        const side = target.isAlly(source) ? target.side.foe : target.side;
+        const spikes = side.sideConditions["spikes"];
+        if ((!spikes || spikes.layers < 2)) {
+          side.addSideCondition("spikes", target);
+        }
+      } else if (source.hasItem(["lightclay","peatblock","prismscale"])) {
+        const side = source.isAlly(target) ? source.side.foe : source.side;
+        const screens = side.sideConditions["auroraveil"];
+        if ((!screens)) {
+          side.addSideCondition("auroraveil", source);
+        }
+      } else if (source.hasItem(["ironball","laggingtail","poweranklet","powerband","powerbelt","powerbracer","powerlens","powerweight"])) {
+        this.boost({ spe: -1 }, source);
+      } else if (source.hasItem(["adrenalineorb","maliciousarmor"])) {
+        this.boost({ atk: -1 }, target);
+      } else if (source.hasItem(["crackedpot","unremarkableteacup","auspiciousarmor"])) {
+        this.boost({ def: -1 }, target);
+      } else if (source.hasItem(["kingsrock","razorfang","dragonscale","tartapple","chippedpot","masterpieceteacup"])) {
+        target.addVolatile("flinch");
+      } else if (source.hasItem(["miracleseed","luminousmoss","leafstone"])) {
+        source.addVolatile("ingrain");
+      } else if (source.hasItem(["mysticwater","waterstone","berrysweet"])) {
+        source.addVolatile("aquaring");
+      }
+    },
+    onAfterHit(target, source, move) {
+      if (source.item && source.hp) {
+        const item = source.getItem();
+        source.setItem("");
+        source.lastItem = item.id;
+        source.usedItemThisTurn = true;
+        this.add("-enditem", source, item.name, "[from] move: Conjuring Fire");
+        this.runEvent("AfterUseItem", source, null, null, item);
+      }
+    },
+    onAfterSubDamage(damage, target, source, move) {
+      if (source.item && source.hp) {
+        const item = source.getItem();
+        source.setItem("");
+        source.lastItem = item.id;
+        source.usedItemThisTurn = true;
+        this.add("-enditem", source, item.name, "[from] move: Conjuring Fire");
+        this.runEvent("AfterUseItem", source, null, null, item);
+      }
+    },
+    target: "normal",
+    type: "Fire",
+    contestType: "Clever"			
+	},
+	crystalspear: {	
+    num: -3237,
+    accuracy: true,
+    basePower: 70,
+    category: "Physical",
+    name: "Crystal Spear",
+    pp: 15,
+    priority: 0,
+    flags: { contact: 1, protect: 1, mirror: 1, metronome: 1, slicing: 1 },
+    critRatio: 2,
+    target: "normal",
+    type: "Rock",
+    contestType: "Beautiful"		
+	},	
+	deepfreeze: {	
+    num: -3310,
+    accuracy: 50,
+    basePower: 120,
+    category: "Special",
+    name: "Deep Freeze",
+    pp: 5,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, metronome: 1 },
+    secondary: {
+      chance: 100,
+      status: "frz"
+    },
+    target: "normal",
+    type: "Ice",
+    contestType: "Cool"		
+	},	
+	digdeep: {	
+    num: -3203,
+    accuracy: 100,
+    basePower: 80,
+    category: "Physical",
+    name: "Dig Deep",
+    pp: 20,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, metronome: 1 },
+    onEffectiveness(typeMod, target, type) {
+    if (type === "Ground")
+    return 1;
+    },
+    target: "normal",
+    type: "Steel",
+    contestType: "Beautiful"		
+	},	
+	dragonaxe: {
+    num: -3251,
+    accuracy: 85,
+    basePower: 85,
+    category: "Physical",
+    name: "Dragon Axe",
+    pp: 10,
+    priority: 0,
+    flags: { contact: 1, protect: 1, mirror: 1, metronome: 1, slicing: 1 },
+    onAfterHit(target, source, move) {
+      if (!move.hasSheerForce && source.hp) {
+        for (const side of source.side.foeSidesWithConditions()) {
+          side.addSideCondition("gmaxsteelsurge");
+        }
+      }
+    },
+    onAfterSubDamage(damage, target, source, move) {
+      if (!move.hasSheerForce && source.hp) {
+        for (const side of source.side.foeSidesWithConditions()) {
+          side.addSideCondition("gmaxsteelsurge");
+        }
+      }
+    },
+    secondary: {},
+    target: "normal",
+    type: "Dragon"			
+	},		
+	dragonfang: {	
+    num: -3239,
+    accuracy: 100,
+    basePower: 80,
+    category: "Physical",
+    name: "Dragon Fang",
+    pp: 15,
+    priority: 0,
+    flags: { contact: 1, protect: 1, mirror: 1, metronome: 1, bite: 1 },
+    secondary: {
+      chance: 20,
+      volatileStatus: "flinch"
+    },
+    target: "normal",
+    type: "Dragon",
+    contestType: "Tough"		
+	},		
+	dragonpress: {	
+    num: -3204,
+    accuracy: 100,
+    basePower    : 80,
+    category: "Physical",
+    name: "Dragon Press",
+    pp: 10,
+    priority: 0,
+    flags: { contact: 1, protect: 1, mirror: 1 },
+    overrideOffensiveStat: "spd",
+    target: "normal",
+    type: "Dragon"		
+	},		
+	dragonsfist: {	
+    num: -3300,
+    accuracy: 90,
+    basePower: 85,
+    category: "Physical",
+    name: "Dragon's Fist",
+    pp: 15,
+    priority: 0,
+    flags: { contact: 1, protect: 1, mirror: 1, punch: 1, metronome: 1 },
+    target: "normal",
+    type: "Dragon",
+    contestType: "Cool"		
+	},	
+	dragontrap: {	
+    num: -3330,
+    accuracy: 100,
+    basePower: 70,
+    category: "Special",
+    name: "Dragon Trap",
+    pp: 5,
+    priority: 1,
+    flags: { protect: 1, mirror: 1, metronome: 1 },
+    onTry(source, target) {
+      const action = this.queue.willMove(target);
+      const move = action?.choice === "move" ? action.move : null;
+      if (!move || move.category === "Status" && move.id !== "mefirst" || target.volatiles["mustrecharge"] || move.category !== "Special") {
+        return false;
+      }
+    },
+    target: "normal",
+    type: "Dragon",
+    contestType: "Clever"		
+	},
+	dropkix: {	
+    num: -3287,
+    accuracy: 90,
+    basePower: 130,
+    category: "Physical",
+    name: "Dropkix",
+    pp: 10,
+    priority: 0,
+    flags: { contact: 1, protect: 1, mirror: 1, gravity: 1, metronome: 1, punch: 1 },
+    hasCrashDamage: true,
+    onMoveFail(target, source, move) {
+      this.damage(source.baseMaxhp / 2, source, source, this.dex.conditions.get('High Jump Kick'));
+    },
+    target: "normal",
+    type: "Bug",
+    contestType: "Cool"		
+	},																																							
 	placeholderone: {	
         num: -3021,
         accuracy: true,

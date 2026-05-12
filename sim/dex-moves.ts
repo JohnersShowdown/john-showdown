@@ -66,7 +66,8 @@ interface MoveFlags {
 	wind?: 1; // Activates the Wind Power and Wind Rider Abilities.
 	hammer?: 1; // Activates the Wind Power and Wind Rider Abilities.	
 	light?: 1; // Activates the Wind Power and Wind Rider Abilities.
-	beam?: 1; // Activates the Wind Power and Wind Rider Abilities.		
+	beam?: 1; // Activates the Wind Power and Wind Rider Abilities.	
+	throwing?: 1; // Activates the Wind Power and Wind Rider Abilities.			
 }
 
 export interface HitEffect {

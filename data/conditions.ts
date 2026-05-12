@@ -1122,5 +1122,94 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 			pokemon.switchFlag = true;
 			this.add('-activate', pokemon, 'move: Foretell Calamity');
 	    },
-	},				 	 		   
-};
+	},	
+	butterflylanding: {
+    onResidualOrder: 25,
+    onStart(target) {
+    if (target.terastallized) {
+    if (target.hasType('Flying')) {
+    this.add('-hint', "If a Terastallized Pokemon uses Butterfly Landing, it remains Flying-type.");
+    }
+    }
+    this.add('-start', target, 'move: Butterfly Landing');
+    },
+    onModifyMove(move, pokemon) {
+    if (move.secondaries && move.id !== "secretpower") {
+    this.debug("increasing secondary chance");
+    for (const secondary of move.secondaries) {
+    if (pokemon.hasAbility("serenegrace") && secondary.volatileStatus === "flinch")
+    continue;
+    if (secondary.chance)
+    secondary.chance *= 2;
+    }
+    if (move.self?.chance)
+    move.self.chance *= 2;
+    }
+    },
+    onModifyAtkPriority: 5,
+    onModifyAtk(atk, attacker, defender, move) {
+    if (move.type === "Flying" && !attacker.hasType('Flying')) {
+    this.debug("Butterfly Landing STAB");
+    return this.chainModify(1.5);
+    }
+    },
+    onModifySpAPriority: 5,
+    onModifySpA(atk, attacker, defender, move) {
+    if (move.type === "Flying" && !attacker.hasType('Flying')) {
+    this.debug("Butterfly Landing STAB");
+    return this.chainModify(1.5);
+    }
+    },
+    onTypePriority: -1,
+    onType(types, pokemon) {
+    if (!pokemon.terastallized) {
+    this.effectState.typeWas = types;
+    return types.filter(type => type !== 'Flying');
+    }
+    },
+    name: "Butterfly Landing",
+    num: -1002,	
+	},		
+	cargothrow: {
+    name: "cargothrow",
+    noCopy: true,
+    onTrapPokemon(pokemon) {
+    pokemon.tryTrap();
+    },
+    onStart(target) {
+    this.add("-activate", target, "trapped");
+    }
+	},			
+	cargograb: {
+    name: "Cargograb",
+    noCopy: true
+	},		
+	ensnare: {
+    duration: 1,
+    onBeforeSwitchOut(pokemon) {
+    this.debug("Ensnare start");
+    let alreadyAdded = false;
+    pokemon.removeVolatile("destinybond");
+    for (const source of this.effectState.sources) {
+    if (!source.isAdjacent(pokemon) || !this.queue.cancelMove(source) || !source.hp)
+    continue;
+    if (!alreadyAdded) {
+    this.add("-activate", pokemon, "move: Ensnare");
+    alreadyAdded = true;
+    }
+    if (source.canMegaEvo || source.canUltraBurst) {
+    for (const [actionIndex, action] of this.queue.entries()) {
+    if (action.pokemon === source && action.choice === "megaEvo") {
+    this.actions.runMegaEvo(source);
+     this.queue.list.splice(actionIndex, 1);
+    break;
+    }
+    }
+    }
+    this.actions.runMove("ensnare", source, source.getLocOf(pokemon));
+      }
+    },
+    name: "Ensnare",
+    num: -1008,		
+	}, 	  	 		   
+};    
