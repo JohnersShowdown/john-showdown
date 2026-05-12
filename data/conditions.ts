@@ -81,45 +81,36 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 		},
 	},
 	frz: {
-		name: 'frz',
-		effectType: 'Status',
-		onStart(target, source, sourceEffect) {
-			if (sourceEffect && sourceEffect.effectType === 'Ability') {
-				this.add('-status', target, 'frz', '[from] ability: ' + sourceEffect.name, `[of] ${source}`);
-			} else {
-				this.add('-status', target, 'frz');
-			}
-			if (target.species.name === 'Shaymin-Sky' && target.baseSpecies.baseSpecies === 'Shaymin') {
-				target.formeChange('Shaymin', this.effect, true);
-			}
-		},
-		onBeforeMovePriority: 10,
-		onBeforeMove(pokemon, target, move) {
-			if (move.flags['defrost'] && !(move.id === 'burnup' && !pokemon.hasType('Fire'))) return;
-			if (this.randomChance(1, 5)) {
-				pokemon.cureStatus();
-				return;
-			}
-			this.add('cant', pokemon, 'frz');
-			return false;
-		},
-		onModifyMove(move, pokemon) {
-			if (move.flags['defrost']) {
-				this.add('-curestatus', pokemon, 'frz', `[from] move: ${move}`);
-				pokemon.clearStatus();
-			}
-		},
-		onAfterMoveSecondary(target, source, move) {
-			if (move.thawsTarget) {
-				target.cureStatus();
-			}
-		},
-		onDamagingHit(damage, target, source, move) {
-			if (move.type === 'Fire' && move.category !== 'Status' && move.id !== 'polarflare') {
-				target.cureStatus();
-			}
-		},
-	},
+    name: "frz",
+    effectType: "Status",
+    onStart(target, source, sourceEffect) {
+      if (sourceEffect && sourceEffect.id === "frostorb") {
+        this.add("-status", target, "frz", "[from] item: Frost Orb");
+      } else if (sourceEffect && sourceEffect.effectType === "Ability") {
+        this.add("-status", target, "frz", "[from] ability: " + sourceEffect.name, "[of] " + source);
+      } else {
+        this.add("-status", target, "frz");
+      }
+      if (target.species.name === "Shaymin-Sky" && target.baseSpecies.baseSpecies === "Shaymin") {
+        target.formeChange("Shaymin", this.effect, true);
+      }
+    },
+    onResidualOrder: 10,
+    onResidual(pokemon) {
+      this.damage(pokemon.baseMaxhp / 16);
+    },
+    onAfterMoveSecondary(target, source, move) {
+      if (move.thawsTarget) {
+        target.cureStatus();
+      }
+    },
+    onModifyMove(move, source, target) {
+      if (source.status === 'frz' && !source.hasAbility("resilient") && move.category === 'Special' && move.basePower) {
+        this.debug('Freezing halves special move base power');
+        move.basePower = Math.floor(move.basePower / 2);
+      }
+    }
+    },	
 	psn: {
 		name: 'psn',
 		effectType: 'Status',
@@ -1211,5 +1202,86 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
     },
     name: "Ensnare",
     num: -1008,		
-	}, 	  	 		   
+	},			
+	slickslime: {
+    noCopy: true,
+    onStart(target) {
+      this.effectState.layers = 1;
+      this.effectState.spd = 0;
+      this.add("-start", target, "slickslime" + this.effectState.layers);
+      const [curSpD] = [target.boosts.spd];
+      this.boost({ spd: 1 }, target, target);
+      if (curSpD !== target.boosts.spd)
+       this.effectState.spd--;
+    },
+    onRestart(target) {
+      if (this.effectState.layers >= 6)
+        return false;
+      this.effectState.layers++;
+      this.add("-start", target, "slickslime" + this.effectState.layers);
+      const curSpD = target.boosts.spd;
+      this.boost({ spd: 1 }, target, target);
+      if (curSpD !== target.boosts.spd)
+        this.effectState.spd--;
+    },
+    onUpdate(pokemon) {
+    if (pokemon.status === "par") {
+      this.add("-activate", pokemon, "move: Slick Slime");
+      pokemon.cureStatus();
+    }
+    if (pokemon.volatiles["partiallytrapped"]) {
+      this.add("-activate", pokemon, "move: Slick Slime");
+      pokemon.removeVolatile("partiallytrapped");
+    }
+    if (pokemon.volatiles["trapped"]) {
+      this.add("-activate", pokemon, "move: Slick Slime");
+      pokemon.removeVolatile("trapped");
+      }
+    },
+    onTryAddVolatile(status, target, source, effect) {
+      if (["partiallytrapped", "trapped"].includes(status.id)) {
+      if (effect.effectType === "Move") {
+        const effectHolder = this.effectState.target;
+        this.add("-block", target, "move: Slick Slime", "[of] " + effectHolder);
+        }
+        return null;
+      }
+    },
+    onTryBoost(boost, target, source, effect) {
+    if (source && target === source)
+      return;
+    if (boost.spe && boost.spe < 0) {
+      delete boost.spe;
+      if (!(effect as Move).secondaries) {
+        this.add("-fail", target, "unboost", "Speed", "[from] move: Slick Slime", "[of] " + target);
+        }
+      }
+    },
+    onDamagingHit(damage, target, source, move) {
+    if (["Water"].includes(move.type)) {
+      if (this.effectState.layers <= 0)
+        return false;
+      this.effectState.layers--;
+      this.add("-end", target, "slickslime" + this.effectState.layers);
+      const curSpD = target.boosts.spd;
+      this.boost({ spd: -1 }, target, target);
+      if (curSpD !== target.boosts.spd)
+        this.effectState.spd--;
+      }
+    },
+    onEnd(target) {
+    if (this.effectState.spd) {
+      const boosts: SparseBoostsTable = {};
+      if (this.effectState.spd)
+        boosts.spd = this.effectState.spd;
+      this.boost(boosts, target, target);
+    }
+    this.add("-end", target, "slickslime");
+    if (this.effectState.spd !== this.effectState.layers * -1) {
+      this.hint("In Gen 7, slickslime keeps track of how many times it successfully altered each stat individually.");
+    }
+    },
+    name: "Slick Slime",
+    num: -1010,
+	},		 	  	 		   
 };    

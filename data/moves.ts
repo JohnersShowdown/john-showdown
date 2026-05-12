@@ -22659,8 +22659,8 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     },
     target: "normal",
     type: "Dragon",
-    contestType: "Clever"		
-	},
+    contestType: "Clever"
+	},	
 	dropkix: {	
     num: -3287,
     accuracy: 90,
@@ -22669,15 +22669,222 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     name: "Dropkix",
     pp: 10,
     priority: 0,
-    flags: { contact: 1, protect: 1, mirror: 1, gravity: 1, metronome: 1, punch: 1 },
+    flags: { contact: 1, protect: 1, mirror: 1, gravity: 1, metronome: 1, kick: 1 },
     hasCrashDamage: true,
     onMoveFail(target, source, move) {
-      this.damage(source.baseMaxhp / 2, source, source, this.dex.conditions.get('High Jump Kick'));
+      this.damage(source.baseMaxhp / 2, source, source, this.dex.conditions.get("High Jump Kick"));
     },
     target: "normal",
     type: "Bug",
+    contestType: "Cool"
+	},	
+	eeriedance: {
+    num: -3236,
+    accuracy: true,
+    basePower: 0,
+    category: "Status",
+    name: "Eerie Dance",
+    pp: 20,
+    priority: 0,
+    flags: { snatch: 1, dance: 1, metronome: 1 },
+    boosts: {
+    spa: 1,
+    spd: 1,
+    spe: -1
+    },
+    target: "self",
+    type: "Ghost",
+    zMove: { boost: { spa: 1 } },
+    contestType: "Beautiful"			
+	},
+	ensnare: {
+    num: -3317,
+    accuracy: 100,
+    basePower: 60,
+    basePowerCallback(pokemon, target, move) {
+      if (target.beingCalledBack || target.switchFlag) {
+        this.debug("Ensnare damage boost");
+        return move.basePower * 2;
+      }
+      return move.basePower;
+    },
+    category: "Physical",
+    name: "Ensnare",
+    pp: 15,
+    priority: 0,
+    flags: { contact: 1, protect: 1, mirror: 1, metronome: 1 },
+    beforeTurnCallback(pokemon) {
+      for (const side of this.sides) {
+        if (side.hasAlly(pokemon))
+          continue;
+        side.addSideCondition("ensnare", pokemon);
+        const data = side.getSideConditionData("ensnare");
+        if (!data.sources) {
+          data.sources = [];
+        }
+        data.sources.push(pokemon);
+      }
+    },
+    onModifyMove(move, source, target) {
+      if (target?.beingCalledBack || target?.switchFlag)
+        move.accuracy = true;
+    },
+    onTryHit(target, pokemon) {
+      target.side.removeSideCondition("ensnare");
+    },
+    target: "normal",
+    type: "Bug",
+    contestType: "Clever"
+	},	
+	feyblade: {	
+    num: -3248,
+    accuracy: 100,
+    basePower: 80,
+    category: "Physical",
+    name: "Fey Blade",
+    pp: 15,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, metronome: 1, slicing: 1 },
+    critRatio: 2,
+    target: "normal",
+    type: "Fairy",
+    contestType: "Cute"		
+	},	
+	firebomb: {	
+    num: -3205,
+    accuracy: 85,
+    basePower: 40,
+    category: "Physical",
+    name: "Fire Bomb",
+    pp: 10,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, metronome: 1, bullet: 1 },
+    secondary: {
+      chance: 100,
+      status: "brn"
+    },
+    target: "normal",
+    type: "Fire",
     contestType: "Cool"		
-	},																																							
+	},	
+	fivestarpunch: {
+    num: -3278,
+    accuracy: 85,
+    basePower: 25,
+    basePowerCallback(pokemon, target, move) {
+      return 20 + (5 * move.hit);
+    },
+    category: "Physical",
+    name: "Five Star Punch",
+    pp: 10,
+    priority: 0,
+    flags: { contact: 1, protect: 1, mirror: 1, metronome: 1, punch: 1 },
+    overrideOffensiveStat: "spd",
+    multihit: 5,
+    multiaccuracy: true,
+    target: "normal",
+    type: "Bug",
+    zMove: { basePower: 160 },
+    maxMove: { basePower: 200 }			
+	},
+	flashbang: {	
+    num: -3246,
+    accuracy: 100,
+    basePower: 90,
+    category: "Special",
+    name: "Flashbang",
+    pp: 10,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, metronome: 1, light: 1 },
+    secondary: {
+      chance: 10,
+      boosts: {
+        accuracy: -1
+      }
+    },
+    target: "allAdjacent",
+    type: "Normal",
+    contestType: "Clever"		
+	},	
+	fleurdance: {
+    num: -3238,
+    accuracy: 100,
+    basePower: 55,
+    basePowerCallback(pokemon, target, move) {
+      if (!pokemon.item) {
+        this.debug("BP doubled for no item");
+        return move.basePower * 2;
+      }
+      return move.basePower;
+    },
+    category: "Special",
+    name: "Fleur Dance",
+    pp: 15,
+    priority: 0,
+    flags: { contact: 1, protect: 1, mirror: 1, dance: 1, metronome: 1 },
+    target: "any",
+    type: "Fairy",
+    contestType: "Beautiful"			
+	},	
+	flyingkick: {	
+    num: -3242,
+    accuracy: 90,
+    basePower: 80,
+    category: "Physical",
+    name: "Flying Kick",
+    pp: 10,
+    priority: 0,
+    flags: { contact: 1, protect: 1, mirror: 1, metronome: 1, kick: 1 },
+    secondary: {
+      chance: 30,
+      volatileStatus: "flinch"
+    },
+    target: "normal",
+    type: "Flying",
+    contestType: "Cool"		
+	},	
+	fossilfang: {	
+    num: -3320,
+    accuracy: 95,
+    basePower: 80,
+    category: "Physical",
+    name: "Fossil Fang",
+    pp: 15,
+    priority: 0,
+    flags: { contact: 1, protect: 1, mirror: 1, metronome: 1, bite: 1 },
+    secondary: {
+      chance: 20,
+      boosts: {
+        spe: -1
+      }
+    },
+    target: "normal",
+    type: "Rock",
+    contestType: "Tough"		
+	},	
+	frigidwater: {	
+    num: -3311,
+    accuracy: 100,
+    basePower: 60,
+    category: "Special",
+    name: "Frigid Water",
+    pp: 15,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, metronome: 1 },
+    onBasePower(basePower, source) {
+      if (this.field.isWeather(["snow", "hail"])) {
+        this.debug("snow buff");
+        return this.chainModify(1.5);
+      }
+    },
+    secondary: {
+      chance: 10,
+      status: "frz"
+    },
+    target: "normal",
+    type: "Water",
+    contestType: "Tough"		
+	},																																																			
 	placeholderone: {	
         num: -3021,
         accuracy: true,
