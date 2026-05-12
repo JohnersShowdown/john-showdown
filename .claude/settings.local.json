@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(awk '/^\\\\t[a-z][a-z0-9]+: \\\\{$/{print NR\": \"$0}' /e/JohnersShowdown/john-showdown/data/learnsets.ts)",
+      "Bash(awk *)"
+    ]
+  }
+}
