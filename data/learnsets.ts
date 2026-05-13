@@ -113064,7 +113064,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 	},	
 	beryllius: {
 		learnset: {
-                        payday:["9M"],
+            payday:["9M"],
             luckychant:["9M"],
             tackle:["9M"],
             leafage:["9M"],

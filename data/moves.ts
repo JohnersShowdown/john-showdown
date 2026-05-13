@@ -23685,29 +23685,30 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     flags: { snatch: 1, metronome: 1 },
     boosts: {
       spa: 1,
-      spd: 1
+      spd: 1,
     },
-    onAfterMoveSecondarySelf(pokemon, target, move) {
-			if (pokemon.species.id === 'wizledgerfire' && !pokemon.transformed) {
-				const forme = pokemon.species.id === 'wizledgerice' ? '' : '-Ice';
-				pokemon.formeChange('Wizledger-Fire' + forme, this.effect, false, '0', '[msg]');
-				return;
-			} 
-			else if (pokemon.species.id === 'wizledgerice' && !pokemon.transformed) {
-				const forme2 = pokemon.species.id === 'wizledgerelectric' ? '' : '-Electric';
-				pokemon.formeChange('Wizledger-Ice' + forme2, this.effect, false, '0', '[msg]');
-				return;
-			} 
-			else if (pokemon.species.id === 'wizledgerelectric' && !pokemon.transformed) {
-				const forme3 = pokemon.species.id === 'wizledgerfire' ? '' : '-Fire';
-				pokemon.formeChange('Wizledger-Electric' + forme3, this.effect, false, '0', '[msg]');
-				return;
-			} 
+    onAfterMoveSecondarySelf(pokemon) {
+      if (pokemon.transformed) return;
+      const order = [
+        'wizledgerfire',
+        'wizledgerice',
+        'wizledgerelectric',
+      ];
+      const current = pokemon.species.id;
+      const index = order.indexOf(current);
+      if (index === -1) return;
+      const next = order[(index + 1) % order.length];  
+      pokemon.formeChange(
+        next.charAt(0).toUpperCase() + next.slice(1),
+        this.effect,
+        false,
+        '[msg]'
+      );
     },
     target: "self",
     type: "Psychic",
     zMove: { effect: "clearnegativeboost" },
-    contestType: "Clever"
+    contestType: "Clever",
 	},	
 	pitfall: {
     num: -3216,
