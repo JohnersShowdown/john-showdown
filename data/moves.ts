@@ -23691,14 +23691,17 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			if (pokemon.species.id === 'wizledgerfire' && !pokemon.transformed) {
 				const forme = pokemon.species.id === 'wizledgerice' ? '' : '-Ice';
 				pokemon.formeChange('Wizledger-Fire' + forme, this.effect, false, '0', '[msg]');
+				return;
 			} 
 			else if (pokemon.species.id === 'wizledgerice' && !pokemon.transformed) {
 				const forme2 = pokemon.species.id === 'wizledgerelectric' ? '' : '-Electric';
 				pokemon.formeChange('Wizledger-Ice' + forme2, this.effect, false, '0', '[msg]');
+				return;
 			} 
 			else if (pokemon.species.id === 'wizledgerelectric' && !pokemon.transformed) {
 				const forme3 = pokemon.species.id === 'wizledgerfire' ? '' : '-Fire';
 				pokemon.formeChange('Wizledger-Electric' + forme3, this.effect, false, '0', '[msg]');
+				return;
 			} 
     },
     target: "self",
