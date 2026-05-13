@@ -24412,63 +24412,101 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     type: "Electric",
     contestType: "Cool"			
 	},
-	thunderclaw2: {
-    num: -3241,
-    accuracy: 100,
-    basePower: 70,
+	tigerbridge: {
+    num: -3316,
+    accuracy: 90,
+    basePower: 90,
     category: "Physical",
-    name: "Thunder Claw",
-    pp: 15,
+    name: "Tiger Bridge",
+    pp: 10,
     priority: 0,
-    flags: { contact: 1, protect: 1, mirror: 1, metronome: 1 },
-    critRatio: 2,
+    flags: { contact: 1, protect: 1, mirror: 1, metronome: 1, throwing: 1 },
+    recoil: [1, 4],
     target: "normal",
-    type: "Electric",
-    contestType: "Cool"			
+    type: "Dark",
+    contestType: "Tough"		
 	},
-	thunderclaw3: {
-    num: -3242,
+	triplefury: {
+    num: -3324,
     accuracy: 100,
-    basePower: 70,
+    basePower: 15,
     category: "Physical",
-    name: "Thunder Claw",
-    pp: 15,
-    priority: 0,
+    name: "Triple Fury",
+    pp: 20,
+    priority: 1,
     flags: { contact: 1, protect: 1, mirror: 1, metronome: 1 },
-    critRatio: 2,
+    onBasePower(basePower, pokemon) {
+      if (this.randomChance(3, 10) && pokemon.species.baseSpecies === "Dodrio") {
+        this.attrLastMove("[anim] Triple Fury All Out");
+        this.add("-activate", pokemon, "move: Triple Fury");
+        return this.chainModify(2);
+      }
+    },
+    multihit: 3,
     target: "normal",
-    type: "Electric",
-    contestType: "Cool"			
+    type: "Flying",
+    maxMove: { basePower: 80 },
+    contestType: "Cool"		
 	},	
-	thunderclaw4: {
-    num: -3243,
-    accuracy: 100,
-    basePower: 70,
+	tripletumble: {
+    num: -3302,
+    accuracy: 80,
+    basePower: 20,
+    basePowerCallback(pokemon, target, move) {
+      return 20 * move.hit;
+    },
     category: "Physical",
-    name: "Thunder Claw",
-    pp: 15,
+    name: "Triple Tumble",
+    pp: 10,
     priority: 0,
     flags: { contact: 1, protect: 1, mirror: 1, metronome: 1 },
-    critRatio: 2,
+    multihit: 3,
+    multiaccuracy: true,
+    self: {
+      onHit(source) {
+        const result = this.random(3);
+        if (result === 0) {
+          this.boost({ atk: -1 }, source);
+        } else if (result === 1) {
+          this.boost({ def: -1 }, source);
+        } else {
+          this.boost({ spe: -1 }, source);
+        }
+      }
+    },
     target: "normal",
-    type: "Electric",
-    contestType: "Cool"			
+    type: "Normal",
+    zMove: { basePower: 120 },
+    maxMove: { basePower: 140 }		
 	},	
-	thunderclaw5: {
-    num: -3244,
-    accuracy: 100,
-    basePower: 70,
-    category: "Physical",
-    name: "Thunder Claw",
-    pp: 15,
+	turntail: {
+    num: -3249,
+    accuracy: true,
+    basePower: 0,
+    category: "Status",
+    name: "Turn Tail",
+    pp: 5,
     priority: 0,
-    flags: { contact: 1, protect: 1, mirror: 1, metronome: 1 },
-    critRatio: 2,
-    target: "normal",
-    type: "Electric",
-    contestType: "Cool"			
+    flags: { snatch: 1, heal: 1, metronome: 1 },
+    heal: [1, 3],
+    onTry(source) {
+      if (source.volatiles["noretreat"]) {
+        this.add("-fail", source, "move: Turn Tail");
+        this.hint(" A Pokemon who has the No Retreat status can't use this move.");
+        return null;
+      }
+      if (source.species.baseSpecies === "Golisopede" || source.species.baseSpecies === "Golisomite") {
+        this.add("-fail", source, "move: Turn Tail");
+        this.hint(" This Pokemon cannot use this move.");
+        return null;
+      }
+    },
+    selfSwitch: true,
+    target: "self",
+    type: "Flying",
+    contestType: "Cute"		
 	},
-	thunderclaw6: {
+	thunderclaw32: {
     num: -3245,
     accuracy: 100,
     basePower: 70,
@@ -24482,7 +24520,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     type: "Electric",
     contestType: "Cool"			
 	},
-	thunderclaw7: {
+	thunderclaw23: {
     num: -3246,
     accuracy: 100,
     basePower: 70,
@@ -24496,7 +24534,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     type: "Electric",
     contestType: "Cool"			
 	},	
-	thunderclaw8: {
+	thunderclaw24: {
     num: -3247,
     accuracy: 100,
     basePower: 70,
