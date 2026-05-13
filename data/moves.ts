@@ -23688,17 +23688,17 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
       spd: 1
     },
     onAfterMoveSecondarySelf(pokemon, target, move) {
-			if (pokemon.species.id === 'Wizledger-Fire' && !pokemon.transformed) {
+			if (pokemon.species.id === 'wizledgerfire' && !pokemon.transformed) {
 				const forme = pokemon.species.id === 'wizledgerice' ? '' : '-Ice';
 				pokemon.formeChange('Wizledger-Fire' + forme, this.effect, false, '0', '[msg]');
 			} 
-			else if (pokemon.species.id === 'Wizledger-Ice' && !pokemon.transformed) {
+			else if (pokemon.species.id === 'wizledgerice' && !pokemon.transformed) {
 				const forme2 = pokemon.species.id === 'wizledgerelectric' ? '' : '-Electric';
-				pokemon.formeChange('Wizledger-Fire' + forme2, this.effect, false, '0', '[msg]');
+				pokemon.formeChange('Wizledger-Ice' + forme2, this.effect, false, '0', '[msg]');
 			} 
-			else if (pokemon.species.id === 'Wizledger-Electric' && !pokemon.transformed) {
+			else if (pokemon.species.id === 'wizledgerelectric' && !pokemon.transformed) {
 				const forme3 = pokemon.species.id === 'wizledgerfire' ? '' : '-Fire';
-				pokemon.formeChange('Wizledger-Fire' + forme3, this.effect, false, '0', '[msg]');
+				pokemon.formeChange('Wizledger-Electric' + forme3, this.effect, false, '0', '[msg]');
 			} 
     },
     target: "self",
@@ -24407,7 +24407,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     target: "normal",
     type: "Electric",
     contestType: "Cool"			
-	},																															
+	},																																	
 	placeholdertwo: {	
         num: -3022,
         accuracy: 100,
