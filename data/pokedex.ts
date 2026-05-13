@@ -23908,9 +23908,9 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		eggGroups: ["Mineral"],
 		tags: ["Fakemon"],
 	},
-	wizledger: {
+	wizledgerfire: {
 		num: 2285,
-		name: "Wizledger",
+		name: "Wizledger-Fire",
 		baseForme: "Fire",
 		types: ["Fire", "Ghost"],
 		genderRatio: { M: 0.875, F: 0.125 },
