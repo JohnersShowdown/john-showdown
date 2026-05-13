@@ -109423,7 +109423,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 			lasercobblemon:["9M"],					
 		},
 	},
-	wizledger: {
+	wizledgerfire: {
 		learnset: {
             craftyshield:["9M"],
             bind:["9M"],
