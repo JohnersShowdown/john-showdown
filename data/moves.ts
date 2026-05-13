@@ -24296,7 +24296,118 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     type: "Electric",
     zMove: { effect: "clearnegativeboost" },
     contestType: "Clever"			
-	},																											
+	},	
+	sugarcrash: {
+    num: -3296,
+    accuracy: 90,
+    basePower: 100,
+    category: "Physical",
+    name: "Sugar Crash",
+    pp: 10,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, metronome: 1 },
+    secondary: {
+      chance: 30,
+      boosts: {
+        spe: -1
+      }
+    },
+    target: "normal",
+    type: "Fairy",
+    contestType: "Cute"			
+	},
+	reshirambeam: {	
+    num: -3277,
+    accuracy: 90,
+    basePower: 120,
+    category: "Special",
+    name: "Reshiram Beam",
+    pp: 5,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, metronome: 1, beam: 1 },
+    onEffectiveness(typeMod, target, type, move) {
+      return typeMod + this.dex.getEffectiveness("Fire", type);
+    },
+    secondary: {
+      chance: 30,
+      volatileStatus: "confusion"
+    },
+    target: "normal",
+    type: "Dragon",
+    contestType: "Cool"		
+	},	
+	terrabite: {
+    num: -3321,
+    accuracy: 95,
+    basePower: 70,
+    category: "Physical",
+    name: "Terra Bite",
+    pp: 15,
+    priority: 0,
+    flags: { contact: 1, protect: 1, mirror: 1, metronome: 1, bite: 1 },
+    secondary: {
+      chance: 100,
+      onHit(target, source, move) {
+        if (source.isActive)
+          target.addVolatile("trapped", source, move, "trapper");
+      }
+    },
+    target: "normal",
+    type: "Ground",
+    contestType: "Clever"			
+	},	
+	terrainblade: {
+    num: -3226,
+    accuracy: 100,
+    basePower: 50,
+    category: "Physical",
+    name: "Terrain Blade",
+    pp: 10,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, metronome: 1, slicing: 1 },
+    onModifyType(move, pokemon) {
+      if (!pokemon.isGrounded())
+        return;
+      switch (this.field.terrain) {
+        case "electricterrain":
+          move.type = "Electric";
+          break;
+        case "grassyterrain":
+          move.type = "Grass";
+          break;
+        case "mistyterrain":
+          move.type = "Fairy";
+          break;
+        case "psychicterrain":
+          move.type = "Psychic";
+          break;
+      }
+    },
+    onModifyMove(move, pokemon) {
+      if (this.field.terrain && pokemon.isGrounded()) {
+        move.basePower *= 2;
+        this.debug("BP doubled in Terrain");
+      }
+    },
+    target: "normal",
+    type: "Normal",
+    zMove: { basePower: 160 },
+    maxMove: { basePower: 130 }			
+	},	
+	thunderclaw: {
+    num: -3240,
+    accuracy: 100,
+    basePower: 70,
+    category: "Physical",
+    name: "Thunder Claw",
+    pp: 15,
+    priority: 0,
+    flags: { contact: 1, protect: 1, mirror: 1, metronome: 1 },
+    critRatio: 2,
+    target: "normal",
+    type: "Electric",
+    contestType: "Cool"			
+	},																															
 	placeholdertwo: {	
         num: -3022,
         accuracy: 100,
