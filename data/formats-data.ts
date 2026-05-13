@@ -6718,5 +6718,229 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 	sandjourner: {
 		tier: "OU",
 		natDexTier: "OU",
+	},
+	tuligant: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	umbrelligant: {
+		tier: "OU",
+		natDexTier: "OU",
 	},	
+	dreanuema: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	phantasmare: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	dunecargo: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	boglandsgoodra: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	wetlandsgoodra: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	starstellar: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	starstellarmega: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	midnightlucariomega: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	midnightgardevoirmega: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	clockworkleavannymega: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	midnightgallademega: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	hattertainer: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	lunarlurantis: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	falinkslaststand: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	gunslingerfalinks: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	falinkslaststandmega: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	gunslingerfalinksmega: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	gildenose: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	noseferatu: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	djinnferno: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	palegardentrevenant: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	clawviathan: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	clarissie: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	beryllius: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	echolyte: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	alloette: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	alloettemega: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	vexalloette: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	vexalloettemega: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	tanglare: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	spiritube: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	melofly: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	grumpyghastjellicent: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	apathyghastjellicent: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	happyghastjellicent: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	zephyrouge: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	ceruclone: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	breezior: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	palossnow: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	torchflyer: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	pitchertun: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	witherroserade: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	crimsonshiinotic: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	warpedshiinotic: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	sculkdhelmise: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	regisculk: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	acousticmeloetta: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	sephiredge: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	porytronz: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	coppergolurk: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	gourgrenade: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	gholdendough: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	velvietta: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	clockworkleavanny: {
+		tier: "OU",
+		natDexTier: "OU",
+	},																					
 };
