@@ -23910,6 +23910,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 	wizledger: {
 		num: 2285,
 		name: "Wizledger",
+		baseForme: "Fire",
 		types: ["Fire", "Ghost"],
 		genderRatio: { M: 0.875, F: 0.125 },
 		baseStats: { hp: 60, atk: 30, def: 50, spa: 140, spd: 130, spe: 90 },
@@ -23927,6 +23928,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 	wizledgerice: {
 		num: 2285,
 		name: "Wizledger-Ice",
+		forme: "Ice",
 		types: ["Ice", "Ghost"],
 		genderRatio: { M: 0.875, F: 0.125 },
 		baseStats: { hp: 60, atk: 30, def: 140, spa: 130, spd: 90, spe: 50 },
@@ -23942,6 +23944,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 	wizledgerelectric: {
 		num: 2285,
 		name: "Wizledger-Electric",
+		forme: "Ice",
 		types: ["Electric", "Ghost"],
 		genderRatio: { M: 0.875, F: 0.125 },
 		baseStats: { hp: 60, atk: 30, def: 50, spa: 90, spd: 130, spe: 140 },

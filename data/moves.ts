@@ -23502,7 +23502,213 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     target: "normal",
     type: "Electric",
     contestType: "Cool"		
-	},			
+	},
+	nightlight: {	
+    num: -3244,
+    accuracy: 100,
+    basePower: 80,
+    category: "Special",
+    name: "Nightlight",
+    pp: 10,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, metronome: 1, light: 1 },
+    secondary: {
+      chance: 10,
+      volatileStatus: "confusion"
+    },
+    target: "allAdjacentFoes",
+    type: "Dark",
+    contestType: "Cool"		
+	},	
+	nightterror: {	
+    num: -3212,
+    accuracy: 100,
+    basePower: 100,
+    category: "Physical",
+    name: "Night Terror",
+    pp: 15,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, heal: 1, metronome: 1 },
+    drain: [3, 4],
+    onTryImmunity(target) {
+      return target.status === "slp" || target.hasAbility("comatose");
+    },
+    target: "normal",
+    type: "Dark",
+    contestType: "Clever"		
+	},	
+	nosedive: {	
+    num: -3245,
+    accuracy: 90,
+    basePower: 130,
+    category: "Physical",
+    name: "Nosedive",
+    pp: 10,
+    priority: 0,
+    flags: { contact: 1, protect: 1, mirror: 1, gravity: 1, metronome: 1 },
+    hasCrashDamage: true,
+    onMoveFail(target, source, move) {
+      this.damage(source.baseMaxhp / 2, source, source, this.dex.conditions.get("Nosedive"));
+    },
+    target: "normal",
+    type: "Flying",
+    contestType: "Cool"		
+	},	
+	obliquekick: {	
+    num: -3286,
+    accuracy: 95,
+    basePower: 75,
+    category: "Physical",
+    name: "Oblique Kick",
+    pp: 10,
+    priority: 0,
+    flags: { contact: 1, protect: 1, mirror: 1, metronome: 1, kick: 1 },
+    secondary: {
+      chance: 100,
+      boosts: {
+        spe: -1
+      }
+    },
+    target: "normal",
+    type: "Dark",
+    contestType: "Tough"		
+	},
+	pamper: {	
+    num: -3290,
+    accuracy: true,
+    basePower: 0,
+    category: "Status",
+    name: "Pamper",
+    pp: 15,
+    priority: 0,
+    flags: { snatch: 1, metronome: 1 },
+    onModifyMove(move, pokemon) {
+      if (pokemon.species.name === "Furfrou") {
+        move.boosts = { def: 2, spe: 1 };
+      } else if (pokemon.species.name === "Furfrou-Heart") {
+        move.boosts = { spa: 2, spe: 1 };
+      } else if (pokemon.species.name === "Furfrou-Star") {
+        move.boosts = { spd: 2, spe: 1 };
+      } else if (pokemon.species.name === "Furfrou-Diamond") {
+        move.boosts = { def: 2, atk: 1 };
+      } else if (pokemon.species.name === "Furfrou-Debutante") {
+        move.boosts = { spe: 2, spa: 1 };
+      } else if (pokemon.species.name === "Furfrou-Matron") {
+        move.boosts = { spa: 2, spd: 1 };
+      } else if (pokemon.species.name === "Furfrou-Dandy") {
+        move.boosts = { spd: 2, def: 1 };
+      } else if (pokemon.species.name === "Furfrou-La-Reine") {
+        move.boosts = { spa: 2, def: 1 };
+      } else if (pokemon.species.name === "Furfrou-Kabuki") {
+        move.boosts = { atk: 2, def: 1 };
+      } else if (pokemon.species.name === "Furfrou-Pharaoh") {
+        move.boosts = { def: 2, spd: 1 };
+      } else if (pokemon.species.name === "Furfrou-Matcha") {
+        move.boosts = { atk: 2, spd: 1 };
+      } else if (pokemon.species.name === "Furfrou-Lavender") {
+        move.boosts = { spd: 2, spa: 1 };
+      } else if (pokemon.species.name === "Furfrou-Cinnamon") {
+        move.boosts = { def: 2, spa: 1 };
+      } else if (pokemon.species.name === "Furfrou-Crusader") {
+        move.boosts = { spe: 2, def: 1 };
+      } else if (pokemon.species.name === "Furfrou-Rocker") {
+        move.boosts = { atk: 2, spe: 1 };
+      } else if (pokemon.species.name === "Furfrou-Mourner") {
+        move.boosts = { atk: 2, spa: 1 };
+      }
+    },
+    boosts: {
+      atk: 1,
+      spe: 1
+    },
+    target: "self",
+    type: "Normal",
+    zMove: { effect: "clearnegativeboost" },
+    contestType: "Cute"		
+	},	
+	papercut: {	
+    num: -3214,
+    accuracy: 100,
+    basePower: 60,
+    category: "Physical",
+    name: "Paper Cut",
+    pp: 15,
+    priority: 0,
+    flags: { contact: 1, protect: 1, mirror: 1, slicing: 1 },
+    willCrit: true,
+    target: "normal",
+    type: "Normal"		
+	},	
+	phantomblade: {	
+    num: -3215,
+    accuracy: true,
+    basePower: 75,
+    category: "Physical",
+    name: "Phantom Blade",
+    pp: 15,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, metronome: 1, slicing: 1 },
+    critRatio: 2,
+    target: "normal",
+    type: "Ghost",
+    contestType: "Cool"		
+	},	
+	phantomtrick: {	
+    num: -3280,
+    accuracy: true,
+    basePower: 0,
+    category: "Status",
+    name: "Phantom Trick",
+    pp: 10,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, bypasssub: 1, allyanim: 1, metronome: 1 },
+    onHit(target, source) {
+      const targetAtk = target.storedStats.atk;
+      const targetSpA = target.storedStats.spa;
+      target.storedStats.atk = targetSpA;
+      target.storedStats.spa = targetAtk;
+      this.add("-activate", source, "move: Phantom Trick", "[of] " + target);
+    },
+    target: "self",
+    type: "Ghost",
+    zMove: { boost: { spe: 1 } },
+    contestType: "Clever"		
+	},
+	pageturn: {	
+    num: -3213,
+    accuracy: true,
+    basePower: 0,
+    category: "Status",
+    name: "Page Turn",
+    pp: 20,
+    priority: 0,
+    flags: { snatch: 1, metronome: 1 },
+    boosts: {
+      spa: 1,
+      spd: 1
+    },
+    onAfterMoveSecondarySelf(pokemon, target, move) {
+			if (pokemon.baseSpecies.baseSpecies === 'Wizledger' && !pokemon.transformed) {
+				const forme = pokemon.species.id === 'wizledgerice' ? '' : '-Ice';
+				pokemon.formeChange('Wizledger' + forme, this.effect, false, '0', '[msg]');
+				return;
+			} 
+			if (pokemon.baseSpecies.baseSpecies === 'Wizledger-Ice' && !pokemon.transformed) {
+				const forme = pokemon.species.id === 'wizledgerelectric' ? '' : '-Electric';
+				pokemon.formeChange('Wizledger' + forme, this.effect, false, '0', '[msg]');
+				return;
+			} 
+			if (pokemon.baseSpecies.baseSpecies === 'Wizledger-Electric' && !pokemon.transformed) {
+				const forme = pokemon.species.id === 'wizledger' ? '' : '-Fire';
+				pokemon.formeChange('Wizledger' + forme, this.effect, false, '0', '[msg]');
+				return;
+			} 
+    },
+    target: "self",
+    type: "Psychic",
+    zMove: { effect: "clearnegativeboost" },
+    contestType: "Clever"
+	},								
 	placeholdertwo: {	
         num: -3022,
         accuracy: 100,

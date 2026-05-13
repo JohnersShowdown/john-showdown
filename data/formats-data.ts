@@ -6712,8 +6712,8 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		natDexTier: "OU",
 	},
 	sopranomeloetta: {
-		tier: "Illegal",
-		natDexTier: "Illegal",
+		tier: "OU",
+		natDexTier: "OU",
 	},
 	sandjourner: {
 		tier: "OU",
@@ -6935,7 +6935,7 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		tier: "OU",
 		natDexTier: "OU",
 	},
-	velvietta: {
+	velvettia: {
 		tier: "OU",
 		natDexTier: "OU",
 	},	
@@ -6952,7 +6952,7 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		natDexTier: "OU",
 	},
 	papersol: {
-		tier: "LaserCobblemon",
+		tier: "OU",
 		natDexTier: "OU",
 	},																								
 };
