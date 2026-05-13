@@ -22822,6 +22822,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 	starstellarmega: {
 		num: 2219,
 		name: "Starstellar-Mega",
+		baseSpecies: "Starstellar",
 		forme: "Mega",
 		types: ["Steel", "Psychic"],
 		baseStats: { hp: 70, atk: 130, def: 100, spa: 150, spd: 120, spe: 50 },
