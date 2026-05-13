@@ -22884,7 +22884,352 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     target: "normal",
     type: "Water",
     contestType: "Tough"		
-	},																																																			
+	},
+	generationdance: {
+    num: -3206,
+    accuracy: true,
+    basePower: 0,
+    category: "Status",
+    name: "Generation Dance",
+    pp: 5,
+    priority: 0,
+    flags: { snatch: 1, heal: 1, metronome: 1, dance: 1 },
+    onHit(pokemon) {
+      let factor = 0.5;
+      if (['sunnyday', 'desolateland'].includes(pokemon.effectiveWeather())) {
+        factor = 0.667;
+      }
+      const success = !!this.heal(this.modify(pokemon.maxhp, factor));
+      if (!success) {
+        this.add("-fail", pokemon, "heal");
+        return this.NOT_FAIL;
+      }
+      return success;
+    },
+    target: "self",
+    type: "Rock",
+    zMove: { effect: "clearnegativeboost" },
+    contestType: "Beautiful"			
+	},
+	giantpunch: {	
+    num: -3311,
+    accuracy: 85,
+    basePower: 120,
+    category: "Physical",
+    name: "Giant Punch",
+    pp: 5,
+    priority: 0,
+    flags: { contact: 1, mirror: 1, punch: 1 },
+    target: "normal",
+    type: "Normal",
+    contestType: "Tough"		
+	},	
+	glacialcrash: {	
+    num: -3234,
+    accuracy: 90,
+    basePower: 85,
+    category: "Physical",
+    name: "Glacial Crash",
+    pp: 10,
+    priority: 0,
+    flags: { contact: 1, protect: 1, mirror: 1 },
+    overrideOffensiveStat: "def",
+    target: "normal",
+    type: "Ice"		
+	},	
+	gmaxpresto: {	
+    num: 1e3,
+    accuracy: true,
+    basePower: 10,
+    category: "Physical",
+    isNonstandard: "Gigantamax",
+    name: "G-Max Presto",
+    pp: 5,
+    priority: 0,
+    flags: {},
+    isMax: "Hattertainer",
+    secondaries: [
+      {
+        chance: 30,
+        status: "brn"
+      },
+      {
+        chance: 30,
+        volatileStatus: "flinch"
+      }
+    ],
+    target: "adjacentFoe",
+    type: "Fairy",
+    contestType: "Clever"		
+	},	
+	guardcoat: {	
+    num: -3289,
+    accuracy: 100,
+    basePower: 85,
+    category: "Physical",
+    name: "Guard Coat",
+    pp: 10,
+    priority: 0,
+    flags: { contact: 1, protect: 1, mirror: 1 },
+    overrideOffensiveStat: "def",
+    secondary: {
+      chance: 30,
+      onHit(target, source, move) {
+        if (source.species.name === "Furfrou-Heart") {
+          target.addVolatile("attract", source, move);
+        } else if (source.species.name === "Furfrou-Star") {
+          target.addVolatile("confusion", source, move);
+        } else if (source.species.name === "Furfrou-Diamond") {
+          this.boost({ def: -1 });
+        } else if (source.species.name === "Furfrou-Debutante") {
+          target.setStatus("par", source, move);
+        } else if (source.species.name === "Furfrou-Matron") {
+          this.boost({ spa: -1 });
+        } else if (source.species.name === "Furfrou-Dandy") {
+          this.boost({ spd: -1 });
+        } else if (source.species.name === "Furfrou-La-Reine") {
+          source.addVolatile("aquaring");
+        } else if (source.species.name === "Furfrou-Kabuki") {
+          this.boost({ atk: -1 });
+        } else if (source.species.name === "Furfrou-Pharaoh") {
+          this.boost({ spe: -1 });
+        } else if (source.species.name === "Furfrou-Matcha") {
+          target.addVolatile("leechseed", source, move);
+        } else if (source.species.name === "Furfrou-Lavender") {
+          target.addVolatile("healblock", source, move);
+        } else if (source.species.name === "Furfrou-Cinnamon") {
+          this.boost({ evasion: -1 });
+        } else if (source.species.name === "Furfrou-Crusader") {
+          target.addVolatile("trapped", source, move, "trapper");
+        } else if (source.species.name === "Furfrou-Rocker") {
+          target.addVolatile("throatchop", source, move);
+        } else if (source.species.name === "Furfrou-Mourner") {
+          target.addVolatile("gastroacid", source, move);
+        } else {
+          target.addVolatile("flinch", source, move);
+        }
+      }
+    },
+    target: "normal",
+    type: "Normal"		
+	},	
+	guardianbeam: {	
+    num: -3315,
+    accuracy: true,
+    basePower: 80,
+    category: "Special",
+    name: "Guardian Beam",
+    pp: 10,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, beam: 1 },
+    ignoreEvasion: true,
+    ignoreDefensive: true,
+    target: "normal",
+    type: "Water",
+    contestType: "Clever"		
+	},	
+	guardpress: {	
+    num: -3231,
+    accuracy: 90,
+    basePower: 80,
+    category: "Physical",
+    name: "Guard Press",
+    pp: 10,
+    priority: 0,
+    flags: { contact: 1, protect: 1, mirror: 1 },
+    overrideOffensiveStat: "def",
+    target: "normal",
+    type: "Rock"		
+	},	
+	hammerdown: {
+    num: -3281,
+    accuracy: 100,
+    basePower: 60,
+    category: "Physical",
+    name: "Hammer Down",
+    pp: 15,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, nonsky: 1, metronome: 1, hammer: 1 },
+    volatileStatus: "smackdown",
+    onEffectiveness(typeMod, target, type) {
+      if (type === "Steel")
+        return 1;
+    },
+    target: "normal",
+    type: "Rock",
+    contestType: "Tough"			
+	},
+	heliobeam: {	
+    num: -3331,
+    accuracy: 100,
+    basePower: 120,
+    category: "Special",
+    name: "Helio Beam",
+    pp: 10,
+    priority: 0,
+    flags: { charge: 1, protect: 1, mirror: 1, metronome: 1, nosleeptalk: 1, failinstruct: 1, heal: 1, beam: 1 },
+    onTryMove(attacker, defender, move) {
+      if (attacker.removeVolatile(move.id)) {
+        return;
+      }
+      this.add("-prepare", attacker, move.name);
+      this.heal(attacker.baseMaxhp / 6, attacker, attacker);
+      if (["sunnyday", "desolateland"].includes(attacker.effectiveWeather())) {
+        this.attrLastMove("[still]");
+        this.addMove("-anim", attacker, move.name, defender);
+        return;
+      }
+      if (!this.runEvent("ChargeMove", attacker, defender, move)) {
+        return;
+      }
+      attacker.addVolatile("twoturnmove", defender);
+      return null;
+    },
+    onBasePower(basePower, pokemon, target) {
+      const weakWeathers = ["raindance", "primordialsea", "sandstorm", "hail", "snow"];
+      if (weakWeathers.includes(pokemon.effectiveWeather())) {
+        this.debug("weakened by weather");
+        return this.chainModify(0.5);
+      }
+    },
+    target: "normal",
+    type: "Electric",
+    contestType: "Clever"		
+	},	
+	holdtheline: {	
+    num: -3298,
+    accuracy: 100,
+    basePower: 60,
+    category: "Physical",
+    isNonstandard: "Past",
+    name: "Mountain Storm",
+    pp: 10,
+    priority: 0,
+    flags: { contact: 1, protect: 1, mirror: 1, metronome: 1, throwing: 1, punch: 1 },
+    willCrit: true,
+    target: "normal",
+    type: "Electric",
+    contestType: "Cool"		
+	},	
+	honeybomb: {
+    num: -3313,
+    accuracy: 100,
+    basePower: 60,
+    basePowerCallback(pokemon, target, move) {
+      if (!pokemon.volatiles["honeygather"]?.layers)
+        return move.basePower;
+      return move.basePower + (pokemon.volatiles["honeygather"].layers * 40);
+    },
+    category: "Special",
+    name: "Honey Bomb",
+    pp: 10,
+    priority: 0,
+    flags: { protect: 1, metronome: 1, bullet: 1 },
+    onAfterMove(pokemon) {
+      pokemon.removeVolatile("honeygather");
+    },
+    secondary: {
+      chance: 100,
+      boosts: {
+        spe: -1
+      }
+    },
+    target: "normal",
+    type: "Bug",
+    contestType: "Cute"			
+	},	
+	honeydew: {
+    num: -3312,
+    accuracy: true,
+    basePower: 0,
+    category: "Status",
+    name: "Honeydew",
+    pp: 5,
+    priority: 0,
+    flags: { snatch: 1, heal: 1, metronome: 1 },
+    onTry(source) {
+      return !!source.volatiles["honeygather"];
+    },
+    onHit(pokemon) {
+      const healAmount = [0.25, 0.5, 1];
+      const success = !!this.heal(this.modify(pokemon.maxhp, healAmount[pokemon.volatiles["honeygather"].layers - 1]));
+      if (!success)
+        this.add("-fail", pokemon, "heal");
+      pokemon.removeVolatile("honeygather");
+      return success || this.NOT_FAIL;
+    },
+    target: "self",
+    type: "Bug",
+    zMove: { effect: "clearnegativeboost" },
+    contestType: "Cute"			
+	},	
+	hypnoblast: {	
+    num: -3303,
+    accuracy: 100,
+    basePower: 120,
+    category: "Special",
+    name: "Hypnoblast",
+    pp: 5,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, metronome: 1 },
+    self: {
+      boosts: {
+        spa: -1,
+        spd: -1
+      }
+    },
+    target: "normal",
+    type: "Psychic",
+    contestType: "Clever"		
+	},	
+	iceage: {	
+    num: -3306,
+    accuracy: 100,
+    basePower: 80,
+    basePowerCallback(target, source, move) {
+      if (["stoneage", "ironage"].includes(move.sourceEffect)) {
+        this.add("-combine");
+        return 150;
+      }
+      return move.basePower;
+    },
+    category: "Special",
+    name: "Ice Age",
+    pp: 10,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, nonsky: 1, metronome: 1, pledgecombo: 1 },
+    onPrepareHit(target, source, move) {
+      for (const action of this.queue) {
+        if (action.choice !== "move")
+          continue;
+        const otherMove = action.move;
+        const otherMoveUser = action.pokemon;
+        if (!otherMove || !action.pokemon || !otherMoveUser.isActive || otherMoveUser.fainted || action.maxMove || action.zmove) {
+          continue;
+        }
+        if (otherMoveUser.isAlly(source) && ["stoneage", "ironage"].includes(otherMove.id)) {
+          this.queue.prioritizeAction(action, move);
+          this.add("-waiting", source, otherMoveUser);
+          return null;
+        }
+      }
+    },
+    onModifyMove(move) {
+      if (move.sourceEffect === "stoneage") {
+        move.type = "Rock";
+        move.forceSTAB = true;
+        move.sideCondition = "icespikes";
+      }
+      if (move.sourceEffect === "ironage") {
+        move.type = "Steel";
+        move.forceSTAB = true;
+        move.self = { sideCondition: "mirrorshield" };
+      }
+    },
+    target: "normal",
+    type: "Ice",
+    contestType: "Cool"		
+	},																																																														
 	placeholderone: {	
         num: -3021,
         accuracy: true,

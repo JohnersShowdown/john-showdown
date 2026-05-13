@@ -6942,5 +6942,17 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 	clockworkleavanny: {
 		tier: "OU",
 		natDexTier: "OU",
-	},																					
+	},	
+	coppergolurkmega: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	tanglaremega: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	papersol: {
+		tier: "LaserCobblemon",
+		natDexTier: "OU",
+	},																								
 };
