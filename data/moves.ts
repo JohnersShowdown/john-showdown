@@ -23218,7 +23218,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
       if (move.sourceEffect === "stoneage") {
         move.type = "Rock";
         move.forceSTAB = true;
-        move.sideCondition = "icespikes";
+        move.sideCondition = "icesplinters";
       }
       if (move.sourceEffect === "ironage") {
         move.type = "Steel";
@@ -23229,27 +23229,280 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     target: "normal",
     type: "Ice",
     contestType: "Cool"		
-	},																																																														
-	placeholderone: {	
-        num: -3021,
-        accuracy: true,
-        basePower: 0,
-        category: "Status",
-        name: "Adrenalizer",
-        pp: 5,
-        priority: 0,
-        flags: {snatch: 1, heal: 1},
-        heal: [1, 3],
-        self: {
-               boosts: {
-                     atk: 1,
-               },
-        },
-        target: "self",
-        type: "Fighting",
-        contestType: "Cute",
-        shortDesc: "Heals 1/3 max HP and raises Attack by 1.",
+	},																																																															
+	ironage: {	
+    num: -3308,
+    accuracy: 100,
+    basePower: 80,
+    basePowerCallback(target, source, move) {
+      if (["iceage", "stoneage"].includes(move.sourceEffect)) {
+        this.add("-combine");
+        return 150;
+      }
+      return move.basePower;
+    },
+    category: "Physical",
+    name: "Iron Age",
+    pp: 10,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, nonsky: 1, metronome: 1, pledgecombo: 1 },
+    onPrepareHit(target, source, move) {
+      for (const action of this.queue) {
+        if (action.choice !== "move")
+          continue;
+        const otherMove = action.move;
+        const otherMoveUser = action.pokemon;
+        if (!otherMove || !action.pokemon || !otherMoveUser.isActive || otherMoveUser.fainted || action.maxMove || action.zmove) {
+          continue;
+        }
+        if (otherMoveUser.isAlly(source) && ["iceage", "stoneage"].includes(otherMove.id)) {
+          this.queue.prioritizeAction(action, move);
+          this.add("-waiting", source, otherMoveUser);
+          return null;
+        }
+      }
+    },
+    onModifyMove(move) {
+      if (move.sourceEffect === "iceage") {
+        move.type = "Ice";
+        move.forceSTAB = true;
+        move.self = { sideCondition: "mirrorshield" };
+      }
+      if (move.sourceEffect === "stoneage") {
+        move.type = "Rock";
+        move.forceSTAB = true;
+        move.sideCondition = "gmaxsteelsurge";
+      }
+    },
+    target: "normal",
+    type: "Steel",
+    contestType: "Clever"		
 	},	
+	ironfang: {	
+    num: -3322,
+    accuracy: 95,
+    basePower: 65,
+    category: "Physical",
+    name: "Iron Fang",
+    pp: 15,
+    priority: 0,
+    flags: { contact: 1, protect: 1, mirror: 1, metronome: 1, bite: 1 },
+    secondaries: [
+      {
+        chance: 10,
+        boosts: {
+          def: -1
+        }
+      },
+      {
+        chance: 10,
+        volatileStatus: "flinch"
+      }
+    ],
+    target: "normal",
+    type: "Steel",
+    contestType: "Cool"		
+	},	
+	laststand: {
+    num: -3208,
+    accuracy: true,
+    basePower: 0,
+    category: "Status",
+    name: "Last Stand",
+    pp: 5,
+    priority: 0,
+    flags: { snatch: 1, metronome: 1 },
+    volatileStatus: "noretreat",
+    boosts: {
+      atk: 2,
+      spa: 2,
+      spe: 1
+    },
+    target: "self",
+    type: "Fighting"			
+	},	
+	letitcook: {
+    num: -3233,
+    accuracy: 95,
+    basePower: 100,
+    category: "Special",
+    name: "Let It Cook",
+    pp: 5,
+    priority: 0,
+    flags: { protect: 1, mirror: 1 },
+    self: {
+      boosts: {
+        spa: -1
+      }
+    },
+      secondary: {
+        chance: 10,
+        status: "brn"
+      },
+    target: "allAdjacentFoes",
+    type: "Fairy",
+    contestType: "Beautiful"			
+	},
+	leviathanpulse: {	
+    num: -3314,
+    accuracy: 90,
+    basePower: 45,
+    category: "Special",
+    name: "Leviathan Pulse",
+    pp: 10,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, pulse: 1, noparentalbond: 1 },
+    multihit: 2,
+    smartTarget: true,
+    target: "normal",
+    type: "Water",
+    contestType: "Tough"		
+	},	
+	lockin: {	
+    num: -3247,
+    accuracy: true,
+    basePower: 0,
+    category: "Status",
+    name: "Lock In",
+    pp: 5,
+    priority: 0,
+    flags: { snatch: 1, metronome: 1 },
+    volatileStatus: "noretreat",
+    onTry(source, target, move) {
+      if (source.volatiles["noretreat"])
+        return false;
+      if (source.volatiles["trapped"]) {
+        delete move.volatileStatus;
+      }
+    },
+    condition: {
+      onStart(pokemon) {
+        this.add("-start", pokemon, "move: Lock In");
+      },
+      onTrapPokemon(pokemon) {
+        pokemon.tryTrap();
+      }
+    },
+    boosts: {
+      atk: 1,
+      def: 1,
+      spd: 1
+    },
+    target: "self",
+    type: "Steel"		
+	},	
+	magicmissile: {
+    num: -3210,
+    accuracy: 100,
+    basePower: 90,
+    category: "Special",
+    name: "Magic Missile",
+    pp: 10,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, metronome: 1 },
+    onModifyType(move, pokemon) {
+      let type = pokemon.getTypes()[0];
+      if (type === "Bird")
+        type = "???";
+      if (type === "Stellar")
+        type = pokemon.getTypes(false, true)[0];
+      move.type = type;
+    },
+    target: "normal",
+    type: "Psychic",
+    contestType: "Clever"			
+	},	
+	magictrick: {	
+    num: -3211,
+    accuracy: true,
+    basePower: 0,
+    category: "Status",
+    name: "Magic Trick",
+    pp: 10,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, bypasssub: 1, allyanim: 1, metronome: 1 },
+    onHit(target, source) {
+      const targetAtk = target.storedStats.atk;
+      const targetSpA = target.storedStats.spa;
+      target.storedStats.atk = targetSpA;
+      target.storedStats.spa = targetAtk;
+      this.add("-activate", source, "move: Magic Trick", "[of] " + target);
+    },
+    target: "self",
+    type: "Fairy",
+    zMove: { boost: { spe: 1 } },
+    contestType: "Clever"		
+	},				
+	mantisstrike: {	
+    num: -3318,
+    accuracy: 100,
+    basePower: 80,
+    category: "Physical",
+    name: "Mantis Strike",
+    pp: 5,
+    priority: 1,
+    flags: { contact: 1, protect: 1, mirror: 1, metronome: 1, slicing: 1 },
+    onTry(source, target) {
+      const action = this.queue.willMove(target);
+      const move = action?.choice === "move" ? action.move : null;
+      if (!move || move.category === "Status" && move.id !== "mefirst" || target.volatiles["mustrecharge"]) {
+        return false;
+      }
+    },
+    target: "normal",
+    type: "Bug",
+    contestType: "Beautiful"		
+	},	
+	marinelight: {	
+    num: -3304,
+    accuracy: 90,
+    basePower: 130,
+    category: "Special",
+    name: "Marine Light",
+    pp: 5,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, metronome: 1, light: 1 },
+    self: {
+      boosts: {
+        spa: -2,
+      }
+    },
+    target: "normal",
+    type: "Water",
+    contestType: "Beautiful"		
+	},	
+	mindbend: {	
+    num: -3232,
+    accuracy: 100,
+    basePower: 80,
+    category: "Special",
+    name: "Mind Bend",
+    pp: 10,
+    priority: 0,
+    flags: { protect: 1, mirror: 1 },
+    overrideOffensiveStat: "spd",
+    secondary: {
+      chance: 20,
+      volatileStatus: "confusion"
+    },
+    target: "normal",
+    type: "Psychic"		
+	},	
+	mountainstorm: {	
+    num: -3298,
+    accuracy: 100,
+    basePower: 60,
+    category: "Physical",
+    isNonstandard: "Past",
+    name: "Mountain Storm",
+    pp: 10,
+    priority: 0,
+    flags: { contact: 1, protect: 1, mirror: 1, metronome: 1, throwing: 1, punch: 1 },
+    willCrit: true,
+    target: "normal",
+    type: "Electric",
+    contestType: "Cool"		
+	},			
 	placeholdertwo: {	
         num: -3022,
         accuracy: 100,
