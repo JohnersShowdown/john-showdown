@@ -23691,17 +23691,14 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			if (pokemon.baseSpecies.baseSpecies === 'Wizledger' && !pokemon.transformed) {
 				const forme = pokemon.species.id === 'wizledgerice' ? '' : '-Ice';
 				pokemon.formeChange('Wizledger' + forme, this.effect, false, '0', '[msg]');
-				return;
 			} 
-			if (pokemon.baseSpecies.baseSpecies === 'Wizledger-Ice' && !pokemon.transformed) {
-				const forme = pokemon.species.id === 'wizledgerelectric' ? '' : '-Electric';
-				pokemon.formeChange('Wizledger' + forme, this.effect, false, '0', '[msg]');
-				return;
+			else if (pokemon.baseSpecies.baseSpecies === 'Wizledger-Ice' && !pokemon.transformed) {
+				const forme2 = pokemon.species.id === 'wizledgerelectric' ? '' : '-Electric';
+				pokemon.formeChange('Wizledger' + forme2, this.effect, false, '0', '[msg]');
 			} 
-			if (pokemon.baseSpecies.baseSpecies === 'Wizledger-Electric' && !pokemon.transformed) {
-				const forme = pokemon.species.id === 'wizledger' ? '' : '-Fire';
-				pokemon.formeChange('Wizledger' + forme, this.effect, false, '0', '[msg]');
-				return;
+			else if (pokemon.baseSpecies.baseSpecies === 'Wizledger-Electric' && !pokemon.transformed) {
+				const forme3 = pokemon.species.id === 'wizledger' ? '' : '-Fire';
+				pokemon.formeChange('Wizledger' + forme3, this.effect, false, '0', '[msg]');
 			} 
     },
     target: "self",
@@ -23854,110 +23851,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     target: "any",
     type: "Flying",
     contestType: "Beautiful"			
-	},	
-	relicdance: {	
-    num: -3282,
-    accuracy: true,
-    basePower: 0,
-    category: "Status",
-    name: "Relic Dance",
-    pp: 15,
-    priority: 0,
-    flags: { snatch: 1, metronome: 1, dance: 1 },
-    boosts: {
-      atk: 1,
-      spa: 1,
-      spe: 1
-    },
-    onAfterMoveSecondarySelf(pokemon, target, move) {
-			if (pokemon.baseSpecies.baseSpecies === 'Meloetta' && !pokemon.transformed) {
-				const meloettaForme = pokemon.species.id === 'meloettapirouette' ? '' : '-Pirouette';
-				pokemon.formeChange('Meloetta' + meloettaForme, this.effect, false, '0', '[msg]');
-			}
-			if (pokemon.baseSpecies.baseSpecies === 'Meloetta-Pirouette' && !pokemon.transformed) {
-				const meloettaForme = pokemon.species.id === 'meloetta' ? '' : '-Aria';
-				pokemon.formeChange('Meloetta' + meloettaForme, this.effect, false, '0', '[msg]');
-			}
-    },
-    target: "self",
-    type: "Normal",
-    zMove: { boost: { spe: 1 } },
-    contestType: "Beautiful"			
-	},		
-	rootout: {	
-    num: -3325,
-    accuracy: 100,
-    basePower: 120,
-    category: "Physical",
-    name: "Root Out",
-    pp: 5,
-    priority: 0,
-    flags: { contact: 1, protect: 1, mirror: 1, metronome: 1 },
-    basePowerCallback(pokemon, target, move) {
-      if (pokemon.volatiles["ingrain"]) {
-        return move.basePower + 30;
-      }
-      return move.basePower;
-    },
-    self: {
-      onHit(source) {
-        if (source.volatiles["ingrain"]) {
-          this.add("-activate", source, "move: Root Out");
-          source.removeVolatile("ingrain");
-        }
-      },
-      boosts: {
-        def: -1,
-        spd: -1
-      }
-    },
-    target: "normal",
-    type: "Grass",
-    contestType: "Tough"			
-	},	
-	sandshift: {	
-    num: -3219,
-    accuracy: 100,
-    basePower: 60,
-    category: "Special",
-    name: "Sand Shift",
-    pp: 10,
-    priority: 0,
-    flags: { protect: 1, mirror: 1, metronome: 1 },
-    selfSwitch: true,
-    target: "normal",
-    type: "Ground",
-    contestType: "Cute"			
-	},	
-	seamitarslash: {	
-    num: -3323,
-    accuracy: true,
-    basePower: 75,
-    category: "Special",
-    overrideDefensiveStat: "def",
-    name: "Seamitar Slash",
-    pp: 10,
-    priority: 0,
-    flags: { protect: 1, mirror: 1, slicing: 1 },
-    critRatio: 2,
-    target: "normal",
-    type: "Water",
-    contestType: "Cool"			
-	},	
-	seismicwave: {	
-    num: -3305,
-    accuracy: 100,
-    basePower: 90,
-    category: "Physical",
-    overrideDefensiveStat: "spd",
-    name: "Seismic Wave",
-    pp: 10,
-    priority: 0,
-    flags: { protect: 1, mirror: 1, nonsky: 1, metronome: 1, sound: 1, bypasssub: 1 },
-    target: "allAdjacentFoes",
-    type: "Ground",
-    contestType: "Tough"			
-	},																		
+	},																								
 	placeholdertwo: {	
         num: -3022,
         accuracy: 100,
