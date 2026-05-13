@@ -23690,15 +23690,15 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     onAfterMoveSecondarySelf(pokemon, target, move) {
 			if (pokemon.species.id === 'Wizledger-Fire' && !pokemon.transformed) {
 				const forme = pokemon.species.id === 'wizledgerice' ? '' : '-Ice';
-				pokemon.formeChange('Wizledger' + forme, this.effect, false, '0', '[msg]');
+				pokemon.formeChange('Wizledger-Fire' + forme, this.effect, false, '0', '[msg]');
 			} 
 			else if (pokemon.species.id === 'Wizledger-Ice' && !pokemon.transformed) {
 				const forme2 = pokemon.species.id === 'wizledgerelectric' ? '' : '-Electric';
-				pokemon.formeChange('Wizledger' + forme2, this.effect, false, '0', '[msg]');
+				pokemon.formeChange('Wizledger-Fire' + forme2, this.effect, false, '0', '[msg]');
 			} 
 			else if (pokemon.species.id === 'Wizledger-Electric' && !pokemon.transformed) {
 				const forme3 = pokemon.species.id === 'wizledgerfire' ? '' : '-Fire';
-				pokemon.formeChange('Wizledger' + forme3, this.effect, false, '0', '[msg]');
+				pokemon.formeChange('Wizledger-Fire' + forme3, this.effect, false, '0', '[msg]');
 			} 
     },
     target: "self",
