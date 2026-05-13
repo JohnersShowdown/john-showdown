@@ -24121,7 +24121,182 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     type: "Water",
     zMove: { effect: "clearnegativeboost" },
     contestType: "Cute"		
-	},																								
+	},	
+	softserve: {	
+    num: -3297,
+    accuracy: true,
+    basePower: 0,
+    category: "Status",
+    name: "Soft Serve",
+    pp: 5,
+    priority: 0,
+    flags: { snatch: 1, heal: 1, metronome: 1 },
+    onHit(pokemon, target) {
+      let factor = 0.5;
+      if (this.field.isTerrain("mistyterrain") && target.isGrounded()) {
+        factor = 0.667;
+      }
+      if (this.field.isWeather(["snow","hail"])) {
+        factor = 0.667;
+      }
+      const success = !!this.heal(this.modify(pokemon.maxhp, factor));
+      if (!success) {
+        this.add("-fail", pokemon, "heal");
+        return this.NOT_FAIL;
+      }
+      return success;
+    },
+    target: "adjacentAllyOrSelf",
+    type: "Fairy",
+    zMove: { effect: "clearnegativeboost" },
+    contestType: "Cute"		
+	},	
+	sonicshriek: {
+	num: -3223,
+    accuracy: 100,
+    basePower: 90,
+    category: "Special",
+    name: "Sonic Shriek",
+    pp: 10,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, metronome: 1, sound: 1, bypasssub: 1 },
+    ignoreEvasion: true,
+    ignoreDefensive: true,
+    target: "normal",
+    type: "Dark",
+    contestType: "Cool"		
+	},	
+	spiritdrain: {	
+    num: -3241,
+    accuracy: 100,
+    basePower: 75,
+    category: "Special",
+    name: "Spirit Drain",
+    pp: 10,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, heal: 1, metronome: 1 },
+    drain: [1, 2],
+    target: "normal",
+    type: "Ghost",
+    contestType: "Clever"		
+	},		
+	starshower: {
+    num: -3292,
+    accuracy: 100,
+    basePower: 25,
+    category: "Special",
+    name: "Starshower",
+    pp: 15,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, metronome: 1, light: 1 },
+    multihit: [2, 5],
+    basePowerCallback(pokemon, target, move) {
+      if (pokemon.volatiles["cosmicpower"]) {
+        this.debug("BP increase after Cosmic Power");
+        return move.basePower * 1.5;
+      }
+      return move.basePower;
+    },
+    target: "normal",
+    type: "Normal",
+    zMove: { basePower: 140 },
+    maxMove: { basePower: 130 },
+    contestType: "Beautiful"			
+	},	
+	steelcutter: {	
+    num: -3225,
+    accuracy: 100,
+    basePower: 70,
+    category: "Physical",
+    name: "Steel Cutter",
+    pp: 20,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, metronome: 1, slicing: 1 },
+    critRatio: 2,
+    target: "normal",
+    type: "Steel",
+    contestType: "Cool"		
+	},	
+	stoneage: {	
+    num: -3307,
+    accuracy: 100,
+    basePower: 80,
+    basePowerCallback(target, source, move) {
+      if (["iceage", "ironage"].includes(move.sourceEffect)) {
+        this.add("-combine");
+        return 150;
+      }
+      return move.basePower;
+    },
+    category: "Physical",
+    name: "Stone Age",
+    pp: 10,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, nonsky: 1, metronome: 1, pledgecombo: 1 },
+    onPrepareHit(target, source, move) {
+      for (const action of this.queue) {
+        if (action.choice !== "move")
+          continue;
+        const otherMove = action.move;
+        const otherMoveUser = action.pokemon;
+        if (!otherMove || !action.pokemon || !otherMoveUser.isActive || otherMoveUser.fainted || action.maxMove || action.zmove) {
+          continue;
+        }
+        if (otherMoveUser.isAlly(source) && ["iceage", "ironage"].includes(otherMove.id)) {
+          this.queue.prioritizeAction(action, move);
+          this.add("-waiting", source, otherMoveUser);
+          return null;
+        }
+      }
+    },
+    onModifyMove(move) {
+      if (move.sourceEffect === "iceage") {
+        move.type = "Ice";
+        move.forceSTAB = true;
+        move.sideCondition = "icesplinters";
+      }
+      if (move.sourceEffect === "ironage") {
+        move.type = "Steel";
+        move.forceSTAB = true;
+        move.sideCondition = "gmaxsteelsurge";
+      }
+    },
+    target: "normal",
+    type: "Rock",
+    contestType: "Tough"		
+	},	
+	stormsiphon: {
+    num: -3250,
+    accuracy: true,
+    basePower: 0,
+    category: "Status",
+    name: "Storm Siphon",
+    pp: 5,
+    priority: 0,
+    flags: { snatch: 1, heal: 1, metronome: 1, light: 1 },
+    onHit(pokemon) {
+      let factor = 0.5;
+      if (this.field.isWeather(["raindance","primordialsea"])) {
+        factor = 0.667;
+      }
+      if (this.field.isTerrain(["electricterrain"])) {
+        factor = 0.667;
+      }
+      if (this.field.isWeather(["sunnyday","desolateland","sandstorm"])) {
+        factor = 0.25;
+      }
+      const success = !!this.heal(this.modify(pokemon.maxhp, factor));
+      if (!success) {
+        this.add("-fail", pokemon, "heal");
+        return this.NOT_FAIL;
+      }
+      return success;
+    },
+    target: "self",
+    type: "Electric",
+    zMove: { effect: "clearnegativeboost" },
+    contestType: "Clever"			
+	},																											
 	placeholdertwo: {	
         num: -3022,
         accuracy: 100,
