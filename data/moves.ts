@@ -24506,47 +24506,101 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     type: "Flying",
     contestType: "Cute"		
 	},
-	thunderclaw32: {
-    num: -3245,
-    accuracy: 100,
-    basePower: 70,
+	valleydrop: {
+    num: -3299,
+    accuracy: 90,
+    basePower: 85,
     category: "Physical",
-    name: "Thunder Claw",
+    name: "Valley Drop",
     pp: 15,
     priority: 0,
-    flags: { contact: 1, protect: 1, mirror: 1, metronome: 1 },
-    critRatio: 2,
+    flags: { contact: 1, protect: 1, mirror: 1, metronome: 1, throwing: 1 },
+    recoil: [1, 4],
+    secondary: {
+      chance: 100,
+      boosts: {
+        spe: -1
+      }
+    },
     target: "normal",
-    type: "Electric",
-    contestType: "Cool"			
+    type: "Rock",
+    contestType: "Cool"		
 	},
-	thunderclaw23: {
-    num: -3246,
-    accuracy: 100,
-    basePower: 70,
+	vengeanceofgenerations: {
+    num: -3227,
+    accuracy: true,
+    basePower: 200,
     category: "Physical",
-    name: "Thunder Claw",
-    pp: 15,
+    name: "Vengeance of Generations",
+    pp: 1,
     priority: 0,
-    flags: { contact: 1, protect: 1, mirror: 1, metronome: 1 },
-    critRatio: 2,
+    flags: {},
+    ignoreAbility: true,
+    ignoreImmunity: { "Ghost": true },
+    isZ: "djinnferniumz",
     target: "normal",
-    type: "Electric",
-    contestType: "Cool"			
+    type: "Ghost",
+    contestType: "Cool"		
 	},	
-	thunderclaw24: {
-    num: -3247,
+	vitalslash: {
+    num: -3229,
     accuracy: 100,
-    basePower: 70,
+    basePower: 75,
     category: "Physical",
-    name: "Thunder Claw",
-    pp: 15,
+    name: "Vital Slash",
+    pp: 10,
     priority: 0,
-    flags: { contact: 1, protect: 1, mirror: 1, metronome: 1 },
-    critRatio: 2,
+    flags: { contact: 1, protect: 1, mirror: 1, slicing: 1, heal: 1, metronome: 1 },
+    drain: [1, 2],
     target: "normal",
-    type: "Electric",
-    contestType: "Cool"			
+    type: "Dark",
+    contestType: "Clever"
+	},		
+	vinepress: {
+    num: -3279,
+    accuracy: 100,
+    basePower: 85,
+    category: "Physical",
+    name: "Vine Press",
+    pp: 10,
+    priority: 0,
+    flags: { contact: 1, protect: 1, mirror: 1 },
+    overrideOffensiveStat: "def",
+    target: "normal",
+    type: "Grass"	
+	},
+	volatileextract: {
+    num: -3301,
+    accuracy: true,
+    basePower: 0,
+    category: "Status",
+    name: "Volatile Extract",
+    pp: 5,
+    priority: 0,
+    flags: { protect: 1, reflectable: 1, mirror: 1 },
+    volatileStatus: "volatileextract",
+    target: "adjacentAllyOrSelf",
+    type: "Fire"		
+	},	
+	zekromkick: {
+    num: -3243,
+    accuracy: 90,
+    basePower: 120,
+    category: "Physical",
+    name: "Zekrom Kick",
+    pp: 5,
+    priority: 0,
+    flags: { contact: 1, protect: 1, mirror: 1, metronome: 1, kick: 1 },
+    onEffectiveness(typeMod, target, type, move) {
+      return typeMod + this.dex.getEffectiveness("Electric", type);
+    },
+    secondary: {
+      chance: 30,
+      volatileStatus: "flinch"
+    },
+    target: "normal",
+    type: "Dragon",
+    contestType: "Cool"	
 	},
 	placeone: {
     num: -3248,
