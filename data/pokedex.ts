@@ -23955,7 +23955,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		num: 2285,
 		name: "Wizledger-Electric",
 		baseSpecies: "Wizledger-Fire",
-		forme: "Ice",
+		forme: "Electric",
 		types: ["Electric", "Ghost"],
 		genderRatio: { M: 0.875, F: 0.125 },
 		baseStats: { hp: 60, atk: 30, def: 50, spa: 90, spd: 130, spe: 140 },
