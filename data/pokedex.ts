@@ -23923,7 +23923,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		evoLevel: 40,
 		eggGroups: ["Mineral"],
 		otherFormes: ["Wizledger-Ice", "Wizledger-Electric"],
-		formeOrder: ["Wizledger", "Wizledger-Ice", "Wizledger-Electric"],
+		formeOrder: ["Wizledger-Fire", "Wizledger-Ice", "Wizledger-Electric"],
 		tags: ["Fakemon"],
 	},
 	wizledgerice: {
