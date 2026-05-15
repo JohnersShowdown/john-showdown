@@ -7391,9 +7391,9 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     name: "Character Creation",
     shortDesc: "Changes form based on the type of the first move in it's moveset.",
     onStart(pokemon) {
-        const firstMove = pokemon.set?.moves?.[0];
-        if (!firstMove) return;
-        const move = this.dex.moves.get(firstMove);
+        const firstMoveId = pokemon.baseMoves?.[0] || pokemon.moves?.[0];
+        if (!firstMoveId) return;
+        const move = this.dex.moves.get(firstMoveId);
         if (!move) return;
         let targetForm = "";
         if (move.type === "Fire") targetForm = "Fire";
