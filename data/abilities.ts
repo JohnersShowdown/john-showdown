@@ -7387,6 +7387,33 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			}
 		}
 	},
+    charactercreation: {
+    name: "Character Creation",
+    shortDesc: "Changes form based on the type of the first move in it's moveset.",
+    onStart(pokemon) {
+        const firstMove = pokemon.set?.moves?.[0];
+        if (!firstMove) return;
+
+        const move = this.dex.moves.get(firstMove);
+        if (!move) return;
+
+        let targetForm = "";
+
+        if (move.type === "Fire") targetForm = "Fire";
+        else if (move.type === "Water") targetForm = "Water";
+        else if (move.type === "Grass") targetForm = "Grass";
+        else return;
+
+        const targetSpecies = `Homerratum-${targetForm}`;
+
+        if (pokemon.species.id !== toID(targetSpecies)) {
+            pokemon.formeChange(targetSpecies);
+            this.add('-formechange', pokemon, targetSpecies, '[from] ability: Character Creation');
+        }
+    },
+    rating: 3.5,
+    num: 2040,
+	},	
 	placeholder: {
 		name: "Placeholder",
 		shortDesc: "All non-Ghost and Dark type Pokemon lose 1/16th of their max HP at the end of their turn",
