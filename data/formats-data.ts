@@ -6962,5 +6962,21 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 	dragonoidsphere: {
 		tier: "OU",
 		natDexTier: "OU",
-	},																								
+	},		
+	homerratum: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	homerratumfire: {
+		tier: "Illegal",
+		natDexTier: "Illegal",
+	},	
+	homerratumwater: {
+		tier: "Illegal",
+		natDexTier: "Illegal",
+	},	
+	homerratumgrass: {
+		tier: "Illegal",
+		natDexTier: "Illegal",
+	},																												
 };
