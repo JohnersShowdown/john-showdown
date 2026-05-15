@@ -7391,6 +7391,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     name: "Character Creation",
     shortDesc: "Changes form based on the type of the first move in it's moveset.",
 	onStart(pokemon) {
+		if (pokemon.volatiles['charactercreation']) return;
 		const firstMove = pokemon.moveSlots?.[0];
 		if (!firstMove) return;
 		const move = this.dex.moves.get(firstMove.id);
@@ -7399,6 +7400,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		const targetSpecies = this.dex.species.get(`${baseSpecies}-Fire`);
 		if (!targetSpecies.exists || pokemon.species.id === targetSpecies.id) return;
 		pokemon.formeChange(targetSpecies, this.effect, true);
+		pokemon.addVolatile('charactercreation');
 		const newAbility = this.dex.abilities.get(targetSpecies.abilities['0']);
 	    if (newAbility.exists) {
 		pokemon.setAbility(newAbility.id);

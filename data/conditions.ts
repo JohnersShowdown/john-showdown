@@ -1114,6 +1114,9 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 			this.add('-activate', pokemon, 'move: Foretell Calamity');
 	    },
 	},	
+	charactercreation: {
+	name: "Character Creation",	
+	},		
 	butterflylanding: {
     onResidualOrder: 25,
     onStart(target) {
