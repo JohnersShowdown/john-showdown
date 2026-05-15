@@ -7421,6 +7421,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	const newAbility = this.dex.abilities.get(
 		targetSpecies.abilities['0']
 	);
+	if (pokemon.species.baseSpecies === "Homerratum" && pokemon.species.forme === 'Normal') return;
 	if (newAbility.exists) {
 		pokemon.setAbility(newAbility);
 	}
