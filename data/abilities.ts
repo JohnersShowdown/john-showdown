@@ -7421,7 +7421,6 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	const newAbility = this.dex.abilities.get(
 		targetSpecies.abilities['0']
 	);
-	this.effectState.silent = true;
 	if (newAbility.exists) {
 		pokemon.setAbility(newAbility);
 	}
