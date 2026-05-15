@@ -7435,6 +7435,65 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	);
 	return;
 	},
+	},	
+	moonblessing: {
+		name: "Moon Blessing",
+		onModifyAtk(_, _attacker, _defender, move) {
+			if (move.type !== 'Fairy') return;
+			return this.chainModify(1.5);
+		},
+		onModifySpA(_, _attacker, _defender, move) {
+			if (move.type !== 'Fairy') return;
+			return this.chainModify(1.5);
+		},
+		onTryHeal(damage, target, source, effect) {
+			if (effect?.id === 'moonlight') {
+				this.add('-activate', target, 'ability: Moon Blessing');
+				return this.chainModify(1.5); // 75% healing instead of 50%
+			}
+		},
+		flags: {},
+		rating: 3.5,
+		num: -1133,
+	},
+	cowardess: {
+		name: "Cowardess",
+		onAfterEachBoost(boost, target, source, effect) {
+			if (!source || target.isAlly(source)) return;
+			
+			let statsLowered = false;
+			for (const stat in boost) {
+				if (boost[stat as BoostID]! < 0) {
+					statsLowered = true;
+					break;
+				}
+			}
+			
+			if (statsLowered && this.canSwitch(target.side)) {
+				this.add('-activate', target, 'ability: Cowardess');
+				target.switchFlag = true;
+			}
+		},
+		flags: {},
+		rating: 1,
+		num: -1134,
+	},
+	supremegrudge: {
+		name: "Supreme Grudge",
+		onDamagingHitOrder: 1,
+		onDamagingHit(damage, target, source, move) {
+			if (!target.hp) {
+				this.add('-ability', target, 'Supreme Grudge');
+				const moveIndex = source.moveSlots.findIndex(ms => ms.id === move.id);
+				if (moveIndex >= 0) {
+					source.moveSlots[moveIndex].pp = 0;
+					this.add('-activate', target, 'ability: Supreme Grudge', move.name);
+				}
+			}
+		},
+		flags: {},
+		rating: 2.5,
+		num: -1135,
 	},		
 	weatherabsorber: {
 		name: "Weather Absorber",
