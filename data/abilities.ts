@@ -7396,10 +7396,12 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		const move = this.dex.moves.get(firstMove.id);
 		if (!move || move.type !== 'Fire') return;
 		const baseSpecies = pokemon.baseSpecies.name;
-		// Change this to your actual Fire form species ID
 		const targetSpecies = this.dex.species.get(`${baseSpecies}-Fire`);
 		if (!targetSpecies.exists || pokemon.species.id === targetSpecies.id) return;
 		pokemon.formeChange(targetSpecies, this.effect, true);
+		const newAbility = targetSpecies.abilities['0'];
+	    if (!newAbility) return;
+	    pokemon.setAbility(newAbility);
 		this.add('-formechange', pokemon, targetSpecies.name, '[from] ability: Character Creation');
 	},
 	flags: {},
