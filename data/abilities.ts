@@ -7434,6 +7434,77 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		name: "Adrenaline Rush",
 		rating: 3,
 		num: -1089,
+	},	
+	elementalking: {
+		name: "Elemental King",
+		onModifyAtk(_, _attacker, _defender, move) {
+			if (move.type !== 'Ground' && move.type !== 'Water' && move.type !== 'Fire') return;
+			return this.chainModify(1.5);
+		},
+		onModifySpA(_, _attacker, _defender, move) {
+			if (move.type !== 'Ground' && move.type !== 'Water' && move.type !== 'Fire') return;
+			return this.chainModify(1.5);
+		},
+		flags: {},
+		rating: 4,
+		num: -1105,
+	},
+	precision: {
+		name: "Precision",
+		// No Guard effect
+		onAnyInvulnerabilityPriority: 1,
+		onAnyInvulnerability(target, source, move) {
+			if (move && (source === this.effectState.target || target === this.effectState.target)) return 0;
+		},
+		onAnyAccuracy(accuracy, target, source, move) {
+			if (move && (source === this.effectState.target || target === this.effectState.target)) {
+				return true;
+			}
+			return accuracy;
+		},
+		// Punching Glove effect
+		onBasePowerPriority: 23,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.flags['punch']) {
+				this.debug('Precision punch boost');
+				return this.chainModify(1.1);
+			}
+		},
+		onModifyMove(move, pokemon, target) {
+			if (move.flags['punch']) {
+				move.ignoreImmunity = true;
+			}
+		},
+		flags: {},
+		rating: 4,
+		num: -1106,
+	},
+	theoathkeeper: {
+	name: "The Oath Keeper",
+	onModifyCritRatio(critRatio, source, target, move) {
+		if (target.hp <= target.maxhp * 0.3) {
+			return 5; // Guaranteed critical hit
+		}
+	},
+	flags: {},
+	rating: 3.5,
+	num: -1107,
+	},
+	voltagecharge: {
+		name: "Voltage Charge",
+		onModifyMovePriority: -1,
+		onModifyMove(move) {
+			if (move.type === 'Electric') {
+				if (!move.secondaries) move.secondaries = [];
+				move.secondaries.push({
+					chance: 20,
+					status: 'par',
+				});
+			}
+		},
+		flags: {},
+		rating: 2.5,
+		num: -1108,
 	},		
 	placeholder: {
 		name: "Placeholder",
