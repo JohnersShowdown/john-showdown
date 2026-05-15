@@ -7424,9 +7424,6 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	if (newAbility.exists) {
 		pokemon.setAbility(newAbility);
 	}
-	this.add('-activate', pokemon, 'ability: Moxie');
-	this.add('-activate', pokemon, 'ability: Adrenaline Rush');
-	this.add('-activate', pokemon, 'ability: Charisma');
 	this.add(
 		'-formechange',
 		pokemon,
