@@ -7402,9 +7402,9 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		pokemon.formeChange(targetSpecies, this.effect, true);
 		pokemon.addVolatile('charactercreation');
 		const newAbility = this.dex.abilities.get(targetSpecies.abilities['0']);
+		this.effectState.silent = true;
 	    if (newAbility.exists) {
-		pokemon.setAbility(newAbility.id);
-		pokemon.ability = newAbility.id;
+		pokemon.setAbility(newAbility);
     	}
 		this.add('-formechange', pokemon, targetSpecies.name, 'ability: Character Creation'); return;
 	},
