@@ -7391,26 +7391,49 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     name: "Character Creation",
     shortDesc: "Changes form based on the type of the first move in it's moveset.",
 	onStart(pokemon) {
-		if (pokemon.volatiles['charactercreation']) return;
-		const firstMove = pokemon.moveSlots?.[0];
-		if (!firstMove) return;
-		const move = this.dex.moves.get(firstMove.id);
-		if (!move || move.type !== 'Fire') return;
-		const baseSpecies = pokemon.baseSpecies.name;
-		const targetSpecies = this.dex.species.get(`${baseSpecies}-Fire`);
-		if (!targetSpecies.exists || pokemon.species.id === targetSpecies.id) return;
-		pokemon.formeChange(targetSpecies, this.effect, true);
-		pokemon.addVolatile('charactercreation');
-		const newAbility = this.dex.abilities.get(targetSpecies.abilities['0']);
-	    if (newAbility.exists) {
+	if (pokemon.volatiles['charactercreation']) return;
+	const firstMove = pokemon.moveSlots?.[0];
+	if (!firstMove) return;
+	const move = this.dex.moves.get(firstMove.id);
+	if (!move) return;
+	let form = '';
+	switch (move.type) {
+	case 'Fire':
+		form = 'Fire';
+		break;
+	case 'Water':
+		form = 'Water';
+		break;
+	case 'Grass':
+		form = 'Grass';
+		break;
+	default:
+		return;
+	}
+	const baseSpecies = pokemon.baseSpecies.name;
+	const targetSpecies = this.dex.species.get(
+		`${baseSpecies}-${form}`
+	);
+	if (!targetSpecies.exists) return;
+	if (pokemon.species.id === targetSpecies.id) return;
+	pokemon.formeChange(targetSpecies, this.effect, true);
+	pokemon.addVolatile('charactercreation');
+	const newAbility = this.dex.abilities.get(
+		targetSpecies.abilities['0']
+	);
+	this.effectState.silent = true;
+	if (newAbility.exists) {
 		pokemon.setAbility(newAbility);
-    	}
-		this.add('-formechange', pokemon, targetSpecies.name, 'ability: Character Creation'); return;
+	}
+	this.add(
+		'-formechange',
+		pokemon,
+		targetSpecies.name,
+		'ability: Character Creation'
+	);
+	return;
 	},
-	flags: {},
-	rating: 2,
-    num: 2040,
-	},	
+	},		
 	poseidon: {
 		name: "Poseidon",
 		onSourceModifyDamage(damage, source, target, move) {
