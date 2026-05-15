@@ -7390,27 +7390,20 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     charactercreation: {
     name: "Character Creation",
     shortDesc: "Changes form based on the type of the first move in it's moveset.",
-    onStart(pokemon) {
-        const firstMoveId = pokemon.baseMoves?.[0] || pokemon.moves?.[0];
-        if (!firstMoveId) return;
-        const move = this.dex.moves.get(firstMoveId);
-        if (!move) return;
-        let targetForm = "";
-        if (move.type === "Fire") targetForm = "Fire";
-        else if (move.type === "Water") targetForm = "Water";
-        else if (move.type === "Grass") targetForm = "Grass";
-        else return;
-        const targetSpecies = this.dex.species.get(`Homerratum-${targetForm}`);
-        if (!targetSpecies) return;
-        if (pokemon.species.id === targetSpecies.id) return;
-        pokemon.formeChange(
-            targetSpecies,
-            this.effect,
-            false,
-            '[from] ability: Character Creation'
-        );
-    },
-    rating: 3.5,
+	onStart(pokemon) {
+		const firstMove = pokemon.moveSlots?.[0];
+		if (!firstMove) return;
+		const move = this.dex.moves.get(firstMove.id);
+		if (!move || move.type !== 'Fire') return;
+		const baseSpecies = pokemon.baseSpecies.name;
+		// Change this to your actual Fire form species ID
+		const targetSpecies = this.dex.species.get(`${baseSpecies}-Fire`);
+		if (!targetSpecies.exists || pokemon.species.id === targetSpecies.id) return;
+		pokemon.formeChange(targetSpecies, this.effect, true);
+		this.add('-formechange', pokemon, targetSpecies.name, '[from] ability: Character Creation');
+	},
+	flags: {},
+	rating: 2,
     num: 2040,
 	},	
 	charisma: {
