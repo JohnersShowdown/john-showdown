@@ -7393,23 +7393,22 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     onStart(pokemon) {
         const firstMove = pokemon.set?.moves?.[0];
         if (!firstMove) return;
-
         const move = this.dex.moves.get(firstMove);
         if (!move) return;
-
         let targetForm = "";
-
         if (move.type === "Fire") targetForm = "Fire";
         else if (move.type === "Water") targetForm = "Water";
         else if (move.type === "Grass") targetForm = "Grass";
         else return;
-
-        const targetSpecies = `Homerratum-${targetForm}`;
-
-        if (pokemon.species.id !== toID(targetSpecies)) {
-            pokemon.formeChange(targetSpecies);
-            this.add('-formechange', pokemon, targetSpecies, '[from] ability: Character Creation');
-        }
+        const targetSpecies = this.dex.species.get(`Homerratum-${targetForm}`);
+        if (!targetSpecies) return;
+        if (pokemon.species.id === targetSpecies.id) return;
+        pokemon.formeChange(
+            targetSpecies,
+            this.effect,
+            false,
+            '[from] ability: Character Creation'
+        );
     },
     rating: 3.5,
     num: 2040,
