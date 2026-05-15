@@ -7404,7 +7404,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		pokemon.setAbility(newAbility.id);
 		pokemon.ability = newAbility.id;
     	}
-		this.add('-formechange', pokemon, targetSpecies.name, '[from] ability: Character Creation'); return;
+		this.add('-formechange', pokemon, targetSpecies.name, 'ability: Character Creation'); return;
 	},
 	flags: {},
 	rating: 2,
