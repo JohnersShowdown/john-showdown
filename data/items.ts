@@ -8175,4 +8175,49 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		num: 2200,
 		gen: 9,
 	},	
+	paralyzeorb: {
+		name: "Paralyze Orb",
+		spritenum: 145,
+		fling: {
+			basePower: 30,
+			status: 'prz',
+		},
+		onResidualOrder: 28,
+		onResidualSubOrder: 3,
+		onResidual(pokemon) {
+			pokemon.trySetStatus('prz', pokemon);
+		},
+		num: 2300,
+		gen: 9,
+	},
+	freezeorb: {
+		name: "Freeze Orb",
+		spritenum: 145,
+		fling: {
+			basePower: 30,
+			status: 'frz',
+		},
+		onResidualOrder: 28,
+		onResidualSubOrder: 3,
+		onResidual(pokemon) {
+			pokemon.trySetStatus('frz', pokemon);
+		},
+		num: 2301,
+		gen: 9,
+	},
+	sleeporb: {
+		name: "Sleep Orb",
+		spritenum: 145,
+		fling: {
+			basePower: 30,
+			status: 'slp',
+		},
+		onResidualOrder: 28,
+		onResidualSubOrder: 3,
+		onResidual(pokemon) {
+			pokemon.trySetStatus('slp', pokemon);
+		},
+		num: 2302,
+		gen: 9,
+	},			
 };
