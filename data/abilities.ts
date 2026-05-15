@@ -7399,10 +7399,12 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		const targetSpecies = this.dex.species.get(`${baseSpecies}-Fire`);
 		if (!targetSpecies.exists || pokemon.species.id === targetSpecies.id) return;
 		pokemon.formeChange(targetSpecies, this.effect, true);
-		this.add('-formechange', pokemon, targetSpecies.name, '[from] ability: Character Creation');
-		const newAbility = targetSpecies.abilities['0'];
-	    if (!newAbility) return;
-	    pokemon.setAbility(newAbility);		
+		const newAbility = this.dex.abilities.get(targetSpecies.abilities['0']);
+	    if (newAbility.exists) {
+		pokemon.setAbility(newAbility.id);
+		pokemon.ability = newAbility.id;
+    	}
+		this.add('-formechange', pokemon, targetSpecies.name, '[from] ability: Character Creation'); return;
 	},
 	flags: {},
 	rating: 2,
