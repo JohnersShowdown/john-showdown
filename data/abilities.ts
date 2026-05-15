@@ -7414,6 +7414,27 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     rating: 3.5,
     num: 2040,
 	},	
+	charisma: {
+		name: 'Charisma',
+		onSourceAfterFaint(length, _, source, effect) {
+			if (effect && effect.effectType === 'Move') {
+				this.boost({ spa: length }, source);
+			}
+		},
+		num: -1017,
+		rating: 3.5,
+	},
+	adrenalinerush: {
+		onSourceAfterFaint(length, target, source, effect) {
+			if (effect && effect.effectType === 'Move') {
+				this.boost({ spe: length }, source);
+			}
+		},
+		flags: {},
+		name: "Adrenaline Rush",
+		rating: 3,
+		num: -1089,
+	},		
 	placeholder: {
 		name: "Placeholder",
 		shortDesc: "All non-Ghost and Dark type Pokemon lose 1/16th of their max HP at the end of their turn",
