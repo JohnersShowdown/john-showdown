@@ -24034,7 +24034,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		baseSpecies: "Dragonoid-Sphere",
 		forme: "Brawl",
 		types: ["Dragon", "Fire"],
-		baseStats: { hp: 100, atk: 100, def: 75, spa: 125, spd: 80, spe: 125 },
+		baseStats: { hp: 100, atk: 115, def: 65, spa: 125, spd: 70, spe: 125 },
 		abilities: { 0: "Brawl" },
 		heightm: 4,
 		weightkg: 999.9,

@@ -6954,5 +6954,13 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 	papersol: {
 		tier: "OU",
 		natDexTier: "OU",
+	},	
+	dragonoidbrawl: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	dragonoidsphere: {
+		tier: "OU",
+		natDexTier: "OU",
 	},																								
 };
