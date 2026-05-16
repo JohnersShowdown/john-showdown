@@ -7425,6 +7425,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	if (newAbility.exists) {
 		pokemon.setAbility(newAbility);
 	}
+	this.add('-ability', pokemon, `ability: ${newAbility}`, '[silent]');
 	this.add(
 		'-formechange',
 		pokemon,
