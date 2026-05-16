@@ -24133,9 +24133,9 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		eggGroups: ["Undiscovered"],
 		tags: ["Fakemon"],
 	},
-	carbinkquartz: {
+	quartzcarbink: {
 		num: 2314,
-		name: "Carbinkquartz",
+		name: "Quartzcarbink",
 		types: ["Rock", "Fire"],
 		baseStats: { hp: 42, atk: 142, def: 42, spa: 42, spd: 42, spe: 142 },
 		abilities: { 0: "Clear Body", 1: "Sturdy", H: "Screen Cleaner" },
@@ -24155,7 +24155,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		heightm: 0.7,
 		weightkg: 6.8,
 		color: "White",
-		prevo: "Carbinkquartz",
+		prevo: "Quartzcarbink",
 		evoLevel: 40,
 		eggGroups: ["Fairy", "Mineral"],
 		tags: ["Fakemon"],
