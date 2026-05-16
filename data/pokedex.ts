@@ -21342,7 +21342,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 	},
 	yakoyzaryujin: {
 		num: 2022,
-		name: "Yakoyza",
+		name: "Yakoyza-Ryujin",
 		baseSpecies: "Yakoyza",
 		forme: "Ryujin",
 		types: ["Water", "Dragon"],
