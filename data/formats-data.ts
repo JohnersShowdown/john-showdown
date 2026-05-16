@@ -6350,7 +6350,7 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		tier: "OU",
 		natDexTier: "OU",
 	},
-	yakoyzatiger: {
+	yakoyza: {
 		tier: "OU",
 		doublesTier: "(DUU)",
 		natDexTier: "RU",
