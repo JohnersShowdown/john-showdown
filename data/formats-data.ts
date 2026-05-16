@@ -6847,6 +6847,10 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		tier: "OU",
 		natDexTier: "OU",
 	},
+	palegardenphantump: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
 	palegardentrevenant: {
 		tier: "OU",
 		natDexTier: "OU",
