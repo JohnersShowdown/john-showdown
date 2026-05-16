@@ -21309,9 +21309,9 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		eggGroups: ["Water1"],
 		tags: ["Fakemon"],
 	},
-	yakoyzatiger: {
+	yakoyza: {
 		num: 2022,
-		name: "Yakoyza-Tiger",
+		name: "Yakoyza",
 		baseForme: "Tiger",
 		types: ["Water", "Fighting"],
 		genderRatio: { M: 0.875, F: 0.125 },
@@ -21323,13 +21323,13 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		prevo: "Nokoi",
 		evoLevel: 30,
 		otherFormes: ["Yakoyza-Ink", "Yakoyza-Ryujin", "Yakoyza-Oni"],
-		formeOrder: ["Yakoyza-Tiger", "Yakoyza-Ink", "Yakoyza-Ryujin", "Yakoyza-Oni"],
+		formeOrder: ["Yakoyza", "Yakoyza-Ink", "Yakoyza-Ryujin", "Yakoyza-Oni"],
 		eggGroups: ["Water1"],
 	},
 	yakoyzaink: {
 		num: 2022,
 		name: "Yakoyza-Ink",
-		baseSpecies: "Yakoyza-Tiger",
+		baseSpecies: "Yakoyza",
 		forme: "Ink",
 		types: ["Water", "Dark"],
 		genderRatio: { M: 0.875, F: 0.125 },
@@ -21342,8 +21342,8 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 	},
 	yakoyzaryujin: {
 		num: 2022,
-		name: "Yakoyza-Ryujin",
-		baseSpecies: "Yakoyza-Tiger",
+		name: "Yakoyza",
+		baseSpecies: "Yakoyza",
 		forme: "Ryujin",
 		types: ["Water", "Dragon"],
 		genderRatio: { M: 0.875, F: 0.125 },
@@ -21357,7 +21357,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 	yakoyzaoni: {
 		num: 2022,
 		name: "Yakoyza-Oni",
-		baseSpecies: "Yakoyza-Tiger",
+		baseSpecies: "Yakoyza",
 		forme: "Oni",
 		types: ["Water", "Fire"],
 		genderRatio: { M: 0.875, F: 0.125 },
