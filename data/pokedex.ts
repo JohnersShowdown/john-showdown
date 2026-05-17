@@ -23769,6 +23769,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		eggGroups: ["Undiscovered"],
 		requiredMove: "Spirit Song",
 		battleOnly: "Meloetta",
+		tags: ["Fakemon", "Mythical"],
 	},
 	sephiredge: {
 		num: 2271,
