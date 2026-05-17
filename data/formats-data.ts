@@ -7133,5 +7133,9 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 	homerratumgrass: {
 		tier: "Illegal",
 		natDexTier: "Illegal",
-	},																												
+	},
+	tigerfish: {
+		tier: "OU",
+		natDexTier: "OU",
+	},																														
 };
