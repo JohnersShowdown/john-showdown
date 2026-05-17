@@ -7137,5 +7137,17 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 	tigerfish: {
 		tier: "OU",
 		natDexTier: "OU",
-	},																														
+	},
+	ryujinfish: {
+		tier: "OU",
+		natDexTier: "OU",
+	},		
+	onifish: {
+		tier: "OU",
+		natDexTier: "OU",
+	},		
+	inkfish: {
+		tier: "OU",
+		natDexTier: "OU",
+	},																																			
 };
