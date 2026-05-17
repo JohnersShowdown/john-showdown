@@ -24246,7 +24246,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 	},	
 	tigerfish: {
 		num: 2700,
-		name: "Yakoyza-Tiger",
+		name: "Tigerfish",
 		types: ["Water", "Fighting"],
 		baseStats: { hp: 78, atk: 119, def: 78, spa: 72, spd: 85, spe: 98 },
 		abilities: { 0: "Swift Swim", H: "Reckless" },
@@ -24258,7 +24258,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 	},	
 	onifish: {
 		num: 2701,
-		name: "Yakoyza-Oni",
+		name: "Onifish",
 		types: ["Water", "Fire"],
 		baseStats: { hp: 78, atk: 119, def: 78, spa: 72, spd: 85, spe: 98 },
 		abilities: { 0: "Swift Swim", H: "Reckless" },
@@ -24270,7 +24270,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 	},	
 	ryujinfish: {
 		num: 2702,
-		name: "Yakoyza-Ryujin",
+		name: "Ryujinfish",
 		types: ["Water", "Dragon"],
 		baseStats: { hp: 78, atk: 119, def: 78, spa: 72, spd: 85, spe: 98 },
 		abilities: { 0: "Swift Swim", H: "Reckless" },
@@ -24282,7 +24282,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 	},	
 	inkfish: {
 		num: 2703,
-		name: "Yakoyza-Ink",
+		name: "Inkfish",
 		types: ["Water", "Dark"],
 		baseStats: { hp: 78, atk: 119, def: 78, spa: 72, spd: 85, spe: 98 },
 		abilities: { 0: "Swift Swim", H: "Reckless" },
