@@ -8174,7 +8174,51 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		},
 		num: 2200,
 		gen: 9,
+	},
+	alloettite: {
+		name: "Alloettite",
+		spritenum: 577,
+		megaStone: { "Alloette": "Alloette-Mega" },
+		itemUser: ["Alloette"],
+		onTakeItem(item, source) {
+			return !item.megaStone?.[source.baseSpecies.baseSpecies];
+		},
+		num: 2201,
+		gen: 9,
 	},	
+	clockworkleavannite: {
+		name: "Clockworkleavannite",
+		spritenum: 577,
+		megaStone: { "Clockworkleavanny": "Clockworkleavanny-Mega" },
+		itemUser: ["Clockworkleavanny"],
+		onTakeItem(item, source) {
+			return !item.megaStone?.[source.baseSpecies.baseSpecies];
+		},
+		num: 2202,
+		gen: 9,
+	},	
+	coppergolurkite: {
+		name: "Coppergolurkite",
+		spritenum: 577,
+		megaStone: { "Coppergolurk": "Coppergolurk-Mega" },
+		itemUser: ["Coppergolurk"],
+		onTakeItem(item, source) {
+			return !item.megaStone?.[source.baseSpecies.baseSpecies];
+		},
+		num: 2203,
+		gen: 9,
+	},	
+	tanglarite: {
+		name: "Tanglarite",
+		spritenum: 577,
+		megaStone: { "Tanglare": "Tanglare-Mega" },
+		itemUser: ["Tanglare"],
+		onTakeItem(item, source) {
+			return !item.megaStone?.[source.baseSpecies.baseSpecies];
+		},
+		num: 2204,
+		gen: 9,
+	},						
 	paralyzeorb: {
 		name: "Paralyze Orb",
 		spritenum: 145,
