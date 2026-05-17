@@ -24247,6 +24247,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 	clockworkleavannymega: {
 		num: 2319,
 		name: "Clockworkleavanny-Mega",
+		baseSpecies: "Clockworkleavanny",
 		forme: "Mega",
 		types: ["Steel", "Bug"],
 		baseStats: { hp: 80, atk: 168, def: 120, spa: 50, spd: 95, spe: 87 },
