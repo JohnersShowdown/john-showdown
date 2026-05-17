@@ -24326,5 +24326,17 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		color: "White",
 		eggGroups: ["Mineral"],
 		tags: ["Fakemon"],
+	},	
+	tigerfish: {
+		num: 2700,
+		name: "Tigerfish",
+		types: ["Water", "Fighting"],
+		baseStats: { hp: 78, atk: 119, def: 78, spa: 72, spd: 85, spe: 98 },
+		abilities: { 0: "Swift Swim", H: "Reckless" },
+		heightm: 1.5,
+		weightkg: 68,
+		color: "White",
+		eggGroups: ["Fairy", "Mineral"],
+		tags: ["Fakemon"],
 	},					
 };
