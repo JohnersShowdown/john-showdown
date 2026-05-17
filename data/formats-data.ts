@@ -6350,22 +6350,22 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		tier: "OU",
 		natDexTier: "OU",
 	},
-	yakoyza: {
+	tigeryakoyza: {
 		tier: "OU",
 		doublesTier: "(DUU)",
 		natDexTier: "RU",
 	},
-	yakoyzaink: {
+	inkyakoyza: {
 		tier: "OU",
 		doublesTier: "(DUU)",
 		natDexTier: "RU",
 	},
-	yakoyzaryujin: {
+	ryujinyakoyza: {
 		tier: "OU",
 		doublesTier: "(DUU)",
 		natDexTier: "RU",
 	},
-	yakoyzaoni: {
+	oniyakoyza: {
 		tier: "OU",
 		doublesTier: "(DUU)",
 		natDexTier: "RU",
@@ -7000,6 +7000,10 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		natDexTier: "OU",
 	},	
 	warpedshiinotic: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	centisculk: {
 		tier: "OU",
 		natDexTier: "OU",
 	},	
