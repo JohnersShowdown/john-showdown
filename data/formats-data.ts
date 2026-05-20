@@ -7149,5 +7149,17 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 	inkfish: {
 		tier: "OU",
 		natDexTier: "OU",
-	},																																			
+	},	
+	archaicsalt: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	archaicsaltmega: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	capybaronne: {
+		tier: "OU",
+		natDexTier: "OU",
+	},																																						
 };

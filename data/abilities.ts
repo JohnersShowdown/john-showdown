@@ -7455,5 +7455,43 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		name: "Adrenaline Rush",
 		rating: 3,
 		num: -1089,
-	},																																													
+	},
+    ignorant: {
+	name: "Ignorant",
+	flags: {},
+	rating: 3,
+	num: -1089,
+	shortDesc: "This Pokemon's HP-based moves always act at maximum power.",
+	onBasePower(basePower, pokemon, target, move) {
+		const hpMoves = [
+			'waterspout',
+			'eruption',
+			'wringout',
+			'crushgrip',
+			'hardpress',
+			'tidalcrash',
+		];
+		if (!hpMoves.includes(move.id)) return;
+		if (
+			move.id === 'waterspout' ||
+			move.id === 'eruption' ||
+			move.id === 'tidalcrash'
+		) {
+			return this.chainModify(150 / basePower);
+		}
+		if (move.id === 'wringout' || move.id === 'crushgrip') {
+			const currentBP = Math.floor((120 * target.hp) / target.maxhp) + 1;
+			const maxBP = 121;
+			return this.chainModify(maxBP / currentBP);
+		}
+		if (move.id === 'hardpress') {
+			const currentBP = Math.floor(100 * (target.hp / target.maxhp));
+			const maxBP = 100;
+
+			if (currentBP <= 0) return;
+
+			return this.chainModify(maxBP / currentBP);
+		}
+	},
+},																																													
 };

@@ -24682,7 +24682,25 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
         type: "Bug",
         contestType: "Cool",
         shortDesc: "Raises user's Atk by 1 and lowers target's Def by 1.",
-	},					  
+	},		
+	wavelength: {
+		num:-3098,
+		accuracy: 100,
+		basePower: 150,
+		basePowerCallback(pokemon, target, move) {
+			const bp = move.basePower * pokemon.hp / pokemon.maxhp;
+			this.debug(`BP: ${bp}`);
+			return bp;
+		},
+		category: "Physical",
+		name: "Wavelength",
+		pp: 5,
+		priority: 0,
+		flags: { protect: 1, mirror: 1, metronome: 1 },
+		target: "allAdjacentFoes",
+		type: "Water",
+		contestType: "Beautiful",
+	},				  
 	lacadia: {
 		num: 2300,
 		accuracy: 100,
