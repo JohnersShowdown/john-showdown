@@ -8218,7 +8218,51 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		},
 		num: 2204,
 		gen: 9,
-	},						
+	},
+	archaite: {
+		name: "Archaite",
+		spritenum: 577,
+		megaStone: { "Archaic Salt": "Archaic Salt-Mega" },
+		itemUser: ["Archaic Salt"],
+		onTakeItem(item, source) {
+			return !item.megaStone?.[source.baseSpecies.baseSpecies];
+		},
+		num: 2205,
+		gen: 9,
+	},
+	midnightlucarioite: {
+		name: "Midnightlucarioite",
+		spritenum: 577,
+		megaStone: { "Midnightlucario": "Midnightlucario-Mega" },
+		itemUser: ["Midnightlucario"],
+		onTakeItem(item, source) {
+			return !item.megaStone?.[source.baseSpecies.baseSpecies];
+		},
+		num: 2206,
+		gen: 9,
+	},	
+	midnightgalladite: {
+		name: "Midnightgalladite",
+		spritenum: 577,
+		megaStone: { "Midnightgallade": "Midnightgallade-Mega" },
+		itemUser: ["Midnightgallade"],
+		onTakeItem(item, source) {
+			return !item.megaStone?.[source.baseSpecies.baseSpecies];
+		},
+		num: 2207,
+		gen: 9,
+	},
+	midnightgardevoirite: {
+		name: "Midnightgardevoirite",
+		spritenum: 577,
+		megaStone: { "Midnightgardevoir": "Midnightgardevoir-Mega" },
+		itemUser: ["Midnightgardevoir"],
+		onTakeItem(item, source) {
+			return !item.megaStone?.[source.baseSpecies.baseSpecies];
+		},
+		num: 2208,
+		gen: 9,
+	},										
 	paralyzeorb: {
 		name: "Paralyze Orb",
 		spritenum: 145,

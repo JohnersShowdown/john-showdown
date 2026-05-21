@@ -23994,7 +23994,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		forme: "Mega",
 		types: ["Rock", "Grass"],
 		gender: "N",
-		baseStats: { hp: 160, atk: 145, def: 165, spa: 65, spd: 130, spe: 10 },
+		baseStats: { hp: 160, atk: 145, def: 165, spa: 65, spd: 125, spe: 10 },
 		abilities: { 0: "Forest Spirit" },
 		heightm: 2,
 		weightkg: 600,
