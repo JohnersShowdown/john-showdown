@@ -6244,6 +6244,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     num: -3228
 	},		
 	brawl: {
+		shortDesc: "Transforms into Brawl if HP > 1/4, else transform into Sphere and restore 1/4th hp. If Dragonoid Brawl, Restores 1/16th hp at end of turn.",
 		onSwitchInPriority: -1,
 		onStart(pokemon) {
 			pokemon.addVolatile('lasthope');
