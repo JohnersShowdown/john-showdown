@@ -21322,6 +21322,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		prevo: "Nokoi",
 		evoLevel: 30,
 		eggGroups: ["Water1"],
+		tags: ["Fakemon"],
 	},
 	ribbeat: {
 		num: 2023,
