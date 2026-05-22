@@ -117079,7 +117079,6 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
     thief:["9M"],
     twister:["9M","9T"],
     uturn:["9M"],
-    stringshots:["9T"],
 			lasercobblemon:["9M"],					
 		},
 	},	
