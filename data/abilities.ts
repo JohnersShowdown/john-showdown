@@ -7494,5 +7494,98 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			return this.chainModify(maxBP / currentBP);
 		}
 	},
-},																																													
+},	
+	placeholderfour: {
+		name: "Placeholderfour",
+		shortDesc: "All non-Ghost and Dark type Pokemon lose 1/16th of their max HP at the end of their turn",
+		num: 2030,
+		flags: {breakable: 1},
+		onSwitchInPriority: -1,
+		onStart(pokemon) {
+		pokemon.addVolatile('foretell');	
+		},		
+		onResidualOrder: 28,
+		onResidualSubOrder: 2,
+	    onResidual(pokemon) {
+		for (const target of this.getAllActive()) {
+			if (
+				target &&
+				!target.fainted &&
+				!target.hasType('Ghost') &&
+				!target.hasType('Dark')
+			) {
+				this.damage(target.baseMaxhp / 16, target, pokemon, null, true);
+				}
+			}
+		}
+	},
+    placeholderone: {
+    name: "Placeholderone",
+    shortDesc: "Changes form based on the type of the first move in it's moveset.",
+	onStart(pokemon) {
+	if (pokemon.volatiles['charactercreation']) return;
+	const firstMove = pokemon.moveSlots?.[0];
+	if (!firstMove) return;
+	const move = this.dex.moves.get(firstMove.id);
+	if (!move) return;
+	let form = '';
+	switch (move.type) {
+	case 'Fire':
+		form = 'Fire';
+		break;
+	case 'Water':
+		form = 'Water';
+		break;
+	case 'Grass':
+		form = 'Grass';
+		break;
+	default:
+		return;
+	}
+	const baseSpecies = pokemon.baseSpecies.name;
+	const targetSpecies = this.dex.species.get(
+		`${baseSpecies}-${form}`
+	);
+	if (!targetSpecies.exists) return;
+	if (pokemon.species.id === targetSpecies.id) return;
+	pokemon.formeChange(targetSpecies, this.effect, true);
+	pokemon.addVolatile('charactercreation');
+	const newAbility = this.dex.abilities.get(
+		targetSpecies.abilities['0']
+	);
+	if (pokemon.species.baseSpecies === "Homerratum" && pokemon.species.forme === 'Normal') return;
+	if (newAbility.exists) {
+		pokemon.setAbility(newAbility);
+	}
+	this.add('-ability', pokemon, `ability: ${newAbility}`, '[silent]');
+	this.add(
+		'-formechange',
+		pokemon,
+		targetSpecies.name,
+		'ability: Character Creation'
+	);
+	return;
+	},
+	},	
+	placeholdertwo: {
+		name: 'Placeholdertwo',
+		onSourceAfterFaint(length, _, source, effect) {
+			if (effect && effect.effectType === 'Move') {
+				this.boost({ spa: length }, source);
+			}
+		},
+		num: -5000,
+		rating: 3.5,
+	},
+	placeholderthree: {
+		onSourceAfterFaint(length, target, source, effect) {
+			if (effect && effect.effectType === 'Move') {
+				this.boost({ spe: length }, source);
+			}
+		},
+		flags: {},
+		name: "Placeholderthree",
+		rating: 3,
+		num: -5001,
+	},																																												
 };
