@@ -109427,6 +109427,11 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 	    	airslash:["9M"],
 		    energyball:["9M"],
 			scorchingsands:["9M"],
+			outrage:["9M"],	
+			firelash:["9M"],	
+			teleport:["9M"],
+			spacialrend:["9M"],
+			heatwave:["9M"],																								
 		},
 	},
 	homerratum: {
