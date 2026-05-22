@@ -8262,7 +8262,62 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		},
 		num: 2208,
 		gen: 9,
-	},										
+	},	
+	vexalloettite: {
+		name: "Vexalloettite",
+		spritenum: 577,
+		megaStone: { "Vexalloette": "Vexalloette-Mega" },
+		itemUser: ["Vexalloette"],
+		onTakeItem(item, source) {
+			return !item.megaStone?.[source.baseSpecies.baseSpecies];
+		},
+		num: 2209,
+		gen: 9,
+	},
+	falinkslaststandite: {
+		name: "Falinkslaststandite",
+		spritenum: 577,
+		megaStone: { "Falinkslaststand": "Falinkslaststand-Mega" },
+		itemUser: ["Falinkslaststand"],
+		onTakeItem(item, source) {
+			return !item.megaStone?.[source.baseSpecies.baseSpecies];
+		},
+		num: 2210,
+		gen: 9,
+	},	
+	gunslingerfalinksite: {
+		name: "Gunslingerfalinksite",
+		spritenum: 577,
+		megaStone: { "Gunslingerfalinks": "Gunslingerfalinks-Mega" },
+		itemUser: ["Gunslingerfalinks"],
+		onTakeItem(item, source) {
+			return !item.megaStone?.[source.baseSpecies.baseSpecies];
+		},
+		num: 2211,
+		gen: 9,
+	},
+	sandjournite: {
+		name: "Sandjournite",
+		spritenum: 577,
+		megaStone: { "Sandjourner": "Sandjourner-Mega" },
+		itemUser: ["Sandjourner"],
+		onTakeItem(item, source) {
+			return !item.megaStone?.[source.baseSpecies.baseSpecies];
+		},
+		num: 2212,
+		gen: 9,
+	},
+	starstellarite: {
+		name: "Starstellar",
+		spritenum: 577,
+		megaStone: { "Starstellar": "Starstellar-Mega" },
+		itemUser: ["Starstellar"],
+		onTakeItem(item, source) {
+			return !item.megaStone?.[source.baseSpecies.baseSpecies];
+		},
+		num: 2213,
+		gen: 9,
+	},																
 	paralyzeorb: {
 		name: "Paralyze Orb",
 		spritenum: 145,
