@@ -7161,5 +7161,37 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 	capybaronne: {
 		tier: "OU",
 		natDexTier: "OU",
-	},																																						
-};
+	},
+	psychictypecast: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	darktypecast: {
+		tier: "OU",
+		natDexTier: "OU",
+	},		
+	icetypecast: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	normaltypecast: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	grasstypecast: {
+		tier: "OU",
+		natDexTier: "OU",
+	},		
+	electrictypecast: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	firetypecast: {
+		tier: "OU",
+		natDexTier: "OU",
+	},		
+	watertypecast: {
+		tier: "OU",
+		natDexTier: "OU",
+	},																																													
+};																																														
