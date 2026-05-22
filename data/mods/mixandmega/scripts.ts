@@ -12,7 +12,8 @@ export const Scripts: ModdedBattleScriptsData = {
 			if (item.isNonstandard === "Past" || item.isNonstandard === "Future") this.modData('Items', i).isNonstandard = null;
 			if (item.megaStone) {
 				for (const megaEvo of Object.values(item.megaStone)) {
-					this.modData('FormatsData', this.toID(megaEvo)).isNonstandard = null;
+					if (this.modData('FormatsData', this.toID(megaEvo))
+						this.modData('FormatsData', this.toID(megaEvo)).isNonstandard = null;
 				}
 			}
 		}
