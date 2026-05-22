@@ -22026,6 +22026,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 	tortamasolar: {
 		num: 2072,
 		name: "Tortama-Solar",
+		forme: "Solar",
 		types: ["Fire"],
 		genderRatio: { M: 0.875, F: 0.125 },
 		baseStats: { hp: 73, atk: 68, def: 111, spa: 95, spd: 85, spe: 20 },
