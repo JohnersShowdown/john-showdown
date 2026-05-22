@@ -7495,8 +7495,8 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		}
 	},
 },	
-	placeholderfour: {
-		name: "Placeholderfour",
+	placeholderfours: {
+		name: "Placeholderfours",
 		shortDesc: "All non-Ghost and Dark type Pokemon lose 1/16th of their max HP at the end of their turn",
 		num: 2030,
 		flags: {breakable: 1},
@@ -7519,8 +7519,8 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			}
 		}
 	},
-    placeholderone: {
-    name: "Placeholderone",
+    placeholderones: {
+    name: "Placeholderones",
     shortDesc: "Changes form based on the type of the first move in it's moveset.",
 	onStart(pokemon) {
 	if (pokemon.volatiles['charactercreation']) return;
@@ -7567,8 +7567,8 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	return;
 	},
 	},	
-	placeholdertwo: {
-		name: 'Placeholdertwo',
+	placeholdertwos: {
+		name: 'Placeholdertwos',
 		onSourceAfterFaint(length, _, source, effect) {
 			if (effect && effect.effectType === 'Move') {
 				this.boost({ spa: length }, source);
@@ -7577,14 +7577,14 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		num: -5000,
 		rating: 3.5,
 	},
-	placeholderthree: {
+	placeholderthrees: {
 		onSourceAfterFaint(length, target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
 				this.boost({ spe: length }, source);
 			}
 		},
 		flags: {},
-		name: "Placeholderthree",
+		name: "Placeholderthrees",
 		rating: 3,
 		num: -5001,
 	},																																												
