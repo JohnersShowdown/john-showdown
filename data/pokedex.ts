@@ -22038,6 +22038,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		otherFormes: ["Tortama-Polar"],
 		formeOrder: ["Tortama-Solar", "Tortama-Polar"],
 		eggGroups: ["Water1"],
+		tags: ["Fakemon"],
 	},
 	tortamapolar: {
 		num: 2072,
@@ -22052,6 +22053,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		weightkg: 120,
 		color: "Black",
 		eggGroups: ["Water1"],
+		tags: ["Fakemon"],
 	},
 	tortality: {
 		num: 2073,
@@ -23987,6 +23989,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		eggGroups: ["Undiscovered"],
 		otherFormes: ["Archaic Salt-Mega"],
 		formeOrder: ["Archaic Salt", "Archaic Salt-Mega"],
+		tags: ["Fakemon"],
 	},
 	archaicsaltmega: {
 		num: 2298,
@@ -24002,6 +24005,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		color: "Green",
 		eggGroups: ["Undiscovered"],
 		requiredItem: "Archaite",
+		tags: ["Fakemon"],
 	},	
 	capybaronne: {
 		num: 2299,
@@ -24013,8 +24017,8 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		heightm: 1,
 		weightkg: 80,
 		color: "Brown",
-		tags: ["Mythical"],
 		eggGroups: ["Undiscovered"],
+		tags: ["Fakemon"],
 	},	
 	dragonoidsphere: {
 		num: 2300,
