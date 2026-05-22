@@ -8308,7 +8308,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		gen: 9,
 	},
 	starstellarite: {
-		name: "Starstellar",
+		name: "Starstellarite",
 		spritenum: 577,
 		megaStone: { "Starstellar": "Starstellar-Mega" },
 		itemUser: ["Starstellar"],
