@@ -109369,7 +109369,6 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 		    clangingscales:["9M"],
 		    dracometeor:["9M"],
 		    calmmind:["9M"],
-		    nastyplot:["9M"],
 		    flamethrower:["9M"],
 		    earthpower:["9M"],
 		    mudslap:["9M"],
@@ -109431,7 +109430,8 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 			firelash:["9M"],	
 			teleport:["9M"],
 			spacialrend:["9M"],
-			heatwave:["9M"],																								
+			heatwave:["9M"],
+			chargebeam:["9M"],																											
 		},
 	},
 	homerratum: {
