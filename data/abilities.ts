@@ -6244,15 +6244,19 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     num: -3228
 	},		
 	brawl: {
-		shortDesc: "Transforms into Brawl if HP > 1/3, else transform into Sphere and restore 1/4th hp. If Dragonoid Brawl, Restores 1/16th hp at end of turn.",
+		shortDesc: "Transforms into Brawl if HP > 1/4, else transform into Sphere and restore 1/4th hp. If Dragonoid Brawl, Restores 1/16th hp at end of turn.",
 		onSwitchInPriority: -1,
 		onStart(pokemon) {
 			pokemon.addVolatile('lasthope');
 			pokemon.addVolatile('lasthope2');
 			if (pokemon.baseSpecies.baseSpecies !== 'Dragonoid-Sphere' || pokemon.level < 20 || pokemon.transformed) return;
-			if (pokemon.hp > pokemon.maxhp / 3) {
+			if (pokemon.hp > pokemon.maxhp / 4) {
 				if (pokemon.species.id === 'dragonoidsphere') {
 					pokemon.formeChange('Dragonoid-Brawl');
+                    this.add(
+                        '-hint',
+                        `this pokemon restores 1/16th HP at the end of the turn while in this form`
+						);					
 				}
 			} else {
 				if (pokemon.species.id === 'dragonoidbrawl') {
@@ -6266,7 +6270,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 				pokemon.baseSpecies.baseSpecies !== 'Dragonoid-Sphere' || pokemon.level < 20 ||
 				pokemon.transformed || !pokemon.hp
 			) return;
-			if (pokemon.hp > pokemon.maxhp / 3) {
+			if (pokemon.hp > pokemon.maxhp / 4) {
 				if (pokemon.species.id === 'dragonoidbrawl') {
 					this.heal(pokemon.baseMaxhp / 16);
 				}
