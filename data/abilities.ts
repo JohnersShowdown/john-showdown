@@ -6274,6 +6274,10 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 				if (pokemon.species.id === 'dragonoidbrawl') {
 					pokemon.formeChange('Dragonoid-Sphere'),
 					this.heal(pokemon.baseMaxhp / 4);
+                    this.add(
+                        '-hint',
+                        `This pokemon's dragon and fire moves will now become 60 Power Special moves that swap the user out!`
+						);				
 				}
 			}
 		},
