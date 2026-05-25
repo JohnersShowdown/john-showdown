@@ -7193,5 +7193,9 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 	watertypecast: {
 		tier: "OU",
 		natDexTier: "OU",
-	},																																													
+	},	
+	cinccinomega: {
+		tier: "OU",
+		natDexTier: "OU",
+	},																																														
 };																																														

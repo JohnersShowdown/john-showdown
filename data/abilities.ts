@@ -7449,7 +7449,27 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			return this.chainModify(1.5);
 		}
 	},				
-	},	
+	},
+    skilledtactician: {
+	name: "Skilled Tactician",
+	shortDesc: "Multi-hit moves always hit max times, never miss, are 1.5x stronger, and ignore contact effects.",
+	onModifyMove(move) {
+		if (move.multihit && Array.isArray(move.multihit) && move.multihit.length) {
+			move.multihit = move.multihit[1];
+		}
+		if (move.multiaccuracy) {
+			delete move.multiaccuracy;
+		}
+		if (move.multihit && move.multihit !== 1) {
+		move.accuracy = true;
+		delete move.flags['contact'];
+		}
+	},
+	onBasePower(basePower, attacker, defender, move) {
+		if (!move.multihit || move.multihit === 1) return;
+		return this.chainModify(1.5);
+	},
+	},		
 	charisma: {
 		name: 'Charisma',
 		onSourceAfterFaint(length, _, source, effect) {

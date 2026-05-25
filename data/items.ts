@@ -8317,7 +8317,18 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		},
 		num: 2213,
 		gen: 9,
-	},																
+	},
+	cinccinite: {
+		name: "Cinccinite",
+		spritenum: 577,
+		megaStone: { "Cinccino": "Cinccino-Mega" },
+		itemUser: ["Cinccino"],
+		onTakeItem(item, source) {
+			return !item.megaStone?.[source.baseSpecies.baseSpecies];
+		},
+		num: 2214,
+		gen: 9,
+	},																			
 	paralyzeorb: {
 		name: "Paralyze Orb",
 		spritenum: 145,
