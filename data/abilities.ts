@@ -7398,15 +7398,13 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
     charactercreation: {
     name: "Character Creation",
-    shortDesc: "Changes form based on the type of the first move in it's moveset.",
+    shortDesc: "Changes form based on the tera type of the user.",
 	onStart(pokemon) {
 	if (pokemon.volatiles['charactercreation']) return;
-	const firstMove = pokemon.moveSlots?.[0];
-	if (!firstMove) return;
-	const move = this.dex.moves.get(firstMove.id);
-	if (!move) return;
+	const teraType = pokemon.teraType;
+	if (!teraType || teraType === '???') return;
 	let form = '';
-	switch (move.type) {
+	switch (teraType) {
 	case 'Fire':
 		form = 'Fire';
 		break;
