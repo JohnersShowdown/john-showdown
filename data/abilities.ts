@@ -7398,7 +7398,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
     charactercreation: {
     name: "Character Creation",
-    shortDesc: "Changes form based on the tera type of the user.",
+    shortDesc: "1.5x Damage on Fire, Water, Grass attacks. Changes form based on the tera type of the user.",
 	onStart(pokemon) {
 	if (pokemon.volatiles['charactercreation']) return;
 	const teraType = pokemon.teraType;
@@ -7441,6 +7441,14 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	);
 	return;
 	},
+	onBasePower(basePower, attacker, defender, move) {
+		if (!attacker?.hasAbility('charactercreation')) return;
+		if (attacker.species.name !== attacker.baseSpecies.name) return;
+		if (!move || move.isZ || move.isMax) return;
+		if (move.type === 'Fire' || move.type === 'Water' || move.type === 'Grass') {
+			return this.chainModify(1.5);
+		}
+	},				
 	},	
 	charisma: {
 		name: 'Charisma',
