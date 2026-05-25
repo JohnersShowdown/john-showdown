@@ -24257,7 +24257,8 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		color: "White",
 		eggGroups: ["Mineral"],
 		changesFrom: "Homerratum",
-		requiredTeraType: "Water",		
+		requiredTeraType: "Water",
+		battleOnly: "Homerratum",		
 		tags: ["Fakemon"],
 	},
 	homerratumfire: {
@@ -24276,7 +24277,8 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		color: "White",
 		eggGroups: ["Mineral"],
 		changesFrom: "Homerratum",
-		requiredTeraType: "Fire",		
+		requiredTeraType: "Fire",
+		battleOnly: "Homerratum",		
 		tags: ["Fakemon"],
 	},
 	homerratumgrass: {
@@ -24295,7 +24297,8 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		color: "White",
 		eggGroups: ["Mineral"],
 		changesFrom: "Homerratum",
-		requiredTeraType: "Grass",		
+		requiredTeraType: "Grass",	
+		battleOnly: "Homerratum",	
 		tags: ["Fakemon"],
 	},	
 	tigerfish: {
