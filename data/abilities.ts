@@ -7484,13 +7484,13 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			'wringout',
 			'crushgrip',
 			'hardpress',
-			'tidalcrash',
+			'wavelength',
 		];
 		if (!hpMoves.includes(move.id)) return;
 		if (
 			move.id === 'waterspout' ||
 			move.id === 'eruption' ||
-			move.id === 'tidalcrash'
+			move.id === 'wavelength'
 		) {
 			return this.chainModify(150 / basePower);
 		}
