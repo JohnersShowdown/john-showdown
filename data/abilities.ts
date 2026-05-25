@@ -7422,7 +7422,6 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		`${baseSpecies}-${form}`
 	);
 	if (!targetSpecies.exists) return;
-	if (pokemon.species.id === targetSpecies.id) return;
 	pokemon.formeChange(targetSpecies, this.effect, true);
 	pokemon.addVolatile('charactercreation');
 	const newAbility = this.dex.abilities.get(
