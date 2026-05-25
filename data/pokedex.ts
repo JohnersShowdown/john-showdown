@@ -24258,7 +24258,6 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		eggGroups: ["Mineral"],
 		changesFrom: "Homerratum",
 		requiredTeraType: "Water",
-        requiredAbility: "Adrenaline Rush",	
 		tags: ["Fakemon"],
 	},
 	homerratumfire: {
@@ -24278,7 +24277,6 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		eggGroups: ["Mineral"],
 		changesFrom: "Homerratum",
 		requiredTeraType: "Fire",
-        requiredAbility: "Moxie",	
 		tags: ["Fakemon"],
 	},
 	homerratumgrass: {
@@ -24298,7 +24296,6 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		eggGroups: ["Mineral"],
 		changesFrom: "Homerratum",
 		requiredTeraType: "Grass",	
-        requiredAbility: "Charisma",
 		tags: ["Fakemon"],
 	},	
 	tigerfish: {
