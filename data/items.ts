@@ -8328,7 +8328,62 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		},
 		num: 2214,
 		gen: 9,
-	},																			
+	},	
+	darmanitanitez: {
+		name: "Darmanitanite Z",
+		spritenum: 577,
+		megaStone: { "Darmanitan": "Darmanitan-Mega-Z" },
+		itemUser: ["Darmanitan"],
+		onTakeItem(item, source) {
+			return !item.megaStone?.[source.baseSpecies.baseSpecies];
+		},
+		num: 2215,
+		gen: 9,
+	},	
+	klinklangite: {
+		name: "Klinklangite",
+		spritenum: 577,
+		megaStone: { "Klinklang": "Klinklang-Mega" },
+		itemUser: ["Klinklang"],
+		onTakeItem(item, source) {
+			return !item.megaStone?.[source.baseSpecies.baseSpecies];
+		},
+		num: 2216,
+		gen: 9,
+	},	
+	electrodite: {
+		name: "Electrodite",
+		spritenum: 577,
+		megaStone: { "Electrode": "Electrode-Mega" },
+		itemUser: ["Electrode"],
+		onTakeItem(item, source) {
+			return !item.megaStone?.[source.baseSpecies.baseSpecies];
+		},
+		num: 2217,
+		gen: 9,
+	},					
+	dudunsparceitex: {
+		name: "Dudunsparceite X",
+		spritenum: 577,
+		megaStone: { "Dudunsparce": "Dudunsparce-Mega-X" },
+		itemUser: ["Dudunsparce"],
+		onTakeItem(item, source) {
+			return !item.megaStone?.[source.baseSpecies.baseSpecies];
+		},
+		num: 2218,
+		gen: 9,
+	},	
+	dudunsparceitey: {
+		name: "Dudunsparceite Y",
+		spritenum: 577,
+		megaStone: { "Dudunsparce": "Dudunsparce-Mega-Y" },
+		itemUser: ["Dudunsparce"],
+		onTakeItem(item, source) {
+			return !item.megaStone?.[source.baseSpecies.baseSpecies];
+		},
+		num: 2219,
+		gen: 9,
+	},																					
 	paralyzeorb: {
 		name: "Paralyze Orb",
 		spritenum: 145,

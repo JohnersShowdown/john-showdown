@@ -7197,7 +7197,27 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 	cinccinomega: {
 		tier: "OU",
 		natDexTier: "OU",
+	},
+	dudunsparcemegax: {
+		tier: "OU",
+		natDexTier: "OU",
 	},	
+	dudunsparcemegay: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	klinklangmega: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	electrodemega: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	darmanitanmegaz: {
+		tier: "OU",
+		natDexTier: "OU",
+	},						
 	gamesumi: {
 		tier: "OU",
 		natDexTier: "OU",
