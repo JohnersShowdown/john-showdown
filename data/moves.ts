@@ -24663,7 +24663,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			}
 		},
 		selfdestruct: "ifHit",
-		slotCondition: 'bonvoyage',
+		sideCondition: 'bonvoyage',
 		condition: {
 			onSwitchIn(target) {
 				this.singleEvent('Swap', this.effect, this.effectState, target);

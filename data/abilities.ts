@@ -7473,10 +7473,10 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     bonvoyage: {
 	name: "Bonvoyage",
 	shortDesc: "Damages foe for 1/8th while Perish Song is active, If this Pokemon faints from Perish Song, Healing Wish effect.",
-    onFaint(target, source, effect) {
+    onAnyFaint(target, source, effect) {
 	if (!target.hasAbility('bonvoyage')) return;
 	if (effect?.id !== 'perishsong') return;
-	target.side.addSlotCondition(target.position, 'bonvoyage');
+	target.side.addSideCondition('bonvoyage');
     },
     onResidual(pokemon) {
 	const actives = [...pokemon.side.active, ...pokemon.side.foe.active];
