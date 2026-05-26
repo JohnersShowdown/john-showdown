@@ -7469,7 +7469,44 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		if (!move.multihit || move.multihit === 1) return;
 		return this.chainModify(1.5);
 	},
-	},		
+	},	
+    bonvoyage: {
+	name: "Bonvoyage",
+	shortDesc: "Taunt immunity, Damages foe while Perish Song is active, If this Pokemon faints from Perish Song, the replacement Pokemon restores 1/4 max HP.",
+	onFaint(pokemon) {
+		if (!pokemon.hasAbility('bonvoyage')) return;
+		if ((pokemon as any).faint?.sourceEffect?.id === 'perishsong') {
+			pokemon.side.addSlotCondition(pokemon.position, 'bonvoyage');
+		}
+	},
+	condition: {
+		onSwitchIn(target) {
+			this.heal(target.baseMaxhp / 4, target);
+			this.add('-heal', target, target.getHealth, '[from] ability: Bonvoyage');
+			target.side.removeSlotCondition(target.position, 'bonvoyage');
+		},
+	},
+	onResidual(pokemon) {
+		const sides = [pokemon.side, pokemon.side.foe];
+		for (const side of sides) {
+			if (!side.sideConditions?.perishsong) continue;
+			for (const target of side.active) {
+				if (!target || target.fainted) continue;
+				if (target === pokemon) continue;
+				this.damage(target.baseMaxhp / 4, target);
+			}
+		}
+	},	
+	onUpdate(pokemon) {
+		if (pokemon.volatiles['taunt']) {
+			this.add('-activate', pokemon, 'ability: Bonvoyage');
+			pokemon.removeVolatile('taunt');
+		}
+	},	
+	flags: {},
+	rating: 2.5,
+	num: 9999,
+	},			
 	charisma: {
 		name: 'Charisma',
 		onSourceAfterFaint(length, _, source, effect) {
