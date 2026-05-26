@@ -24672,6 +24672,10 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			this.add('-activate', pokemon, 'move: Bonvoyage');
 			this.heal(pokemon.maxhp);
 			pokemon.side.removeSideCondition('bonvoyage');
+            this.add(
+                '-hint',
+                `The effects of bonvoyage were removed from your field`
+            );			
 		},
 	    },
 		target: "allySide",
