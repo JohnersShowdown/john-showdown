@@ -7472,10 +7472,14 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},	
     bonvoyage: {
 	name: "Bonvoyage",
-	shortDesc: "Damages foe for 1/8th while Perish Song is active, If this Pokemon faints from Perish Song, Healing Wish effect.",
+	shortDesc: "Damages foe for 1/8th while Perish Song is active, If user faints without swapping after Perish Song, heal the next pokemon to full.",
 	onAfterMove(source, target, move) {
 		if (move.id !== 'perishsong') return;
 		source.side.addSideCondition('bonvoyage', source);
+        this.add(
+            '-hint',
+            `If the user faints before swapping out the replacement will be healed!`
+        );		
 	},
     onResidual(pokemon) {
 	const actives = [...pokemon.side.active, ...pokemon.side.foe.active];
