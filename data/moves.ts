@@ -24662,7 +24662,6 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			this.effectState.ready = false;
 		},
 		onAnyFaint(target, source, effect) {
-			if (effect?.id !== 'perishsong' && effect?.name !== 'Perish Song') return;
 			this.effectState.ready = true;
 		},
 		onSwitchIn(pokemon) {
