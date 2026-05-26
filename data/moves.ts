@@ -24665,6 +24665,9 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		selfdestruct: "ifHit",
 		sideCondition: 'bonvoyage',
 		condition: {
+			onSideStart(side) {
+				this.add('-sidestart', side, 'move: Stealth Rock');
+			},			
 			onSwitchIn(target) {
 				this.singleEvent('Swap', this.effect, this.effectState, target);
 			},
