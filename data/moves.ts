@@ -24661,13 +24661,16 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			this.add('-sidestart', side, 'move: Bonvoyage');
 			this.effectState.ready = false;
 		},
-		onAnyFaint(target, source, effect) {
+		onSwitchOut(pokemon) {
+			pokemon.side.removeSideCondition('bonvoyage');	
+		},		
+		onFaint(target, source, effect) {
 			this.effectState.ready = true;
 		},
 		onSwitchIn(pokemon) {
 			if (!this.effectState.ready) return;
 			this.add('-activate', pokemon, 'move: Bonvoyage');
-			pokemon.heal(pokemon.maxhp);
+			this.heal(pokemon.maxhp);
 			pokemon.side.removeSideCondition('bonvoyage');
 		},
 	    },
