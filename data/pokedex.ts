@@ -24062,7 +24062,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		types: ["Ghost", "Steel"],
 		gender: "N",
 		baseStats: { hp: 120, atk: 130, def: 120, spa: 75, spd: 85, spe: 70 },
-		abilities: { 0: "Sharpness", 1: "Bonvoyage", H: "Weak Armor" },
+		abilities: { 0: "Sharpness", 1: "Light Metal", H: "Weak Armor" },
 		heightm: 2,
 		weightkg: 100,
 		color: "Brown",
@@ -24139,7 +24139,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		weightkg: 101,
 		color: "Black",
 		eggGroups: ["Field", "Human-Like"],
-		requiredItem: "Klingklangite",
+		requiredItem: "Klinklangite",
 		tags: ["Fakemon"],
 	},	
 	electrodemega: {
