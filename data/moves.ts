@@ -24645,43 +24645,36 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		target: "normal",
 		type: "Normal",
 		contestType: "Tough",
-	},	
+	},
 	bonvoyage: {
 		num: -1393,
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		name: "Healing Wish",
+		name: "Bonvoyage",
 		pp: 10,
 		priority: 0,
-		flags: { snatch: 1, heal: 1, metronome: 1 },
-		onTryHit(source) {
-			if (!this.canSwitch(source.side)) {
-				this.attrLastMove('[still]');
-				this.add('-fail', source);
-				return this.NOT_FAIL;
-			}
+		flags: { snatch: 1, heal: 1},
+	    sideCondition: 'bonvoyage',
+	    condition: {
+		onStart(side, source, sourceEffect) {
+			this.add('-sidestart', side, 'move: Bonvoyage');
+			this.effectState.ready = false;
 		},
-		selfdestruct: "ifHit",
-		sideCondition: 'bonvoyage',
-		condition: {
-			onSideStart(side) {
-				this.add('-sidestart', side, 'move: Stealth Rock');
-			},			
-			onSwitchIn(target) {
-				this.singleEvent('Swap', this.effect, this.effectState, target);
-			},
-			onSwap(target) {
-				if (!target.fainted && (target.hp < target.maxhp || target.status)) {
-					target.heal(target.maxhp);
-					target.clearStatus();
-					this.add('-heal', target, target.getHealth, '[from] move: Bonvoyage');
-					target.side.removeSlotCondition(target, 'bonvoyage');
-				}
-			},
+		onAnyFaint(target, source, effect) {
+			if (effect?.id !== 'perishsong' && effect?.name !== 'Perish Song') return;
+			this.effectState.ready = true;
 		},
-		target: "self",
+		onSwitchIn(pokemon) {
+			if (!this.effectState.ready) return;
+			this.effectState.ready = false;
+			this.add('-activate', pokemon, 'move: Bonvoyage');
+			pokemon.heal(pokemon.maxhp);
+			pokemon.side.removeSideCondition('bonvoyage');
+		},
+	    },
+		target: "allySide",
 		type: "Normal",
-		contestType: "Beautiful",
-	},				
+		contestType: "Beautiful",		
+	},						
 };
