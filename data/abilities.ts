@@ -7476,15 +7476,8 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	onFaint(pokemon) {
 		if (!pokemon.hasAbility('bonvoyage')) return;
 		if ((pokemon as any).faint?.sourceEffect?.id === 'perishsong') {
-			pokemon.side.addSlotCondition(pokemon.position, 'bonvoyage');
+			pokemon.side.addSideCondition('bonvoyage');
 		}
-	},
-	condition: {
-		onSwitchIn(target) {
-			this.heal(target.baseMaxhp / 4, target);
-			this.add('-heal', target, target.getHealth, '[from] ability: Bonvoyage');
-			target.side.removeSlotCondition(target.position, 'bonvoyage');
-		},
 	},
 	onResidual(pokemon) {
 		const sides = [pokemon.side, pokemon.side.foe];

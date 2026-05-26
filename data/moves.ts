@@ -17837,7 +17837,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		type: "Rock",
 		zMove: { boost: { def: 1 } },
 		contestType: "Cool",
-	},
+	},	
 	steameruption: {
 		num: 592,
 		accuracy: 95,
@@ -24645,5 +24645,27 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		target: "normal",
 		type: "Normal",
 		contestType: "Tough",
-	},			
+	},	
+	bonvoyage: {
+		num: -1393,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Bonvoyage",
+		pp: 20,
+		priority: 0,
+		flags: { mustpressure: 1 },
+		sideCondition: 'bonvoyage',
+	    condition: {
+		onSwitchIn(target) {
+			this.heal(target.baseMaxhp / 4, target);
+			this.add('-heal', target, target.getHealth, '[from] ability: Bonvoyage');
+			target.side.removeSlotCondition(target.position, 'bonvoyage');
+		},
+    	},
+		target: "allySide",
+		type: "Normal",
+		zMove: { boost: { def: 1 } },
+		contestType: "Cool",
+	},				
 };
