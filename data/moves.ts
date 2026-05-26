@@ -24666,7 +24666,6 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		},
 		onSwitchIn(pokemon) {
 			if (!this.effectState.ready) return;
-			this.effectState.ready = false;
 			this.add('-activate', pokemon, 'move: Bonvoyage');
 			pokemon.heal(pokemon.maxhp);
 			pokemon.side.removeSideCondition('bonvoyage');
