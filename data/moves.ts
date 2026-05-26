@@ -24651,21 +24651,34 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		name: "Bonvoyage",
-		pp: 20,
+		name: "Healing Wish",
+		pp: 10,
 		priority: 0,
-		flags: { mustpressure: 1 },
-		sideCondition: 'bonvoyage',
-	    condition: {
-		onSwitchIn(target) {
-			this.heal(target.baseMaxhp / 4, target);
-			this.add('-heal', target, target.getHealth, '[from] ability: Bonvoyage');
-			target.side.removeSlotCondition(target.position, 'bonvoyage');
+		flags: { snatch: 1, heal: 1, metronome: 1 },
+		onTryHit(source) {
+			if (!this.canSwitch(source.side)) {
+				this.attrLastMove('[still]');
+				this.add('-fail', source);
+				return this.NOT_FAIL;
+			}
 		},
-    	},
-		target: "allySide",
+		selfdestruct: "ifHit",
+		slotCondition: 'bonvoyage',
+		condition: {
+			onSwitchIn(target) {
+				this.singleEvent('Swap', this.effect, this.effectState, target);
+			},
+			onSwap(target) {
+				if (!target.fainted && (target.hp < target.maxhp || target.status)) {
+					target.heal(target.maxhp);
+					target.clearStatus();
+					this.add('-heal', target, target.getHealth, '[from] move: Bonvoyage');
+					target.side.removeSlotCondition(target, 'bonvoyage');
+				}
+			},
+		},
+		target: "self",
 		type: "Normal",
-		zMove: { boost: { def: 1 } },
-		contestType: "Cool",
+		contestType: "Beautiful",
 	},				
 };

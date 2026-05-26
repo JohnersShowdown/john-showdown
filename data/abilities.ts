@@ -7472,30 +7472,21 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},	
     bonvoyage: {
 	name: "Bonvoyage",
-	shortDesc: "Taunt immunity, Damages foe while Perish Song is active, If this Pokemon faints from Perish Song, the replacement Pokemon restores 1/4 max HP.",
-	onFaint(pokemon) {
-		if (!pokemon.hasAbility('bonvoyage')) return;
-		if ((pokemon as any).faint?.sourceEffect?.id === 'perishsong') {
-			pokemon.side.addSideCondition('bonvoyage');
-		}
-	},
-	onResidual(pokemon) {
-		const sides = [pokemon.side, pokemon.side.foe];
-		for (const side of sides) {
-			if (!side.sideConditions?.perishsong) continue;
-			for (const target of side.active) {
-				if (!target || target.fainted) continue;
-				if (target === pokemon) continue;
-				this.damage(target.baseMaxhp / 4, target);
-			}
-		}
-	},	
-	onUpdate(pokemon) {
-		if (pokemon.volatiles['taunt']) {
-			this.add('-activate', pokemon, 'ability: Bonvoyage');
-			pokemon.removeVolatile('taunt');
-		}
-	},	
+	shortDesc: "Damages foe for 1/8th while Perish Song is active, If this Pokemon faints from Perish Song, Healing Wish effect.",
+    onFaint(target, source, effect) {
+	if (!target.hasAbility('bonvoyage')) return;
+	if (effect?.id !== 'perishsong') return;
+	target.side.addSlotCondition(target.position, 'bonvoyage');
+    },
+    onResidual(pokemon) {
+	const actives = [...pokemon.side.active, ...pokemon.side.foe.active];
+	for (const target of actives) {
+		if (!target || target.fainted) continue;
+		if (target === pokemon) continue;
+		if (!target.volatiles['perishsong']) continue;
+		this.damage(target.baseMaxhp / 8, target);
+	   }
+    },
 	flags: {},
 	rating: 2.5,
 	num: 9999,
