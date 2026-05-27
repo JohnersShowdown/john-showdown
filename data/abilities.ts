@@ -7493,7 +7493,31 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	flags: {},
 	rating: 2.5,
 	num: 9999,
-	},			
+	},
+    divineatonement: {
+	name: "Divine Atonement",
+	shortDesc: "Damages foe for 1/8th while Perish Song is active, If user faints without swapping after Perish Song was used, heal the next pokemon to full.",
+	onAfterMove(source, target, move) {
+		if (move.id !== 'perishsong') return;
+		source.side.addSideCondition('bonvoyage', source);
+        this.add(
+            '-hint',
+            `If the user faints before swapping out the replacement will be healed!`
+        );		
+	},
+    onResidual(pokemon) {
+	const actives = [...pokemon.side.active, ...pokemon.side.foe.active];
+	for (const target of actives) {
+		if (!target || target.fainted) continue;
+		if (target === pokemon) continue;
+		if (!target.volatiles['perishsong']) continue;
+		this.damage(target.baseMaxhp / 8, target);
+	   }
+    },
+	flags: {},
+	rating: 2.5,
+	num: 9998,
+	},				
 	charisma: {
 		name: 'Charisma',
 		onSourceAfterFaint(length, _, source, effect) {
