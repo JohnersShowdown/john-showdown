@@ -24506,7 +24506,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		tags: ["Fakemon"],
 	},	
 	siriusmon: {
-		num: 2706,
+		num: 2707,
 		name: "Siriusmon",
 		types: ["Fairy", "Dragon"],
 		gender: "N",
@@ -24519,7 +24519,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		tags: ["Fakemon"],
 	},
 	gallantmon: {
-		num: 2706,
+		num: 2708,
 		name: "Gallantmon",
 		types: ["Steel"],
 		gender: "N",
@@ -24532,7 +24532,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		tags: ["Fakemon"],
 	},	
 	susanoomon: {
-		num: 2706,
+		num: 2709,
 		name: "Susanoomon",
 		types: ["Fighting"],
 		gender: "N",
