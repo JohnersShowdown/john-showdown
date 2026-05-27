@@ -24471,7 +24471,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		name: "Lucemon",
 		types: ["Dark", "Fairy"],
 		gender: "N",
-		baseStats: { hp: 75, atk: 90, def: 115, spa: 90, spd: 115, spe: 115 },
+		baseStats: { hp: 75, atk: 100, def: 105, spa: 85, spd: 120, spe: 115 },
 		abilities: { 0: "Divine Atonement" },
 		heightm: 1.5,
 		weightkg: 30,
