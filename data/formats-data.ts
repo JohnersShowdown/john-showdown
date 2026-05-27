@@ -7225,5 +7225,29 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 	armageist: {
 		tier: "OU",
 		natDexTier: "OU",
-	},																																																																																																																																											
+	},	
+	lucemon: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	siriusmon: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	shinegreymon: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	wargreymon: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	gallantmon: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	susanoomon: {
+		tier: "OU",
+		natDexTier: "OU",
+	},																																																																																																																																														
 };																																														
