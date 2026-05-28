@@ -24059,9 +24059,9 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 	armageist: {
 		num: 2301,
 		name: "Armageist",
-		types: ["Ghost", "Dark"],
+		types: ["Ghost"],
 		gender: "N",
-		baseStats: { hp: 120, atk: 130, def: 120, spa: 75, spd: 85, spe: 70 },
+		baseStats: { hp: 110, atk: 130, def: 110, spa: 75, spd: 95, spe: 80 },
 		abilities: { 0: "Sharpness", 1: "Steelworker", H: "Weak Armor" },
 		heightm: 2,
 		weightkg: 100,
