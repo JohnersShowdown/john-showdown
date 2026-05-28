@@ -24626,7 +24626,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		basePower: 100,
 		type: "Fairy",
 		category: "Special",
-		name: "Quasar Blast",
+		name: "Photon Blaster",
 		pp: 5,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, beam: 1, light: 1},
