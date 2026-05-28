@@ -24627,13 +24627,13 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		type: "Fairy",
 		category: "Special",
 		name: "Photon Blaster",
-		shortDesc: "Lower's the users special attack by 1",
+		shortDesc: "Lower's the users defense by 1",
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, beam: 1, light: 1},
 		self: {
 			boosts: {
-				spa: -1,
+				def: -1,
 			},
 		},
 		target: "normal",
