@@ -24753,6 +24753,10 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		flags: {protect: 1, mirror: 1, contact: 1, slicing: 1},
 		target: "normal",
 		type: "Ghost",
+		secondary: {
+			chance: 30,
+			status: 'brn',
+		},
 		contestType: "Cool",
 	},							  
 	lacadia: {
