@@ -1286,5 +1286,8 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
     },
     name: "Slick Slime",
     num: -1010,
-	},		 	  	 		   
+	},	
+	quasarbreak: {
+	name: "Quasar Break",	
+	},			 	  	 		   
 };    

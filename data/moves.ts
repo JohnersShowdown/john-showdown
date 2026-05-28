@@ -24619,7 +24619,124 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		target: "allAdjacentFoes",
 		type: "Water",
 		contestType: "Beautiful",
-	},				  
+	},
+	photonblaster: {
+		num:-3099,
+		accuracy: 100,
+		basePower: 100,
+		type: "Fairy",
+		category: "Special",
+		name: "Quasar Blast",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, beam: 1, light: 1},
+		self: {
+			boosts: {
+				spe: -2,
+			},
+		},
+		target: "normal",
+		contestType: "Beautiful",
+	},	
+	grandcross: {
+		num:-3100,
+		accuracy: 100,
+		basePower: 95,
+		category: "Special",
+		name: "Grand Cross",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, light: 1 },
+		onBasePower(basePower, pokemon, target) {
+			if (pokemon.volatiles['perishsong'] || target.volatiles['perishsong']) {
+				return this.chainModify(1.5);
+			}
+		},
+		target: "normal",
+		type: "Fairy",
+		contestType: "Beautiful",
+	},	
+	celestialblade: {
+		num:-3101,
+		accuracy: 100,
+		basePower: 110,
+		category: "Physical",
+		name: "Celestial Blade",
+		pp: 8,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, contact: 1, slicing: 1},
+		target: "normal",
+		type: "Steel",
+		contestType: "Cool",
+	},
+	terraforce: {
+		num:-3102,
+		accuracy: 100,
+		basePower: 100,
+		category: "Physical",
+		name: "Terra Force",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, contact: 1},
+		onEffectiveness(typeMod, target, type) {
+			if (type === 'Dragon') return 1;
+		},
+		target: "normal",
+		type: "Fire",
+		contestType: "Cool",
+	},	
+	gloriousburst: {
+		num: -3103,
+		accuracy: 100,
+		basePower: 110,
+		category: "Special",
+		name: "Glorious Burst",
+		pp: 5,
+		priority: 0,
+		flags: { protect: 1, mirror: 1, metronome: 1 },
+		onPrepareHit(target, source, move) {
+			if (!source.isAlly(target)) {
+				this.attrLastMove('[anim] Shell Side Arm ' + move.category);
+			}
+		},
+		onModifyMove(move, pokemon, target) {
+			if (!target) return;
+			const atk = pokemon.getStat('atk', false, true);
+			const spa = pokemon.getStat('spa', false, true);
+			const def = target.getStat('def', false, true);
+			const spd = target.getStat('spd', false, true);
+			const physical = Math.floor(Math.floor(Math.floor(Math.floor(2 * pokemon.level / 5 + 2) * 90 * atk) / def) / 50);
+			const special = Math.floor(Math.floor(Math.floor(Math.floor(2 * pokemon.level / 5 + 2) * 90 * spa) / spd) / 50);
+			if (physical > special || (physical === special && this.randomChance(1, 2))) {
+				move.category = 'Physical';
+				move.flags.contact = 1;
+			}
+		},
+		onHit(target, source, move) {
+			// Shell Side Arm normally reveals its category via animation on cart, but doesn't play either custom animation against allies
+			if (!source.isAlly(target)) this.hint(move.category + " Shell Side Arm");
+		},
+		onAfterSubDamage(damage, target, source, move) {
+			if (!source.isAlly(target)) this.hint(move.category + " Shell Side Arm");
+		},
+		target: "normal",
+		type: "Fire",
+	},	
+	lightningjoust: {
+		num: -3104,
+		accuracy: 100,
+		basePower: 90,
+		category: "Physical",
+		name: "Lightning Joust",
+		pp: 15,
+		priority: 0,
+		flags: { contact: 1, protect: 1, mirror: 1, metronome: 1, slicing: 1 },
+		ignoreEvasion: true,
+		ignoreDefensive: true,
+		target: "normal",
+		type: "Fighting",
+		contestType: "Cool",
+	},						  
 	lacadia: {
 		num: 2300,
 		accuracy: 100,

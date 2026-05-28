@@ -7601,54 +7601,32 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			}
 		}
 	},
-    placeholderones: {
-    name: "Placeholderones",
-    shortDesc: "Changes form based on the type of the first move in it's moveset.",
-	onStart(pokemon) {
-	if (pokemon.volatiles['charactercreation']) return;
-	const firstMove = pokemon.moveSlots?.[0];
-	if (!firstMove) return;
-	const move = this.dex.moves.get(firstMove.id);
-	if (!move) return;
-	let form = '';
-	switch (move.type) {
-	case 'Fire':
-		form = 'Fire';
-		break;
-	case 'Water':
-		form = 'Water';
-		break;
-	case 'Grass':
-		form = 'Grass';
-		break;
-	default:
-		return;
-	}
-	const baseSpecies = pokemon.baseSpecies.name;
-	const targetSpecies = this.dex.species.get(
-		`${baseSpecies}-${form}`
-	);
-	if (!targetSpecies.exists) return;
-	if (pokemon.species.id === targetSpecies.id) return;
-	pokemon.formeChange(targetSpecies, this.effect, true);
-	pokemon.addVolatile('charactercreation');
-	const newAbility = this.dex.abilities.get(
-		targetSpecies.abilities['0']
-	);
-	if (pokemon.species.baseSpecies === "Homerratum" && pokemon.species.forme === 'Normal') return;
-	if (newAbility.exists) {
-		pokemon.setAbility(newAbility);
-	}
-	this.add('-ability', pokemon, `ability: ${newAbility}`, '[silent]');
-	this.add(
-		'-formechange',
-		pokemon,
-		targetSpecies.name,
-		'ability: Character Creation'
-	);
-	return;
+    quasarbreak: {
+	name: "Quasar Break",
+	shortDesc: "If this Pokémon's stats are lowered, the foe loses 1/8 max HP. Once per turn.",
+	onResidualOrder: 28,
+	onResidualSubOrder: 2,
+	onResidual(pokemon) {
+		delete pokemon.volatiles['quasarbreak'];
 	},
-	},	
+	onAfterEachBoost(boost, target, source, effect) {
+		if (target.volatiles['quasarbreak']) return;
+		let statsLowered = false;
+		let i: BoostID;
+		for (i in boost) {
+			if (boost[i]! < 0) {
+				statsLowered = true;
+			}
+		}
+		if (statsLowered) {
+			const foe = target.foes()[0];
+			if (foe) {
+				this.damage(foe.baseMaxhp / 8, foe, target);
+				target.addVolatile('quasarbreak');
+			}
+			}
+		},
+	},
 	placeholdertwos: {
 		name: 'Placeholdertwos',
 		onSourceAfterFaint(length, _, source, effect) {
