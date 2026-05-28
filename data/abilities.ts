@@ -7500,7 +7500,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	onUpdate(pokemon) {
 			if (pokemon.volatiles['perishsong'] && !pokemon.volatiles['perishbodyactivated']) {
 			if (pokemon.volatiles['perishsong'].duration !== undefined)	
-				pokemon.volatiles['perishsong'].duration += 3;
+				pokemon.volatiles['perishsong'].duration += 2;
 				pokemon.addVolatile('perishbodyactivated');
 			}
 	},
