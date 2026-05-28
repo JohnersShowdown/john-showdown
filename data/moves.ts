@@ -24646,7 +24646,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		category: "Special",
 		name: "Grand Cross",
 		shortDesc: "1.5 Power while Perish Song is active",
-		pp: 8,
+		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, light: 1 },
 		onBasePower(basePower, pokemon, target) {
@@ -24665,7 +24665,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		category: "Physical",
 		name: "Celestial Blade",
 		shortDesc: "No additional effects",
-		pp: 8,
+		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, contact: 1, slicing: 1},
 		target: "normal",
