@@ -24623,7 +24623,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 	photonblaster: {
 		num:-3099,
 		accuracy: 100,
-		basePower: 100,
+		basePower: 90,
 		type: "Fairy",
 		category: "Special",
 		name: "Photon Blaster",

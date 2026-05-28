@@ -24510,7 +24510,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		name: "Siriusmon",
 		types: ["Fairy", "Dragon"],
 		gender: "N",
-		baseStats: { hp: 95, atk: 105, def: 95, spa: 105, spd: 95, spe: 105 },
+		baseStats: { hp: 105, atk: 90, def: 105, spa: 90, spd: 105, spe: 105 },
 		abilities: { 0: "Quasar Break" },
 		heightm: 3,
 		weightkg: 600,
