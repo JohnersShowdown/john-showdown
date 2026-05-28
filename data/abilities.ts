@@ -7496,7 +7496,14 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
     divineatonement: {
 	name: "Divine Atonement",
-	shortDesc: "Damages foe for 1/8th while Perish Song is active, If user faints without swapping after Perish Song was used, heal the next pokemon to full.",
+	shortDesc: "Extends user's Perish Song, Damages foe for 1/8th while Perish Song is active, If user faints without swapping after Perish Song was used, heal the next pokemon to full.",
+	onUpdate(pokemon) {
+			if (pokemon.volatiles['perishsong'] && !pokemon.volatiles['perishbodyactivated']) {
+			if (pokemon.volatiles['perishsong'].duration !== undefined)	
+				pokemon.volatiles['perishsong'].duration += 3;
+				pokemon.addVolatile('perishbodyactivated');
+			}
+	},
 	onAfterMove(source, target, move) {
 		if (move.id !== 'perishsong') return;
 		source.side.addSideCondition('bonvoyage', source);
