@@ -118142,6 +118142,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 	},
 	shinegreymon: {
 		learnset: {		
+			voltswitch: ["9M"],
 			ancientpower: ["9M"],
 			aurasphere: ["9M"],
 			brickbreak: ["9M"],
