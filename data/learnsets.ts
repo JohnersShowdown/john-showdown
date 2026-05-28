@@ -60955,6 +60955,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 	},
 	cinccino: {
 		learnset: {
+			cupidvolley: ["9L1", "8L1", "7T", "6T", "5T"],
 			afteryou: ["9L1", "8L1", "7T", "6T", "5T"],
 			alluringvoice: ["9M"],
 			aquatail: ["7T", "6T", "5T"],
