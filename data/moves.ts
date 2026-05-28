@@ -24740,7 +24740,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		ignoreEvasion: true,
 		ignoreDefensive: true,
 		target: "normal",
-		type: "Fighting",
+		type: "Steel",
 		contestType: "Cool",
 	},
 	phantomcleave: {
