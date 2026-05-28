@@ -117990,7 +117990,9 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 			facade: ["9M"],
 			doubleedge: ["9M"],
 			hypervoice: ["9M"],
-			frustration: ["9M"],							
+			frustration: ["9M"],
+			uturn: ["9M"],	
+			calmmind: ["9M"],													
 		},
 	},	
 	wargreymon: {
