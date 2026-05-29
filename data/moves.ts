@@ -21682,6 +21682,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		contestType: "Beautiful",
 	},
 	snackbreak: {
+		shortDesc: "Swaps the user out, heals replacement for 1/4th",
 		num: 2012,
         accuracy: true,
         basePower: 0,

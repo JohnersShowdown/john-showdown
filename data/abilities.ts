@@ -7057,6 +7057,18 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	    	}
     	},
 	},
+	huntersinstincts: {
+		shortDesc: "+ 1 crit ratio if the foe is 1/2 or less HP",
+		onModifyCritRatio(critRatio, source, target) {
+			if (target && target.hp <= target.maxhp / 2) {
+				return critRatio + 1;
+			}
+		},
+		flags: {},
+		name: "Hunter's Instincts",
+		rating: 3,
+		num: 7000,
+	},	
 	schrodinger: {
 		name: "Schrodinger",
 		shortDesc: "This Pokemon's Normal-type moves become Ghost type, and this Pokemon's Ghost-type moves become Normal type",
