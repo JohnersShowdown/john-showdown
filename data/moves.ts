@@ -21612,7 +21612,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 	bushidoflurry: {
 		num: 2009,
 		accuracy: 100,
-		basePower: 10,
+		basePower: 15,
 		multihit: 5,
 		category: "Physical",
 		name: "Bushido Flurry",
