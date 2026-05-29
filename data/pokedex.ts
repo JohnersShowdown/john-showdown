@@ -21142,7 +21142,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		types: ["Normal", "Ghost"],
 		genderRatio: { M: 0.875, F: 0.125 },
 		baseStats: { hp: 80, atk: 108, def: 61, spa: 58, spd: 60, spe: 46 },
-		abilities: { 0: "Shrodinger", H: "Run Away" },
+		abilities: { 0: "Schrodinger", H: "Run Away" },
 		heightm: 1.2,
 		weightkg: 40,
 		color: "Black",
