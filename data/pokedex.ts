@@ -21168,7 +21168,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 	asterbat: {
 		num: 2012,
 		name: "Asterbat",
-		types: ["Fairy", "Normal"],
+		types: ["Fairy", "Flying"],
 		genderRatio: { M: 0.875, F: 0.125 },
 		baseStats: { hp: 56, atk: 83, def: 68, spa: 66, spd: 84, spe: 123 },
 		abilities: { 0: "Sweet Veil", 1: "Ripen", H: "Fluffy" },
