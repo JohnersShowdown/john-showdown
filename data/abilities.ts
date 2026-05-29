@@ -7058,10 +7058,10 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     	},
 	},
 	huntersinstincts: {
-		shortDesc: "+ 1 crit ratio if the foe is 1/2 or less HP",
+		shortDesc: "+ 2 crit ratio if the foe is 1/2 or less HP",
 		onModifyCritRatio(critRatio, source, target) {
 			if (target && target.hp <= target.maxhp / 2) {
-				return critRatio + 1;
+				return critRatio + 2;
 			}
 		},
 		flags: {},
