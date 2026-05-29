@@ -24536,7 +24536,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		name: "Susanoomon",
 		types: ["Fighting"],
 		gender: "N",
-		baseStats: { hp: 70, atk: 130, def: 75, spa: 130, spd: 75, spe: 120 },
+		baseStats: { hp: 80, atk: 120, def: 80, spa: 120, spd: 80, spe: 120 },
 		abilities: { 0: "Steelworker" },
 		heightm: 3,
 		weightkg: 340,
