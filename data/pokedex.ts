@@ -23902,6 +23902,8 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		prevo: "Twinledger",
 		evoLevel: 40,
 		eggGroups: ["Mineral"],
+		requiredMove: "Page Turn",
+		battleOnly: "Wizledger-Fire",		
 		tags: ["Fakemon"],
 	},
 	wizledgerelectric: {
@@ -23919,6 +23921,8 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		prevo: "Twinledger",
 		evoLevel: 40,
 		eggGroups: ["Mineral"],
+		requiredMove: "Page Turn",
+		battleOnly: "Wizledger-Fire",			
 		tags: ["Fakemon"],
 	},
 	coppergolett: {
