@@ -22175,9 +22175,9 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		eggGroups: ["Bug"],
 		tags: ["Fakemon"],
 	},
-	patapod: {
+	patopod: {
 		num: 2083,
-		name: "Patapod",
+		name: "Patopod",
 		types: ["Dragon", "Grass"],
 		baseStats: { hp: 64, atk: 41, def: 74, spa: 82, spd: 30, spe: 14 },
 		abilities: { 0: "Hydration", 1: "Shell Armor", H: "Contrary" },
