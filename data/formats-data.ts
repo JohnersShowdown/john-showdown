@@ -6350,25 +6350,25 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		tier: "OU",
 		natDexTier: "OU",
 	},
-	tigeryakoyza: {
+	yakoyzatiger: {
 		tier: "OU",
 		doublesTier: "(DUU)",
 		natDexTier: "RU",
 	},
-	inkyakoyza: {
+	yakoyzaink: {
 		tier: "OU",
 		doublesTier: "(DUU)",
-		natDexTier: "RU",
+		natDexTier: "OU",
 	},
-	ryujinyakoyza: {
+	yakoyzaryujin: {
 		tier: "OU",
 		doublesTier: "(DUU)",
-		natDexTier: "RU",
+		natDexTier: "OU",
 	},
-	oniyakoyza: {
+	yakoyzaoni: {
 		tier: "OU",
 		doublesTier: "(DUU)",
-		natDexTier: "RU",
+		natDexTier: "OU",
 	},
 	tiger: {
 		tier: "OU",
