@@ -1,5 +1,4 @@
 // List of flags and their descriptions can be found in sim/dex-moves.ts
-
 export const Moves: import('../sim/dex-moves').MoveDataTable = {
 	"10000000voltthunderbolt": {
 		num: 719,
@@ -24793,14 +24792,40 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, contact: 1},
 		multihit: [2, 5],
-		secondary: {
-			chance: 5,
-			volatileStatus: 'attract',
-		},
 		target: "normal",
 		type: "Fairy",
 		contestType: "Cute",
-	},								  
+	},	
+    spiritsong: {	
+	num: -3224,
+    accuracy: 100,
+    basePower: 90,
+    category: "Special",
+    name: "Spirit Song",
+    pp: 10,
+    priority: 0,
+    flags: { protect: 1, mirror: 1, sound: 1, bypasssub: 1 },
+	onAfterMoveSecondarySelf(pokemon) {
+			if (pokemon.baseSpecies.baseSpecies === 'Sopranomeloetta' && !pokemon.transformed) {
+				const sopranomeloettaForme = pokemon.species.id === 'acousticmeloetta' ? '' : '-Acoustic';
+				pokemon.formeChange('Sopranomeloetta' + sopranomeloettaForme, this.effect, false, '0', '[msg]');
+			}
+		},
+    onTryHit(target) {
+      const activeTeam = target.side.activeTeam();
+      const foeActiveTeam = target.side.foe.activeTeam();
+      for (const [i, allyActive] of activeTeam.entries()) {
+        if (allyActive && allyActive.status === "slp")
+          allyActive.cureStatus();
+        const foeActive = foeActiveTeam[i];
+        if (foeActive && foeActive.status === "slp")
+          foeActive.cureStatus();
+      }
+    },
+    target: "allAdjacentFoes",
+    type: "Normal",
+    contestType: "Beautiful"	
+	},							  
 	lacadia: {
 		num: 2300,
 		accuracy: 100,

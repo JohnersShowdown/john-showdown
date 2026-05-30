@@ -1098,7 +1098,107 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
         move.secondaries = uturn.secondaries;
 			}
 		},
-	},	  
+	},	 
+	showdownmode: {	
+	  onStart(pokemon) {
+      this.add('-start', pokemon, 'Showdown Mode');
+      this.effectState.counter = 4;
+      this.boost({ atk: 1, spa: 1, spe: 1 });
+    },
+    onResidualOrder: 28,
+    onResidualSubOrder: 2,
+    onResidual(pokemon) {
+      if (pokemon.activeTurns && this.effectState.counter) {
+          this.effectState.counter--;
+          if (!this.effectState.counter) {
+              this.add('-end', pokemon, 'Showdown Mode');
+              this.boost({ atk: -1, spa: -1, spe: -1, def: -1, spd: -1 });
+              delete this.effectState.counter;
+          }
+      }
+    },
+    onEnd(pokemon) {
+      if (pokemon.beingCalledBack) return;
+      this.add('-end', pokemon, 'Showdown Mode', '[silent]');
+    },
+    name: "Showdown Mode",
+    num: -1000,
+    },	
+    mirrorshield: {	
+	duration: 5,
+    onSideStart(targetSide) {
+    this.add("-sidestart", targetSide, "Mirror Shield");
+    },
+    onSideResidualOrder: 26,
+    onSideResidualSubOrder: 7,
+    onSideEnd(targetSide) {
+    this.add("-sideend", targetSide, "Mirror Shield");
+    },
+    onTryHitPriority: 4,
+    onTryHit(target, source, move) {
+    if (move?.target !== "allAdjacent" && move.target !== "allAdjacentFoes") {
+      return;
+    }
+    if (move.isZ || move.isMax) {
+      if (["gmaxoneblow", "gmaxrapidflow"].includes(move.id))
+        return;
+    }
+    this.add("-activate", target, "move: Iron Age");
+    const lockedmove = source.getVolatile("lockedmove");
+    if (lockedmove) {
+      if (source.volatiles["lockedmove"].duration === 2) {
+        delete source.volatiles["lockedmove"];
+      }
+    }
+    return this.NOT_FAIL;
+    },
+    name: "Mirror Shield",
+    num: -1005,
+    },
+	volatileextract: {
+		onStart(pokemon) {
+			this.add('-start', pokemon, 'Volatile Extract');
+			this.effectState.counter = 4;
+			let i: BoostID;
+			for (i in pokemon.boosts) {
+				if (pokemon.boosts[i] === 0) continue;
+				pokemon.boosts[i] = (-pokemon.boosts[i]) as -6 | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 6;
+			}
+			this.add("-invertboost", pokemon, "[from] move: Volatile Extract");
+		},
+		onResidualOrder: 28,
+		onResidualSubOrder: 2,
+		onResidual(pokemon) {
+			if (pokemon.activeTurns && this.effectState.counter) {
+				this.effectState.counter--;
+				if (!this.effectState.counter) {
+					this.add('-end', pokemon, 'Volatile Extract');
+					let i: BoostID;
+					for (i in pokemon.boosts) {
+						if (pokemon.boosts[i] === 0) continue;
+						pokemon.boosts[i] = (-pokemon.boosts[i]) as -6 | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 6;
+					}
+					this.add("-invertboost", pokemon, "[from] move: Volatile Extract");
+					pokemon.removeVolatile("volatileextract");
+					delete this.effectState.counter;
+				}
+			}
+		},
+		onChangeBoost(boost, target, source, effect) {
+			if (effect && effect.id === "zpower") return;
+			let i: BoostID;
+			for (i in boost) {
+				if (boost[i] === undefined) continue;
+				boost[i] = (-boost[i]!) as -6 | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 6;
+			}
+		},
+		onEnd(pokemon) {
+			if (pokemon.beingCalledBack) return;
+			this.add('-end', pokemon, 'Volatile Extract', '[silent]');
+		},
+		name: "Volatile Extract",
+		num: -1003,
+	},		 
 	foretell: {
 	name: "Foretell",	
 		onTryMove(pokemon, target, move) {
