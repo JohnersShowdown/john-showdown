@@ -21522,7 +21522,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		types: ["Rock", "Psychic"],
 		genderRatio: { M: 0.875, F: 0.125 },
 		baseStats: { hp: 50, atk: 40, def: 72, spa: 75, spd: 88, spe: 30 },
-		abilities: { 0: "Strong Jaw", H: "Flightless" },
+		abilities: { 0: "Solid Rock", H: "Brain Jack" },
 		heightm: 0.4,
 		weightkg: 8,
 		color: "Black",
