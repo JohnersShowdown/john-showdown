@@ -24058,9 +24058,9 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		eggGroups: ["Undiscovered"],
 		tags: ["Fakemon"],
 	},	
-	gamesumi: {
+	arsteminck: {
 		num: 2302,
-		name: "Gamesumi",
+		name: "Arsteminck",
 		types: ["Fire", "Steel"],
 		gender: "N",
 		baseStats: { hp: 112, atk: 127, def: 147, spa: 54, spd: 96, spe: 34 },
