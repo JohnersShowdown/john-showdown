@@ -101013,6 +101013,9 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 	},
     oposse: {
 	    learnset: {
+			doubleedge:["9M"],
+			quickattack:["9M"],
+			superfang:["9M"],
 		    agility:["9M"],
 		    bite:["9M"],
 	    	bodyslam:["9M"],
