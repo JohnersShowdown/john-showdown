@@ -6193,6 +6193,26 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     rating: 3.5,
     num: -3229
     },
+	superstar: {
+		onModifyMove(move, pokemon, target) {
+			if (!move.flags['sound'] && !move.flags['dance']) return;
+			if (move.category === 'Status') return;
+			if (!target) return;
+			const atk = pokemon.getStat('atk', false, true);
+			const spa = pokemon.getStat('spa', false, true);
+			const def = target.getStat('def', false, true);
+			const spd = target.getStat('spd', false, true);
+			const physical = Math.floor(Math.floor(Math.floor(Math.floor(2 * pokemon.level / 5 + 2) * 90 * atk) / def) / 50);
+			const special = Math.floor(Math.floor(Math.floor(Math.floor(2 * pokemon.level / 5 + 2) * 90 * spa) / spd) / 50);
+			if (physical > special || (physical === special && this.randomChance(1, 2))) {
+				move.category = 'Physical';
+			}
+		},
+		flags: {},
+		name: "Superstar",
+		rating: 3,
+		num: 1005,
+	},		
 	manifestation: {
 		onStart(pokemon) {
 			if (pokemon.abilityState.activated) return;
