@@ -104625,7 +104625,8 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
     },
     crucigem: {
         learnset: {
-            lacadia: ["9M"],				
+            lacadia: ["9M"],		
+			rapidspin: ["9M"],			
             aerialace: ["9M", "7M", "6M", "5M", "4M", "3M"],
             allyswitch: ["8M", "7T"],
             astonish: ["9L3", "8L3", "7L9", "6L9", "5L11", "4L11", "3L13"],
@@ -104807,7 +104808,6 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
             dreameater: ["7M", "6M"],
             echoedvoice: ["9M"],
             endure: ["9M"],
-            energyball: ["9M"],
             facade: ["8M", "7M", "6M"],
             fairywind: ["9M"],
             flail: ["8L21", "7L38", "6L38"],
@@ -104882,7 +104882,6 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
             dreameater: ["7M", "6M"],
             echoedvoice: ["9M"],
             endure: ["9M"],
-            energyball: ["9M"],
             facade: ["8M", "7M", "6M"],
             fairywind: ["9M"],
             flail: ["8L21", "7L38", "6L38"],
