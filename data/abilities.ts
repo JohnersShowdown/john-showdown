@@ -6193,6 +6193,27 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     rating: 3.5,
     num: -3229
     },
+	manifestation: {
+		onStart(pokemon) {
+			if (pokemon.abilityState.activated) return;
+			pokemon.abilityState.activated = true;
+			let highestStat: BoostID = 'atk';
+			let highestValue = 0;
+			const stats: StatIDExceptHP [] = ['atk', 'def', 'spa', 'spd', 'spe'];
+			for (const stat of stats) {
+				const value = pokemon.getStat(stat, false, true);
+				if (value > highestValue) {
+					highestValue = value;
+					highestStat = stat;
+				}
+			}
+			this.boost({[highestStat]: 1}, pokemon, pokemon, this.effect);
+		},
+		flags: { failroleplay: 1, noreceiver: 1, noentrain: 1, notrace: 1, failskillswap: 1, cantsuppress: 1 },
+		name: "Manifestation",
+		rating: 3,
+		num: 1004,
+	},	
 	zendomain: {
 	  	  onStart(source) {
       this.field.setTerrain("psychicterrain");
