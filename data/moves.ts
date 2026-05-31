@@ -22081,7 +22081,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		num: 2401,
 		accuracy: 90,
 		basePower: 80,
-		category: "Special",
+		category: "Physical",
 		name: "Zombie Process",
 		pp: 10,
 		priority: 0,

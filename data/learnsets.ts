@@ -105500,6 +105500,10 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
     },
     ramnant: {
         learnset: {
+			supercellslam: ["9M"],
+			spark: ["9M"],
+			doubleshock: ["9M"],
+			wildcharge: ["9M"],
             zombieprocess: ["9M"],
             allyswitch: ["8M", "7T"],
             astonish: ["9L1", "8L1", "7L1", "6L1", "6S1", "5L1", "5S0", "4L1"],
