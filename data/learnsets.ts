@@ -106484,12 +106484,14 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
             sheercold: ["9L1", "8L1", "7L1", "6L1", "5L59", "4L59", "3L61"],
             snowscape: ["9M", "9L47"],
             spikes: ["9M", "8M"],
-            spite: ["9M", "7T", "6T", "5T", "4T"],		
+            spite: ["9M", "7T", "6T", "5T", "4T"],	
+			recover: ["9M"],	
             lacadia: ["9M"],			
         },
     },
     tortality: {
         learnset: {
+			recover: ["9M"],	
             afteryou: ["7T", "6T", "5T"],
             amnesia: ["9M", "9L52", "8M", "8L52", "7L40", "6L40", "5L49", "4L49", "3L40"],
             ancientpower: ["9E", "8E"],
