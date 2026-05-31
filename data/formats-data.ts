@@ -6714,6 +6714,14 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		tier: "OU",
 		natDexTier: "OU",
 	},
+	tomledger: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	twinledger: {
+		tier: "OU",
+		natDexTier: "OU",
+	},		
 	wizledgerfire: {
 		tier: "OU",
 		natDexTier: "OU",
