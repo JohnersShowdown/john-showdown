@@ -24076,7 +24076,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		name: "Cinccino-Mega",
 		baseSpecies: "Cinccino",	
 		forme: "Mega",
-		types: ["Normal", "Fighting"],
+		types: ["Normal", "Fairy"],
 		baseStats: { hp: 75, atk: 105, def: 130, spa: 45, spd: 90, spe: 125 },
 		abilities: { 0: "Skilled Tactician" },
 		heightm: 0.5,

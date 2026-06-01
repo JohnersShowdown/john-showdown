@@ -7225,6 +7225,10 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 	darmanitanmegaz: {
 		tier: "OU",
 		natDexTier: "OU",
+	},	
+	stygipede: {
+		tier: "OU",
+		natDexTier: "OU",
 	},						
 	arsteminck: {
 		tier: "OU",
