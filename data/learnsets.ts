@@ -111256,7 +111256,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 			wringout: ["9M"],
 			yawn: ["9M"],
 		},
-	},					
+	},						
 	lunarfomantis: {
 		learnset: {
             mantisstrike:["9M"],

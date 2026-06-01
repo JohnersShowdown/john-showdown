@@ -1023,6 +1023,25 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 			return problems;
 		},
 	},
+	rocksclause: {
+		effectType: "Rule",
+		name: "Rocks Clause",
+		desc: "Only one Stealth Rock variant (Stealth Rock, Ice Splinters, Echo Shards) can be active on a side at a time.",
+		onBegin() {
+			this.add('rule', 'Stealth Rock Clause: Only one Stealth Rock variant can be active per side');
+		},
+		onSideConditionStart(side, source, sourceEffect) {
+			const rockVariants = ['stealthrock', 'icesplinters', 'echoshards'];
+			if (rockVariants.includes(sourceEffect.id)) {
+				for (const variant of rockVariants) {
+					if (variant !== sourceEffect.id && side.sideConditions[variant]) {
+						this.hint("Rocks Clause prevents multiple Stealth Rock variants from being active at once!");
+						return false;
+					}
+				}
+			}
+		},
+	},		
 	gravitysleepclause: {
 		effectType: 'ValidatorRule',
 		name: 'Gravity Sleep Clause',
