@@ -23065,6 +23065,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     basePower: 120,
     category: "Special",
     name: "Helio Beam",
+	shortDesc: "Restores 1/6 of the user's max HP, hits turn 2.",
     pp: 10,
     priority: 0,
     flags: { charge: 1, protect: 1, mirror: 1, metronome: 1, nosleeptalk: 1, failinstruct: 1, heal: 1, beam: 1, light: 1 },
@@ -24052,6 +24053,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     num: -3329,
     accuracy: 100,
     basePower: 60,
+	shortDesc: "Lowers target's speed if user has a Slick Slime Stack, BP increases with stacks.",
     basePowerCallback(pokemon, target, move) {
       if (!pokemon.volatiles["slickslime"]?.layers)
         return move.basePower;
@@ -24772,6 +24774,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		basePower: 90,
 		category: "Physical",
 		name: "Phantom Cleave",
+		shortDesc: "Has a 30% chance to burn",
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, contact: 1, slicing: 1},
@@ -24788,6 +24791,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		basePower: 25,
 		category: "Physical",
 		name: "Cupid Volley",
+		shortDesc: "Hits 2-5 times",
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, contact: 1},
@@ -24802,6 +24806,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     basePower: 90,
     category: "Special",
     name: "Spirit Song",
+	shortDesc: "Wakes up sleeping pokemon. If Meloetta, the user transforms.",
     pp: 10,
     priority: 0,
     flags: { protect: 1, mirror: 1, sound: 1, bypasssub: 1 },
