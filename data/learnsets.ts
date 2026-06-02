@@ -114050,7 +114050,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
           doublekick: ["9M"],
           drainingkiss: ["9M"],
           encore: ["9M"],
-          endurance: ["9M"],
+          endure: ["9M"],
           energyball: ["9M"],
           facade: ["9M"],
           falseswipe: ["9M"],
