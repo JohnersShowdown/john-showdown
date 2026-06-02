@@ -112688,7 +112688,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
           stoneedge: ["9M"],
           substitute: ["9M"],
           sunnyday: ["9M"],
-          swalllow: ["9M"],
+          swallow: ["9M"],
           takedown: ["9M"],
           temperflare: ["9M"],
           terablast: ["9M"],
