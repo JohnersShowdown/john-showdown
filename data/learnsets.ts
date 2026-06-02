@@ -111906,7 +111906,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 	midnightralts: {
 		learnset: {
           allyswitch: ["9M"],
-          alluringsvoice: ["9M"],
+          alluringvoice: ["9M"],
           bodyslam: ["9M"],
           calmmind: ["9M"],
           chargebeam: ["9M"],
@@ -112002,7 +112002,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 	midnightkirlia: {
 		learnset: {
           allyswitch: ["9M"],
-          alluringsvoice: ["9M"],
+          alluringvoice: ["9M"],
           bodyslam: ["9M"],
           calmmind: ["9M"],
           chargebeam: ["9M"],
