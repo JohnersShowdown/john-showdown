@@ -7674,32 +7674,8 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 
 			return this.chainModify(maxBP / currentBP);
 		}
-	},
-},	
-	placeholderfours: {
-		name: "Placeholderfours",
-		shortDesc: "All non-Ghost and Dark type Pokemon lose 1/16th of their max HP at the end of their turn",
-		num: 2030,
-		flags: {breakable: 1},
-		onSwitchInPriority: -1,
-		onStart(pokemon) {
-		pokemon.addVolatile('foretell');	
-		},		
-		onResidualOrder: 28,
-		onResidualSubOrder: 2,
-	    onResidual(pokemon) {
-		for (const target of this.getAllActive()) {
-			if (
-				target &&
-				!target.fainted &&
-				!target.hasType('Ghost') &&
-				!target.hasType('Dark')
-			) {
-				this.damage(target.baseMaxhp / 16, target, pokemon, null, true);
-				}
-			}
-		}
-	},
+    	},
+    },	
     quasarbreak: {
 	name: "Quasar Break",
 	shortDesc: "If this Pokémon's stats are lowered, the foe loses 1/8 max HP. Once per turn.",
@@ -7725,26 +7701,5 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			}
 			}
 		},
-	},
-	placeholdertwos: {
-		name: 'Placeholdertwos',
-		onSourceAfterFaint(length, _, source, effect) {
-			if (effect && effect.effectType === 'Move') {
-				this.boost({ spa: length }, source);
-			}
-		},
-		num: -5000,
-		rating: 3.5,
-	},
-	placeholderthrees: {
-		onSourceAfterFaint(length, target, source, effect) {
-			if (effect && effect.effectType === 'Move') {
-				this.boost({ spe: length }, source);
-			}
-		},
-		flags: {},
-		name: "Placeholderthrees",
-		rating: 3,
-		num: -5001,
-	},																																												
+	},																																										
 };
