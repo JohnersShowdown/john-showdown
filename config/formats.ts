@@ -476,6 +476,7 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 		searchShow: false,
 		teraPreviewDefault: true,
 		ruleset: ['Standard Draft', '+Unobtainable', '+Past', 'Min Source Gen = 1', 'Rocks Clause' ],
+		banlist: ['Last Respects', 'Shock Orb', 'Freeze Orb', 'Sleep Orb', 'Hidden Power', 'Shed Tail'],
 		onValidateSet(set) {
 	    const species = this.dex.species.get(set.species);
 	    const ability = this.dex.abilities.get(set.ability);

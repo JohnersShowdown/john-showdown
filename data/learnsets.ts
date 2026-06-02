@@ -118455,7 +118455,6 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 	gallantmon: {
 		learnset: {
 			aerialace: ["9M"],
-			autotomize: ["9M"],
 			bodyslam: ["9M"],
 			bulldoze: ["9M"],
 			bulletpunch: ["9M"],
