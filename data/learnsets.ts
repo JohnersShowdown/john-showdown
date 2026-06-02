@@ -115269,7 +115269,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
     electroball:["9M"],
     chargebeam:["9M"],
     discharge:["9M"],
-    volswitch:["9M"],
+    voltswitch:["9M"],
 			lasercobblemon:["9M"],					
 		},
 	},
