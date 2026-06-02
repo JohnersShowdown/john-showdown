@@ -5764,6 +5764,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		},
 		flags: {},
 		name: "Weathered",
+		shortDesc: "Lowers Spdef and Defense by 1 and raises speed by 2 when hit by an attack.",
 		rating: 4,
 		num: -1393,
 	},		
