@@ -23026,7 +23026,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 	clawviathan: {
 		num: 2232,
 		name: "Clawviathan",
-		types: ["Ghost"],
+		types: ["Water", "Dragon"],
 		genderRatio: { M: 0.875, F: 0.125 },
 		baseStats: { hp: 91, atk: 98, def: 83, spa: 124, spd: 84, spe: 85 },
 		abilities: { 0: "Mega Launcher" },
