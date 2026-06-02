@@ -22565,7 +22565,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		types: ["Psychic", "Ghost"],
 		genderRatio: { M: 0.875, F: 0.125 },
 		baseStats: { hp: 95, atk: 135, def: 95, spa: 50, spd: 115, spe: 45 },
-		abilities: { 0: "Sweet Dreams" },
+		abilities: { 0: "Bad Dreams" },
 		heightm: 1.5,
 		weightkg: 1.2,
 		color: "Purple",
