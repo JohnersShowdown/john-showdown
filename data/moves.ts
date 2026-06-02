@@ -24881,6 +24881,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		onEffectiveness(typeMod, target, type) {
 			if (type === 'Steel') return 1;
 		},
+		ignoreImmunity: {'Poison': true},
 		secondary: {
 			chance: 10,
 			status: 'Poison',
