@@ -23100,19 +23100,21 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     contestType: "Clever"		
 	},	
 	holdtheline: {	
-    num: -3298,
-    accuracy: 100,
-    basePower: 60,
-    category: "Physical",
-    isNonstandard: "Past",
-    name: "Mountain Storm",
-    pp: 10,
+    num: -3207,
+    accuracy: true,
+    basePower: 0,
+    category: "Status",
+    name: "Hold the Line",
+    pp: 5,
     priority: 0,
-    flags: { contact: 1, protect: 1, mirror: 1, metronome: 1, throwing: 1, punch: 1 },
-    willCrit: true,
-    target: "normal",
-    type: "Electric",
-    contestType: "Cool"		
+    flags: { snatch: 1, metronome: 1 },
+    volatileStatus: "noretreat",
+    boosts: {
+    def: 2,
+    spd: 2
+    },
+    target: "self",
+    type: "Fighting"
 	},	
 	honeybomb: {
     num: -3313,
