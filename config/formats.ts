@@ -476,6 +476,18 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 		searchShow: false,
 		teraPreviewDefault: true,
 		ruleset: ['Standard Draft', '+Unobtainable', '+Past', 'Min Source Gen = 1', 'Rocks Clause' ],
+		onValidateSet(set) {
+	    const species = this.dex.species.get(set.species);
+	    const ability = this.dex.abilities.get(set.ability);
+	    if (
+		species.id === 'sephiredge' &&
+		['supremeoverlord', 'sharpness'].includes(ability.id)
+	    ) {
+		return [
+			`Sephiredge cannot use ${ability.name} in NatDex Draft.`,
+		];
+	  }
+    },
 	},
 	{
 		name: "[Gen 9] NatDex 6v6 Doubles Draft",
