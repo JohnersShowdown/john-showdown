@@ -24401,7 +24401,22 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     type: "Normal",
     zMove: { basePower: 160 },
     maxMove: { basePower: 130 }			
-	},	
+	},
+	vitaldrain: {
+	num: -6767,
+	accuracy: 100,
+	basePower: 75,
+	category: "Special",
+	shortDesc: "User recovers 50% of the damage dealt.",
+	name: "Vital Drain",
+	pp: 10,
+	priority: 0,
+	flags: { protect: 1, mirror: 1, heal: 1, metronome: 1 },
+	drain: [1, 2],
+	target: "normal",
+	type: "Dark",
+	contestType: "Clever",
+	},		
 	thunderclaw: {
     num: -3240,
     accuracy: 100,
