@@ -5758,6 +5758,15 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     rating: 3.5,
     num: -3237	
     },
+	weathered: {
+		onDamagingHit(damage, target, source, move) {
+				this.boost({ spd: -1, def: -1, spe: 2 }, target, target);
+		},
+		flags: {},
+		name: "Weathered",
+		rating: 4,
+		num: -1393,
+	},		
 	bombard: {
 		  onBasePowerPriority: 19,
           onBasePower(basePower, attacker, defender, move) {

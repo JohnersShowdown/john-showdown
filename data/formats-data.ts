@@ -7250,6 +7250,10 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		tier: "OU",
 		natDexTier: "OU",
 	},
+	meltran: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
 	armageist: {
 		tier: "OU",
 		natDexTier: "OU",

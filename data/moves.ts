@@ -24868,6 +24868,27 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		type: "Steel",
 		contestType: "Cool",
 	},
+	corrode: {
+		num: -3506,
+		accuracy: 100,
+		basePower: 70,
+		category: "Special",
+		name: "Corrode",
+		shortDesc: "Super Effective on Poison Types. 10% chance to poison.",
+		pp: 20,
+		priority: 0,
+		flags: { protect: 1, mirror: 1, metronome: 1 },
+		onEffectiveness(typeMod, target, type) {
+			if (type === 'Steel') return 1;
+		},
+		secondary: {
+			chance: 10,
+			status: 'Poison',
+		},
+		target: "normal",
+		type: "Poison",
+		contestType: "Beautiful",
+	},	
 	phantomcleave: {
 		accuracy: 100,
 		basePower: 90,
