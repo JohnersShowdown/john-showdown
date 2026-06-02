@@ -22142,6 +22142,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		basePower: 0,
 		category: "Status",
 		name: "Echo Shards",
+		shortDesc: "Hurts foe on switch-in. Factors Dark weakness",
 		pp: 20,
 		priority: 0,
 		flags: { reflectable: 1, metronome: 1, mustpressure: 1 },
@@ -22282,6 +22283,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     accuracy: 95,
     basePower: 70,
     category: "Physical",
+	shortDesc: "Targets hit by the move will become trapped on the field until the user switches out. If the move is used again on a target that has already been trapped, it will force them to switch out",
     name: "Cargo Throw",
     pp: 10,
     priority: 0,
@@ -22308,6 +22310,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     accuracy: 25,
     basePower: 0,
     category: "Status",
+	shortDesc: "Inflicts the target with Frostbite.",
     name: "Chill Out",
     pp: 15,
     priority: 0,
@@ -22323,6 +22326,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     accuracy: 100,
     basePower: 55,
     category: "Special",
+	shortDesc: "Changes effect based on the holder's held item, but it consumes the user's held item after use).",
     name: "Conjuring Fire",
     pp: 10,
     priority: 0,
@@ -22735,6 +22739,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
       target.side.removeSideCondition("ensnare");
     },
     target: "normal",
+	shortDesc: "Will deal double damage to opponents trying to switch out.",
     type: "Bug",
     contestType: "Clever"
 	},	
@@ -22869,6 +22874,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     accuracy: 100,
     basePower: 60,
     category: "Special",
+	shortDesc: "1.5x in snow or hail, 30% chance to freeze",
     name: "Frigid Water",
     pp: 15,
     priority: 0,
@@ -22880,7 +22886,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
       }
     },
     secondary: {
-      chance: 10,
+      chance: 30,
       status: "frz"
     },
     target: "normal",
@@ -22923,6 +22929,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     priority: 0,
     flags: { contact: 1, mirror: 1, punch: 1 },
     target: "normal",
+	shortDesc: "Bypasses the target's Protecting moves.",
     type: "Normal",
     contestType: "Tough"		
 	},	
@@ -23027,6 +23034,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     ignoreEvasion: true,
     ignoreDefensive: true,
     target: "normal",
+	shortDesc: "This attack never misses, and ignores the target's defensive and evasion boosts.",
     type: "Water",
     contestType: "Clever"		
 	},	
@@ -23174,6 +23182,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     basePower: 120,
     category: "Special",
     name: "Hypnoblast",
+	shortDesc: "Lowers the user's Sp. Atk and Sp. Def by 1 stage each",
     pp: 5,
     priority: 0,
     flags: { protect: 1, mirror: 1, metronome: 1 },
@@ -23200,6 +23209,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     },
     category: "Special",
     name: "Ice Age",
+	shortDesc: "If used alongside an ally using Stone Age or Iron Age, the two moves will combine together to increase in power (150 base power) and gain a unique effect.",
     pp: 10,
     priority: 0,
     flags: { protect: 1, mirror: 1, nonsky: 1, metronome: 1, pledgecombo: 1 },
@@ -23360,6 +23370,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     multihit: 2,
     smartTarget: true,
     target: "normal",
+	shortDesc: "Hits twice and has smart targeting (similar to Dragon Darts).",
     type: "Water",
     contestType: "Tough"		
 	},	
@@ -23455,6 +23466,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
       }
     },
     target: "normal",
+	shortDesc: "Has +1 priority but fails if the target isn't readying an attack.",
     type: "Bug",
     contestType: "Beautiful"		
 	},	
@@ -23464,6 +23476,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     basePower: 130,
     category: "Special",
     name: "Marine Light",
+	shortDesc: "Lowers the user's Sp. Atk stat by 2 stages",
     pp: 5,
     priority: 0,
     flags: { protect: 1, mirror: 1, metronome: 1, light: 1 },
@@ -23746,6 +23759,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     flags: { protect: 1, mirror: 1, metronome: 1, bullet: 1 },
     critRatio: 2,
     target: "normal",
+	shortDesc: "+ 1 Priority. + 2 Crit Ratio",
     type: "Dark",
     contestType: "Tough"		
 	},	
@@ -23895,6 +23909,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     accuracy: 100,
     basePower: 120,
     category: "Physical",
+	shortDesc: "Lowers the user's Defense and Sp. Def by 1 stage each. 150 power if user has ingrain active.",
     name: "Root Out",
     pp: 5,
     priority: 0,
@@ -23947,6 +23962,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     flags: { protect: 1, mirror: 1, slicing: 1 },
     critRatio: 2,
     target: "normal",
+	shortDesc: "Uses the target's Defense stat instead of Sp. Def in damage calculations",
     type: "Water",
     contestType: "Cool"			
 	},	
@@ -24445,6 +24461,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     flags: { contact: 1, protect: 1, mirror: 1, metronome: 1, throwing: 1 },
     recoil: [1, 4],
     target: "normal",
+	shortDesc: "The user takes 1/4 of the damage dealt as recoil damage.",
     type: "Dark",
     contestType: "Tough"		
 	},
@@ -24479,6 +24496,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     },
     category: "Physical",
     name: "Triple Tumble",
+	shortDesc: "Hits up to three times, increasing in power for every successful hit, lowers random user stat on each hit.",
     pp: 10,
     priority: 0,
     flags: { contact: 1, protect: 1, mirror: 1, metronome: 1 },
@@ -24597,6 +24615,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     basePower: 0,
     category: "Status",
     name: "Volatile Extract",
+	shortDesc: "For three turns, all of the target's stat changes are reversed, reverse again when it ends.",
     pp: 5,
     priority: 0,
     flags: { protect: 1, reflectable: 1, mirror: 1 },
