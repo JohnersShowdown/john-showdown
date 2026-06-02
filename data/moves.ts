@@ -24109,6 +24109,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     basePower: 0,
     category: "Status",
     name: "Soak Up",
+	shortDesc: "User restores 1/2 HP; 2/3 in rain. 1/4th in sandstorm/sun",
     pp: 5,
     priority: 0,
     flags: { snatch: 1, heal: 1, metronome: 1 },

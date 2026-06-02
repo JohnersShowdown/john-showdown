@@ -5702,6 +5702,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		},
 		flags: { failroleplay: 1, noreceiver: 1, noentrain: 1, notrace: 1, failskillswap: 1, cantsuppress: 1 },
 		name: "Swarming",
+		shortDesc: "If user is Wimpede, changes to School Form if it has > 1/4 max HP, else Solo Form.",
 		rating: 3,
 		num: 2001,
 	},
@@ -5715,6 +5716,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
         },
     flags: {},
     name: "Hivemind",
+	shortDesc: "This pokemon's Steel and Bug moves have 1.33x power.",
     rating: 4,
     num: -3233
     },
@@ -5752,6 +5754,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     },
     flags: { breakable: 1 },
     name: "Blindfold",
+	shortDesc: "The user is immune to light moves.",
     rating: 3.5,
     num: -3237	
     },
@@ -5765,6 +5768,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     },
     flags: {},
     name: "Bombard",
+	shortDesc: "This pokemon's ball and bomb moves have 1.5 power",
     rating: 3.5,
     num: -3200	
     },
@@ -5799,10 +5803,12 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     },
     flags: {},
     name: "Dark Lord",
+	shortDesc: "This pokemon's Dark moves have 1.5x power; take 50% less damage from Dark moves.",
     rating: 3.5,
     num: -3225
     },
 	echoburst: {
+	shortDesc: "Scatters Echo Shards if user is hit by a physical move.",	
 	    onDamagingHit(damage, target, source, move) {
       const side = source.isAlly(target) ? source.side.foe : source.side;
       const echoShards = side.sideConditions["echoshards"];
@@ -5826,6 +5832,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     },
     flags: {},
     name: "Forest Spirit",
+	shortDesc: "All allies have 1.5x power with Grass moves",
     rating: 3.5,
     num: -3209
     },
@@ -5850,6 +5857,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     },
     flags: {},
     name: "Hot Sand",
+	shortDesc: "Burn immunity; if hit by a contact move, 30% chance to burn the attacker.",
     rating: 3.5,
     num: -3213	
     },
@@ -5863,6 +5871,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     },
     flags: {},
     name: "Lifesteal",
+	shortDesc: "Boosts the power of the HP-draining moves by 50%.",
     rating: 3.5,
     num: -3215
     },
@@ -5890,6 +5899,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     },
     flags: {},
     name: "Mastermind",
+	shortDesc: "Normal moves become Psychic with 1.2x power",
     rating: 4,
     num: -3231
     },
@@ -5915,6 +5925,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     },
     flags: { breakable: 1 },
     name: "Misdirection",
+	shortDesc: "All moves are redirected to the user, neither player can protect themselves",
     rating: 3.5,
     num: -3227
     },
@@ -5960,6 +5971,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     },
     flags: { breakable: 1 },
     name: "Paper Thin",
+	shortDesc: "Weak to water, becomes water after being hit by a water move. Becomes fire after hit by a fire move.",
     rating: 3.5,
     num: -3226
     },
@@ -5999,6 +6011,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     },
     flags: {},
     name: "Restoration",
+	shortDesc: "Restores 1/16th HP at end of turn; 1/8th in sun. does not stack with leftovers.",
     rating: 3.5,
     num: -3248
     },
@@ -6025,6 +6038,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     },
     flags: { breakable: 1 },
     name: "Sand Guard",
+	shortDesc: "Prevents status in sandstorm, increases defenses by 25% in sandstorm.",
     rating: 3.5,
     num: -3255
     },
@@ -6049,6 +6063,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     },
     flags: { breakable: 1 },
     name: "Shrieker",
+	shortDesc: "Sound Immunity. Boosts power of sound moves by 1.5",
     rating: 3.5,
     num: -3220
     },
@@ -6093,6 +6108,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     },
     flags: { breakable: 1 },
     name: "Snow Guard",
+	shortDesc: "Prevents status, halves damage from fire, and increases defenses by 25% in snow.",
     rating: 3.5,
     num: -3228
     },
@@ -6114,6 +6130,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     },
     flags: {},
     name: "Sweet Dreams",
+	shortDesc: "At the end of each turn, every sleeping ally heals 1/8th of their max HP.",
     rating: 3.5,
     num: -3222
     },
@@ -6126,6 +6143,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     },
     flags: {},
     name: "Tinkerer",
+	shortDesc: "Decreases the Defense stat of all opposing :steel: Steel-types on the field by 25%.",
     rating: 3.5,
     num: -3246
     },
@@ -6151,6 +6169,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     },
     flags: { breakable: 1 },
     name: "Wind Charge",
+	shortDesc: "Wind immunity, raises user's SPA by 1 if hit by wind move. Raises SPA by 1 in tailwind.",
     rating: 3.5,
     num: -3224
     },
@@ -6190,6 +6209,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     },
     flags: { breakable: 1 },
     name: "Turbocharge",
+	shortDesc: "Electric moves have 1.5x power, reduces damage from Electric by 50%, raises the users speed if hit by Electric.",
     rating: 3.5,
     num: -3229
     },
@@ -6247,6 +6267,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     },
     flags: {},
     name: "Zen Domain",
+	shortDesc: "Sets Psychic Terrain on switch in. user restores 1/16th HP in Psychic Terrain.",
     rating: 4,
     num: -3230
     },	
@@ -6281,6 +6302,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     },
     flags: { breakable: 1 },
     name: "Intellectual",
+	shortDesc: "This pokemon's Psychic moves have 1.5x power; take 50% less damage from Psychic moves.",
     rating: 3.5,
     num: -3228
 	},		
@@ -6359,6 +6381,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     },
     flags: { breakable: 1 },
     name: "Dark Mastery",
+	shortDesc: "Dark moves ignore immunities, Dark Immunity, + Mold Breaker",
     rating: 3.5,
     num: -3202
 	},	
@@ -6390,6 +6413,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     },
     flags: { breakable: 1 },
     name: "Psychic Mastery",
+	shortDesc: "Psychic moves ignore immunities, Psychic Immunity, + Mold Breaker",
     rating: 3.5,
     num: -3218
 	},
@@ -6452,6 +6476,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     },
     flags: { breakable: 1 },
     name: "Electric Mastery",
+	shortDesc: "Electric moves ignore immunities, Electric Immunity, + Mold Breaker",
     rating: 3.5,
     num: -3204
 	},				
@@ -6545,6 +6570,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     },
     flags: { breakable: 1 },
     name: "Fire Mastery",
+	shortDesc: "Fire moves ignore immunities, Fire Immunity, + Mold Breaker",
     rating: 3.5,
     num: -3207
 	},
@@ -6638,6 +6664,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     },
     flags: { breakable: 1 },
     name: "Grass Mastery",
+	shortDesc: "Grass moves ignore immunities, Grass Immunity, + Mold Breaker",
     rating: 3.5,
     num: -3211
 	},
@@ -6700,6 +6727,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     },
     flags: { breakable: 1 },
     name: "Ice Mastery",
+	shortDesc: "Ice moves ignore immunities, Ice Immunity, + Mold Breaker",
     rating: 3.5,
     num: -3214
 	},	
@@ -6731,6 +6759,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     },
     flags: { breakable: 1 },
     name: "Normal Mastery",
+	shortDesc: "Normal moves ignore immunities, Normal Immunity, + Mold Breaker",
     rating: 3.5,
     num: -3216
 	},
@@ -6855,6 +6884,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
     },
     flags: { breakable: 1 },
     name: "Water Mastery",
+    shortDesc: "Water moves ignore immunities, Water Immunity, + Mold Breaker",
     rating: 3.5,
     num: -3223
 	},		
