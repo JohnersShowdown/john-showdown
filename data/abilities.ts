@@ -7606,18 +7606,14 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
         );		
 	},
     onResidual(pokemon) {
-	const actives = [...pokemon.side.active, ...pokemon.side.foe.active];
-	for (const target of actives) {
-		if (!target || target.fainted) continue;
-		if (target === pokemon) continue;
-		if (!target.volatiles['perishsong']) continue;
-		this.damage(target.baseMaxhp / 8, target);
-	   }
-    },
-	flags: {},
-	rating: 2.5,
-	num: 9998,
-	},				
+        const foes = pokemon.side.foe.active;
+        for (const target of foes) {
+            if (!target || target.fainted) continue;
+            if (!pokemon.volatiles['perishsong'] && !target.volatiles['perishsong']) continue;
+            this.damage(target.baseMaxhp / 8, target);
+        }
+    },	
+	},			
 	charisma: {
 		name: 'Charisma',
 		onSourceAfterFaint(length, _, source, effect) {

@@ -21666,9 +21666,9 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		flags: {contact: 1, protect: 1, mirror: 1, metronome: 1},
 		onModifyType(move, pokemon) {
 			const types = pokemon.getTypes();
-			let type = types[1];
+			let type = types[2];
 			if (type === 'Bird') type = '???';
-			if (type === '???' && types[0]) type = types[1];
+			if (type === '???' && types[0]) type = types[2];
 			move.type = type;
 		},
 		onPrepareHit(target, source, move) {

@@ -103398,6 +103398,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
     },
     tuatargon: {
         learnset: {
+			stealthrock: ["9M"],
             allyswitch: ["9M"],
             attract: ["9M"],
             block: ["9M"],
@@ -118552,6 +118553,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 	},	
 	wargreymon: {
 		learnset: {
+			flyingpress: ["9M"],
 			aurasphere: ["9M"],
 			brickbreak: ["9M"],
 			bulkup: ["9M"],
