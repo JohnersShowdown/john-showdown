@@ -109904,7 +109904,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
           flareblitz: ["9M"],
           helpinghand: ["9M"],
           icepunch: ["9M"],
-          imprision: ["9M"],
+          imprison: ["9M"],
           lashout: ["9M"],
           lightscreen: ["9M"],
           magicalleaf: ["9M"],
