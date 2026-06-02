@@ -7059,8 +7059,8 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		natDexTier: "OU",
 	},
 	acousticmeloetta: {
-		tier: "OU",
-		natDexTier: "OU",
+		tier: "Illegal",
+		natDexTier: "Illegal",
 	},
 	sephiredge: {
 		tier: "OU",
