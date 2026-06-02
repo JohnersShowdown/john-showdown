@@ -113789,7 +113789,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 			lasercobblemon:["9M"],					
 		},
 	},
-	winterpetilil: {
+	petililwinter: {
 		learnset: {
 			absorb: ["9M"],
 			afteryou: ["9M"],
@@ -113861,7 +113861,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 		    lasercobblemon:["9M"],					
 		},
 	},	
-	winterlilligant: {
+	lilligantwinter: {
 		learnset: {
         leechseed:["9L1"],
         megadrain:["9L1"],

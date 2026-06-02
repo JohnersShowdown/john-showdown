@@ -6842,6 +6842,14 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		tier: "OU",
 		natDexTier: "OU",
 	},
+	lilligantwinter: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	petililwinter: {
+		tier: "OU",
+		natDexTier: "OU",
+	},		
 	lunarfomantis: {
 		tier: "OU",
 		natDexTier: "OU",
