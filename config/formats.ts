@@ -476,16 +476,6 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 		searchShow: false,
 		teraPreviewDefault: true,
 		ruleset: ['Standard Draft', '+Unobtainable', '+Past', 'Min Source Gen = 1', 'Rocks Clause' ],
-		banlist: ['Last Respects', 'Shock Orb', 'Freeze Orb', 'Sleep Orb', 'Hidden Power', 'Shed Tail'],
-		onValidateSet(set, teamHas) {
-	    const problems = this.validateSet(set, teamHas) || [];
-	    if (this.dex.toID(set.species) === 'sephiredge') {
-		const ability = this.dex.toID(set.ability);
-		if (['supremeoverlord', 'sharpness'].includes(ability)) {
-			problems.push('Sephiredge may not use Sharpness or Supreme Overlord.');
-		}
-	}
-	}
 	},
 	{
 		name: "[Gen 9] NatDex 6v6 Doubles Draft",
