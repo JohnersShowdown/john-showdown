@@ -23100,7 +23100,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     contestType: "Clever"		
 	},	
 	holdtheline: {	
-    num: -3207,
+    num: -9456,
     accuracy: true,
     basePower: 0,
     category: "Status",
