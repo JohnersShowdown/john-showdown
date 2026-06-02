@@ -24106,6 +24106,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     basePower: 0,
     category: "Status",
     name: "Soak Up",
+	rating: 3,
     pp: 5,
     priority: 0,
     flags: { snatch: 1, heal: 1, metronome: 1 },
