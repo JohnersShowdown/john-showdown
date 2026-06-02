@@ -24064,7 +24064,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 	armageist: {
 		num: 2301,
 		name: "Armageist",
-		types: ["Ghost"],
+		types: ["Ghost", "Dark"],
 		gender: "N",
 		baseStats: { hp: 110, atk: 130, def: 110, spa: 75, spd: 95, spe: 80 },
 		abilities: { 0: "Sharpness", 1: "Steelworker", H: "Weak Armor" },
@@ -24532,7 +24532,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		name: "Siriusmon",
 		types: ["Fairy", "Dragon"],
 		gender: "N",
-		baseStats: { hp: 105, atk: 90, def: 105, spa: 90, spd: 105, spe: 105 },
+		baseStats: { hp: 107, atk: 80, def: 107, spa: 88, spd: 107, spe: 111 },
 		abilities: { 0: "Quasar Break" },
 		heightm: 3,
 		weightkg: 600,
