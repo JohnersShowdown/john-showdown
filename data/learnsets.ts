@@ -108022,6 +108022,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
     },
     stratoclysm: {
         learnset: {
+			recover: ["9M"],
             supernova: ["9M"],
 		    flamethrower: ["9M"],
             agility: ["9M"],
@@ -118487,6 +118488,10 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
     },
 	lucemon: {
 		learnset: {
+			heatwave: ["9M"],
+			firepunch: ["9M"],
+			icepunch: ["9M"],
+			earthpower: ["9M"],
 			acrobatics: ["9M"],
 			agility: ["9M"],
 			airslash: ["9M"],
