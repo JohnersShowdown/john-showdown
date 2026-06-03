@@ -6244,6 +6244,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		num: 1005,
 	},		
 	manifestation: {
+		shortDesc: "+ 1 to the highest stat on switchin, once per battle.",
 		onStart(pokemon) {
 			if (pokemon.abilityState.activated) return;
 			pokemon.abilityState.activated = true;
@@ -7397,6 +7398,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			},
 		},
 	bellofruin: {
+		shortDesc: "Transforms to Dirge at 50% or less HP",
 		onResidualOrder: 29,
 		onResidual(pokemon) {
 			if (pokemon.baseSpecies.baseSpecies !== 'Sacrabell-Hymn' || pokemon.transformed) {
