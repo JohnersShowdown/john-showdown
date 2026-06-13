@@ -106795,6 +106795,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
     },
     furnawurm: {
         learnset: {
+			swordsdance: ["9M"],
 			ancientpower: ["9M"],
 			accelerock: ["9M"],
 			attract: ["9M"],
