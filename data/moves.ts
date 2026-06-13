@@ -21660,21 +21660,26 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		basePower: 140,
 		category: "Physical",
 		name: "Power Scale",
-		shortDesc: "User takes 1/2 of damage dealt as recoil. Move is the type of this Pokemon's secondary type.",
+		shortDesc: "User takes 1/2 of damage dealt as recoil. This move becomes the user's secondary type.",
 		pp: 5,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1, metronome: 1},
+
 		onModifyType(move, pokemon) {
 			const types = pokemon.getTypes();
-			let type = types[2];
-			if (type === 'Bird') type = '???';
-			if (type === '???' && types[0]) type = types[2];
+
+			let type = types[1];
+			if (!type) type = types[0];
+			if (type === 'Bird' || type === '???') type = types[0];
+
 			move.type = type;
 		},
+
 		onPrepareHit(target, source, move) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, "Head Smash", target);
 		},
+
 		recoil: [1, 2],
 		target: "normal",
 		type: "Water",
