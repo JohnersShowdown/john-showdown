@@ -118558,6 +118558,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 	},	
 	wargreymon: {
 		learnset: {
+			roost: ["9M"],
 			flyingpress: ["9M"],
 			aurasphere: ["9M"],
 			brickbreak: ["9M"],
