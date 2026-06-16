@@ -24937,11 +24937,13 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
     priority: 0,
     flags: { protect: 1, mirror: 1, sound: 1, bypasssub: 1 },
 	onAfterMoveSecondarySelf(pokemon) {
-			if (pokemon.baseSpecies.baseSpecies === 'Sopranomeloetta' && !pokemon.transformed) {
-				const sopranomeloettaForme = pokemon.species.id === 'acousticmeloetta' ? '' : '-Acoustic';
-				pokemon.formeChange('Sopranomeloetta' + sopranomeloettaForme, this.effect, false, '0', '[msg]');
-			}
-		},
+		if (pokemon.baseSpecies.baseSpecies === 'Sopranomeloetta' && !pokemon.transformed) {
+			const forme = pokemon.species.id === 'acousticmeloetta'
+				? 'sopranomeloetta'
+				: 'acousticmeloetta';
+			pokemon.formeChange(forme, this.effect, false, '[msg]');
+		}
+	},
     onTryHit(target) {
       const activeTeam = target.side.activeTeam();
       const foeActiveTeam = target.side.foe.activeTeam();
