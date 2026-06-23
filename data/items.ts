@@ -3879,7 +3879,6 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		},
 		num: 2563,
 		gen: 9,
-		isNonstandard: "Future",
 	},
 	mentalherb: {
 		name: "Mental Herb",

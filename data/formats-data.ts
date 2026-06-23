@@ -1244,8 +1244,9 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		natDexTier: "RU",
 	},
 	meganiummega: {
-		isNonstandard: "Future",
-		tier: "Illegal",
+		tier: "ZU",
+		doublesTier: "(DUU)",
+		natDexTier: "RU",
 	},
 	cyndaquil: {
 		tier: "LC",
