@@ -7700,5 +7700,22 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			}
 			}
 		},
-	},																																										
+	},
+	faeslayer: {
+	name: "Fae Slayer",
+	shortDesc: "Fairy Immunity. User's Dragon moves become neutral to Fairy",
+		onModifyMovePriority: -5,
+		onModifyMove(move) {
+			if (!move.ignoreImmunity) move.ignoreImmunity = {};
+			if (move.ignoreImmunity !== true) {
+				move.ignoreImmunity['Dragon'] = true;
+			}
+		},	
+		onTryHit(target, source, move) {
+        	if (target !== source && move.type === 'Fairy') {
+				this.add('-immune', target, '[from] ability: Fae Slayer');
+				return null;
+	    	}
+		},
+	},																																											
 };
