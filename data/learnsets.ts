@@ -110278,8 +110278,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 		},
 	},	
 	hattertainer: {
-		learnset: {
-            slickslime:["9M"],		
+		learnset: {	
             flamethrower:["9M"],		
             brutalswing:["9M"],		
             ember:["9M"],		

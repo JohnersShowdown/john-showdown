@@ -22839,7 +22839,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		types: ["Fire", "Fairy"],
 		gender: "F",
 		baseStats: { hp: 57, atk: 136, def: 63, spa: 80, spd: 75, spe: 99 },
-		abilities: { 0: "Magician", 1: "Misdirection", H: "Costar" },
+		abilities: { 0: "Magician", 1: "Levitate", H: "Costar" },
 		heightm: 2.1,
 		weightkg: 5.1,
 		color: "Black",
