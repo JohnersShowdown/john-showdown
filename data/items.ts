@@ -8199,8 +8199,8 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 	coppergolurkite: {
 		name: "Coppergolurkite",
 		spritenum: 577,
-		megaStone: { "Golurk Copper": "Golurk Copper-Mega", "Golurk Exposed": "Golurk Exposed-Mega" },
-		itemUser: ["Golurk Copper", "Golurk Exposed"],
+		megaStone: { "Golurk Copper": "Golurk Copper-Mega", "Golurk Exposed": "Golurk Exposed-Mega", "Golurk Weathered": "Golurk Weathered-Mega", "Golurk Oxidized": "Golurk Oxidized-Mega" },
+		itemUser: ["Golurk Copper", "Golurk Exposed", "Golurk Weathered", "Golurk Oxidized"],
 		onTakeItem(item, source) {
 			return !item.megaStone?.[source.baseSpecies.baseSpecies];
 		},
