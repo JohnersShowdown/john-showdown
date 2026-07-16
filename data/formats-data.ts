@@ -7111,7 +7111,7 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		tier: "OU",
 		natDexTier: "OU",
 	},			
-	pumpkaboom: {
+	pumpkabomb: {
 		tier: "OU",
 		natDexTier: "OU",
 	},		
@@ -7119,7 +7119,7 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		tier: "OU",
 		natDexTier: "OU",
 	},
-	pumpkaboomsmall: {
+	pumpkabombsmall: {
 		tier: "OU",
 		natDexTier: "OU",
 	},		
@@ -7127,7 +7127,7 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		tier: "OU",
 		natDexTier: "OU",
 	},	
-	pumpkaboomlarge: {
+	pumpkabomblarge: {
 		tier: "OU",
 		natDexTier: "OU",
 	},		
@@ -7135,7 +7135,7 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		tier: "OU",
 		natDexTier: "OU",
 	},	
-	pumpkaboomsuper: {
+	pumpkabombsuper: {
 		tier: "OU",
 		natDexTier: "OU",
 	},		
