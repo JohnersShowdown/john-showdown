@@ -7079,14 +7079,38 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		tier: "OU",
 		natDexTier: "OU",
 	},
-	coppergolett: {
+	golettcopper: {
 		tier: "OU",
 		natDexTier: "OU",
 	},	
-	coppergolurk: {
+	golurkcopper: {
 		tier: "OU",
 		natDexTier: "OU",
 	},
+	golettoxidized: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	golurkoxidized: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	golettweathered: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	golurkweathered: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	golettexposed: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	golurkexposed: {
+		tier: "OU",
+		natDexTier: "OU",
+	},			
 	pumpkaboom: {
 		tier: "OU",
 		natDexTier: "OU",
@@ -7094,7 +7118,31 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 	gourgrenade: {
 		tier: "OU",
 		natDexTier: "OU",
+	},
+	pumpkaboomsmall: {
+		tier: "OU",
+		natDexTier: "OU",
+	},		
+	gourgrenadesmall: {
+		tier: "OU",
+		natDexTier: "OU",
 	},	
+	pumpkaboomlarge: {
+		tier: "OU",
+		natDexTier: "OU",
+	},		
+	gourgrenadelarge: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	pumpkaboomsuper: {
+		tier: "OU",
+		natDexTier: "OU",
+	},		
+	gourgrenadesuper: {
+		tier: "OU",
+		natDexTier: "OU",
+	},				
 	gimmibread: {
 		tier: "OU",
 		natDexTier: "OU",
@@ -7123,10 +7171,22 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		tier: "OU",
 		natDexTier: "OU",
 	},	
-	coppergolurkmega: {
+	golurkexposedmega: {
 		tier: "OU",
 		natDexTier: "OU",
 	},	
+	golurkcoppermega: {
+		tier: "OU",
+		natDexTier: "OU",
+	},
+	golurkoxidizedmega: {
+		tier: "OU",
+		natDexTier: "OU",
+	},	
+	golurkweatheredmega: {
+		tier: "OU",
+		natDexTier: "OU",
+	},				
 	tanglaremega: {
 		tier: "OU",
 		natDexTier: "OU",
