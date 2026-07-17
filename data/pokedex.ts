@@ -24421,7 +24421,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		baseSpecies: "Gourgrenade",
 		forme: "Small",
 		types: ["Grass", "Fire"],
-		baseStats: { hp: 55, atk: 110, def: 122, spa: 38, spd: 75, spe: 114 },
+		baseStats: { hp: 55, atk: 90, def: 122, spa: 38, spd: 75, spe: 114 },
 		abilities: { 0: "Aftermath", 1: "Bombard", H: "Reckless" },
 		heightm: 0.7,
 		weightkg: 9.5,
