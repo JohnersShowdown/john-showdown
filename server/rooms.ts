@@ -157,6 +157,7 @@ import type { PollData } from './chat-plugins/poll';
 import type { AutoResponder } from './chat-plugins/responder';
 import type { RoomEvent, RoomEventAlias, RoomEventCategory } from './chat-plugins/room-events';
 import type { Tournament, TournamentRoomSettings } from './tournaments/index';
+import axios from 'axios';
 
 export abstract class BasicRoom {
 	/** to rename use room.rename */
@@ -2080,6 +2081,30 @@ export class GameRoom extends BasicRoom {
 
 		// If we have a direct connection to a Replays database, just upload the replay
 		// directly.
+
+		try {
+			const body = {
+				id,
+				log,
+				players: battle.players.map(p => p.name),
+				format: format.name,
+				rating: rating || null,
+				private: hidden,
+				password,
+				inputlog: battle.inputLog?.join('\n') || null,
+				uploadtime: Math.trunc(Date.now() / 1000),
+			};
+			await axios.post(`https://replay.johnershowdown.com/replays`, body);
+			const url = `https://replay.johnershowdown.com/replays/${id}`;
+			connection?.popup(
+				`|html|<p>Your replay has been uploaded! It's available at:</p><p> ` +
+				`<a class="no-panel-intercept" href="${url}" target="_blank">${url}</a> ` +
+				`<copytext value="${url}">Copy</copytext>`
+			);
+		} catch (e) {
+			connection?.popup(`Your replay could not be saved: ${e}`);
+			throw e;
+		}
 
 		if (Replays.db) {
 			const idWithServer = Config.serverid === 'showdown' ? id : `${Config.serverid}-${id}`;
