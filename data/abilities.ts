@@ -3,32 +3,32 @@
 Ratings and how they work:
 
 -1: Detrimental
-	  An ability that severely harms the user.
-	ex. Defeatist, Slow Start
+An ability that severely harms the user.
+ex. Defeatist, Slow Start
 
  0: Useless
-	  An ability with no overall benefit in a singles battle.
-	ex. Color Change, Plus
+An ability with no overall benefit in a singles battle.
+ex. Color Change, Plus
 
  1: Ineffective
-	  An ability that has minimal effect or is only useful in niche situations.
-	ex. Light Metal, Suction Cups
+An ability that has minimal effect or is only useful in niche situations.
+ex. Light Metal, Suction Cups
 
  2: Useful
-	  An ability that can be generally useful.
-	ex. Flame Body, Overcoat
+An ability that can be generally useful.
+ex. Flame Body, Overcoat
 
  3: Effective
-	  An ability with a strong effect on the user or foe.
-	ex. Chlorophyll, Sturdy
+An ability with a strong effect on the user or foe.
+ex. Chlorophyll, Sturdy
 
  4: Very useful
-	  One of the more popular abilities. It requires minimal support to be effective.
-	ex. Adaptability, Magic Bounce
+One of the more popular abilities. It requires minimal support to be effective.
+ex. Adaptability, Magic Bounce
 
  5: Essential
-	  The sort of ability that defines metagames.
-	ex. Imposter, Shadow Tag
+The sort of ability that defines metagames.
+ex. Imposter, Shadow Tag
 
 */
 
@@ -54,14 +54,14 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		rating: 4,
 		num: 91,
 	},
-	aerilate: {
+	aerated: {
 		onModifyTypePriority: -1,
 		onModifyType(move, pokemon) {
 			const noModifyType = [
 				'judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'terrainpulse', 'weatherball',
 			];
 			if (move.type === 'Normal' && (!noModifyType.includes(move.id) || this.activeMove?.isMax) &&
-				!(move.isZ && move.category !== 'Status') && !(move.name === 'Tera Blast' && pokemon.terastallized)) {
+!(move.fromZ && move.category !== 'Status') && !(move.name === 'Tera Blast' && pokemon.terastallized)) {
 				move.type = 'Flying';
 				move.typeChangerBoosted = this.effect;
 			}
@@ -7383,7 +7383,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 				for (const allyActive of pokemon.allies()) {
 					if (allyActive.shieldBoost) return;
 					pokemon.shieldBoost = true;
-					this.boost({spd: 1}, pokemon);
+					this.boost({ spd: 1}, pokemon);
 				}
 			},
 		},
