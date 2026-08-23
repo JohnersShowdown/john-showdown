@@ -35,6 +35,14 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		inherit: true,
 		isNonstandard: null,
 	},
+	eelevate: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	firemane: {
+		inherit: true,
+		isNonstandard: null,
+	},
 	healer: {
 		inherit: true,
 		onResidual(pokemon) {
@@ -77,12 +85,6 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	spicyspray: {
 		inherit: true,
 		isNonstandard: null,
-		onDamagingHit(damage, target, source, move) {
-			// this is only in the mod folder because it is weird like Dire Claw
-			if (!source.trySetStatus('brn', target) && !target.status && target.hasType('Fire')) {
-				this.add('-immune', target);
-			}
-		},
 	},
 	unseenfist: {
 		onModifyMove: undefined, // no inherit

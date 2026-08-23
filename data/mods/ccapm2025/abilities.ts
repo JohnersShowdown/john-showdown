@@ -97,7 +97,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			if (effect.id === 'psn' || effect.id === 'tox') {
 				const toHeal = Math.min(target.baseMaxhp / 8, target.baseMaxhp - target.hp);
 				this.heal(toHeal);
-				if (target.species.name === "Gliscor" && !this.ruleTable.tagRules.includes("+pokemontag:cap")) {
+				if (target.species.name === "Gliscor" && !this.ruleTable.has("+tag:cap")) {
 					if (!this.effectState.phCounter) this.effectState.phCounter = 0;
 					this.effectState.phCounter += toHeal;
 					if (this.effectState.phCounter >= target.baseMaxhp)
@@ -126,12 +126,12 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				for (const secondary of move.secondaries) {
 					if (secondary.volatileStatus === 'flinch') return;
 				}
-				if (!this.ruleTable.tagRules.includes("+pokemontag:cap")) {
+				if (!this.ruleTable.has("+tag:cap")) {
 					move.secondaries.push({
 						chance: 20,
 						volatileStatus: 'flinch',
 						onHit(target, source, activeMove) {
-							if (this.ruleTable.tagRules.includes("+pokemontag:cap")) return;
+							if (this.ruleTable.has("+tag:cap")) return;
 							if (source.species.name === 'Trubbish') {
 								source.formeChange('Trubbish-Mega-Dragon', this.effect, true);
 							}
@@ -188,7 +188,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 					move.smartTarget = false;
 				} else {
 					this.add('-immune', target, '[from] ability: Wonder Guard');
-					if (!this.ruleTable.tagRules.includes("+pokemontag:cap") && target.baseSpecies.name === 'Shedinja') {
+					if (!this.ruleTable.has("+tag:cap") && target.baseSpecies.name === 'Shedinja') {
 						target.formeChange('Shedinja-Escaped', null, true);
 						this.add('-activate', target, 'ability: Wonder Guard');
 					}
@@ -240,16 +240,17 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		onModifyMovePriority: 1,
 		onModifyMove(move, attacker, defender) {
 			if (attacker.species.baseSpecies !== 'Aegislash' || attacker.transformed) return;
-			if (move.category === 'Status' && move.id !== 'kingsshield') return;
-			const targetForme = (move.id === 'soulboundslash' ? 'Aegislash-Soulbound' :
-				(move.id === 'kingsshield' ? 'Aegislash' : 'Aegislash-Blade'));
-			if (attacker.species.name !== targetForme) attacker.formeChange(targetForme);
+			if (move.id === 'kingsshield' && attacker.species.forme !== 'Aegislash') attacker.formeChange('Aegislash');
+			if (move.category !== 'Status' && move.id === 'soulboundslash' &&
+				attacker.species.forme !== 'Aegislash-Soulbound') attacker.formeChange('Aegislash-Soulbound');
+			if (move.category !== 'Status' && move.id !== 'soulboundslash' &&
+				attacker.species.forme === 'Aegislash') attacker.formeChange('Aegislash-Blade');
 		},
 		flags: { failroleplay: 1, noreceiver: 1, noentrain: 1, notrace: 1, failskillswap: 1, cantsuppress: 1 },
 		name: "Stance Change",
 		rating: 4,
 		num: 176,
-		shortDesc: "Aegislash: change Forme to Soulbound before Soulbound Slash and Shield before King's Shield.",
+		shortDesc: "Aegislash: change Forme based on move used.",
 	},
 	stackshift: {
 		onModifyAtkPriority: 5,
